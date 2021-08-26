@@ -6,10 +6,15 @@
 安全，强大，易开发的企业微信SCRM
 </h3>
 
+<center>
+
 [文档](https://docs.openscrm.cn/) |
 [截图](#项目截图) |
 [演示](#联系作者) |
 [安装](https://docs.openscrm.cn/an-zhuang-jiao-cheng)
+
+</center>
+
 
 ### 项目简介
 
