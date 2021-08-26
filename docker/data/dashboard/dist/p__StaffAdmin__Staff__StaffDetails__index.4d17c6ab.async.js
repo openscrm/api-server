@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[34],{"6brD":function(M,a,n){"use strict";n.r(a);var o=n("cDcd"),t=n.n(o),E=n("5bA4"),l=n("tMyG"),c=n("9kvl"),e=function(D){return console.log(D.location.query),t.a.createElement(l.a,{onBack:function(){return c.b.goBack()},backIcon:t.a.createElement(E.a,null),header:{title:"\u6210\u5458\u8BE6\u60C5"}})};a.default=e}}]);

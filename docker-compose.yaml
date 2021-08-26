@@ -1,0 +1,117 @@
+version: '3'
+services:
+  # redis服务
+  redis:
+    hostname: redis
+    image: redis:5.0.3
+    container_name: redis
+    restart: always
+    command: redis-server /etc/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./docker/data/redis/redis.conf:/etc/redis.conf
+      - ./docker/data/redis/db:/var/lib/redis
+    ports:
+      - 9379:9379
+    networks:
+      - openscrm
+
+  # mysql数据库服务
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      # mysql root 密码
+      MYSQL_ROOT_PASSWORD: NWVj5IowIGk0dZlBCSF
+      # 初始化数据库(后续的初始化sql会在这个库执行)
+      MYSQL_DATABASE: open_scrm_demo
+    security_opt:
+      - seccomp:unconfined
+    command:
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --port=9306
+    ports:
+      - 9306:9306
+    volumes:
+      - ./docker/data/mysql/db/:/var/lib/mysql/
+      - ./docker/data/mysql/conf/:/etc/mysql/conf.d/:ro
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "mysql:9306" ]
+      timeout: 20s
+      retries: 10
+    networks:
+      - openscrm
+
+  # nginx服务，前端项目挂载在此处
+  nginx:
+    image: daocloud.io/library/nginx:1.14
+    container_name: nginx
+    restart: always
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 9000:9000
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./docker/data/nginx/conf/conf.d/:/etc/nginx/conf.d/
+      - ./docker/data/nginx/logs:/var/log/nginx
+      - ./docker/data/dashboard:/opt/dashboard
+      - ./docker/data/sidebar:/opt/sidebar
+      - ./docker/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - openscrm
+
+ # 主Api服务
+  api-server:
+    image: centos
+    volumes:
+      - ./bin/api-server:/srv/api-server
+      - ./conf/:/conf/
+    ports:
+      - 9001:9001
+    container_name: api-server
+    command:
+      - sh
+      - -c
+      - |
+        /srv/api-server
+    depends_on:
+      - msg_arch
+      - redis
+      - mysql
+    networks:
+      - openscrm
+
+  # 会话存档服务
+  msg_arch:
+    image: centos
+    volumes:
+      - ./bin/msg-arch-server:/srv/msg-arch-server
+      - ./docker/lib:/srv/lib
+      - ./conf/:/conf/
+    ports:
+      - 9002:9002
+    container_name: msg_arch
+    environment:
+      - LD_LIBRARY_PATH=/srv/lib
+    command:
+      - sh
+      - -c
+      - |
+        /srv/msg-arch-server
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - openscrm
+
+networks:
+  openscrm:
+    driver: bridge

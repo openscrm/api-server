@@ -1,0 +1,86 @@
+# 应用基本配置
+App:
+  Name: openscrm
+  # * 运行环境 DEV,TEST,PROD；开发和测试环境会开放调试API，生产环境请使用PROD；
+  Env: DEV
+  # * 应用秘钥 64位，生成命令：openssl rand -base64 64
+  Key: todo
+  # * 超级管理员手机号，自动设置此处手机号匹配到的员工为超级管理员权限
+  SuperAdminPhone:
+    - 13108329522
+  # 是否开启Models自动迁移，修改Model定义自动同步Mysql表结构
+  AutoMigration: true
+
+# API服务配置
+Server:
+  #debug or release
+  RunMode: debug
+  # 主服务监听端口
+  HttpPort: 9001
+  # 会话存档服务监听端口
+  MsgArchHttpPort: 9002
+  ReadTimeout: 60
+  WriteTimeout: 60
+  # 会话存档服务访问地址
+  MsgArchSrvHost: host.docker.internal
+
+# Mysql数据库配置
+DB:
+  User: root
+  Name: open_scrm_demo
+  Host: host.docker.internal:9306
+  Password: NWVj5IowIGk0dZlBCSF
+
+# redis服务器配置
+Redis:
+  Host: host.docker.internal:9379
+  Password: XOvqH8qXoWE4RgFScSZ
+  DBNumber: 0
+  IdleTimeout: 5
+  ReadTimeout: 3
+  DialTimeout: 5
+
+# 存储配置
+Storage:
+  # * 存储类型, 可配置aliyun, qcloud；分别对应阿里云OSS, 腾讯云COS
+  Type: aliyun
+  # * 阿里云OSS相关配置，请使用子账户凭据，且仅授权oss访问权限
+  AccessKeyId: todo
+  AccessKeySecret: todo
+  Endpoint: todo
+  Bucket: todo
+
+  # * 腾讯云OSS相关配置，请使用子账户凭据，且仅授权cos访问权限
+  SecretID:
+  SecretKey:
+  BucketURL:
+
+# 企业微信配置
+WeWork:
+  # * 企业ID，https://work.weixin.qq.com/wework_admin/frame#profile
+  ExtCorpID: ww2d3e2957190c6e4c
+  # * 企业微信通讯录API Secret https://work.weixin.qq.com/wework_admin/frame#apps/contactsApi
+  ContactSecret: todo
+  # * 企业微信客户联系API Secret https://work.weixin.qq.com/wework_admin/frame#customer/analysis
+  CustomerSecret: todo
+  # * 企业自建主应用ID https://work.weixin.qq.com/wework_admin/frame#apps
+  MainAgentID: 10004
+  # * 企业自建主应用Secret
+  MainAgentSecret: todo
+  # * 同步通讯录回调地址的token，客户联系共用此配置，https://work.weixin.qq.com/wework_admin/frame#apps/contactsApi，https://work.weixin.qq.com/wework_admin/frame#customer/analysis
+  CallbackToken: todo
+  # * 同步通讯录回调地址的AesKey, 客户联系共用此配置
+  CallbackAesKey: todo
+  # * 会话存档服务私钥，企业微信需开通此功能并设置好对应公钥，https://work.weixin.qq.com/wework_admin/frame#financial/corpEncryptData
+  PriKeyPath: /conf/private.key
+
+# 延迟队列设置（通常无需改动）
+DelayQueue:
+  # bucket数量
+  BucketSize: 3
+  # bucket在redis中的键名, %d必须保留
+  BucketName: dq_bucket_%d
+  # ready queue在redis中的键名, %s必须保留
+  QueueName: dq_queue_%s
+  # 调用blpop阻塞超时时间, 单位秒, 必须小于redis.read_timeout, 修改此项, redis.read_timeout需做相应调整
+  QueueBlockTimeout: 2

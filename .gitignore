@@ -1,0 +1,19 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+.idea
+conf/config.yaml
+conf/config.test.yaml
+
+docker/bin/api-server
+
+conf/*.key
+docs/swagger.json
+docs/swagger.yaml
+
+docker/data/mysql/db/*
+docker/data/nginx/logs/*
+docker/data/redis/db/*

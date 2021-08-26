@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[28],{GxuY:function(o,n,t){"use strict";t.r(n);var a=t("cDcd"),c=t.n(a),u=t("FfOG"),i=t("9kvl"),l=function(f){return Object(a.useEffect)(function(){var E=f.dispatch;E&&E({type:"staffAdmin/getCurrent"})},[f]),c.a.createElement(c.a.Fragment,null,u.b.push("/staff-admin/welcome"))};n.default=Object(i.a)(function(){return{}})(l)}}]);

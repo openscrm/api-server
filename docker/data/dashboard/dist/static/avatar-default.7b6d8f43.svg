@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="avatar-default" transform="translate(1 1)">
+    <path d="M0 4L0 2C0 1.44772 0.195262 0.976311 0.585786 0.585786C0.976311 0.195262 1.44772 0 2 0L44 0C44.5523 0 45.0237 0.195262 45.4142 0.585786C45.8047 0.976311 46 1.44772 46 2L46 44C46 44.5523 45.8047 45.0237 45.4142 45.4142C45.0237 45.8047 44.5523 46 44 46L2 46C1.44772 46 0.976311 45.8047 0.585786 45.4142C0.195262 45.0237 0 44.5523 0 44L0 4Z" id="矩形" fill="#2D8CF0" fill-rule="evenodd" stroke="none" />
+    <g id="Group" transform="translate(15.280853 11.471161)">
+      <path d="M0 7.5L0 8.75L15 8.75L15 7.5C15 5.17031 15 4.00544 14.6194 3.08656C14.1119 1.86144 13.1386 0.888063 11.9134 0.380625C10.9946 0 9.82969 0 7.5 0C5.17031 0 4.00544 0 3.08656 0.380625C1.86144 0.888063 0.888063 1.86144 0.380625 3.08656C0 4.00544 0 5.17031 0 7.5L0 7.5Z" transform="translate(0 13.75)" id="Shape-3" fill="#FFFFFF" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" />
+      <path d="M4.375 8.75C6.79125 8.75 8.75 6.79125 8.75 4.375C8.75 1.95876 6.79125 0 4.375 0C1.95875 0 0 1.95876 0 4.375C0 6.79125 1.95875 8.75 4.375 8.75L4.375 8.75Z" transform="translate(3.1249924 0)" id="Shape-2" fill="#FFFFFF" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" />
+    </g>
+  </g>
+</svg>

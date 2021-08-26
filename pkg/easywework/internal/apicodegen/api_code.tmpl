@@ -1,0 +1,59 @@
+package workwx
+
+import "encoding/json"
+
+{{ range .}}
+// req{{ .StructName }} {{ .Name }}请求
+// 文档：{{ .DocURL }}#{{ .Name }}{{ .ReqCode }}
+var _ bodyer = req{{ .StructName }}{}
+
+func (x req{{ .StructName }}) intoBody() ([]byte, error) {
+	result, err := json.Marshal(x)
+	if err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
+// resp{{ .StructName }} {{ .Name }}响应
+// 文档：{{ .DocURL }}#{{ .Name }}{{ .RespCode }}
+var _ bodyer = resp{{ .StructName }}{}
+
+func (x resp{{ .StructName }}) intoBody() ([]byte, error) {
+	result, err := json.Marshal(x)
+	if err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
+// exec{{ .StructName }} {{ .Name }}
+// 文档：{{ .DocURL }}#{{ .Name }}
+func (c *WorkwxApp) exec{{ .StructName }}(req req{{ .StructName }}) (resp{{ .StructName }}, error) {
+	var resp resp{{ .StructName }}
+	err := c.executeQyapiJSON{{ .MethodCaml }}("{{ .URL }}", req, &resp, true)
+	if err != nil {
+		return resp{{ .StructName }}{}, err
+	}
+	if bizErr := resp.TryIntoErr(); bizErr != nil {
+		return resp{{ .StructName }}{}, bizErr
+	}
+
+	return resp, nil
+}
+
+// {{ .StructName }} {{ .Name }}
+// 文档：{{ .DocURL }}#{{ .Name }}
+func (c *WorkwxApp) {{ .StructName }}(req req{{ .StructName }}) (ok bool, err error) {
+	var resp resp{{ .StructName }}
+	resp, err = c.exec{{ .StructName }}(req)
+	if err != nil {
+    		return false, err
+    	}
+    ok = resp.IsOK()
+	return
+}
+
+{{end}}
