@@ -1,15 +1,15 @@
-<p style="text-align: center">
+<p align="center">
   <img alt="logo" height="48" src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/openscrm_logo.svg">
 </p>
 
-<h3 style="text-align: center">
+<h3 align="center">
 安全，强大，易开发的企业微信SCRM
 </h3>
 
 [文档](https://docs.openscrm.cn/) |
 [截图](#项目截图) |
 [演示](#联系作者) |
-[安装](https://docs.openscrm.cn/an-zhuang-jiao-cheng) 
+[安装](https://docs.openscrm.cn/an-zhuang-jiao-cheng)
 
 ### 项目简介
 
@@ -18,19 +18,19 @@
 ### 项目特点
 
 * **安全性高**：企业微信控制了企业所有员工和客户的敏感数据，如电话号码，职位，客户标签，联系方式等，如果发生泄露，
-对企业的打击是非常致命的。我们团队有来自360的资深安全开发工程师cover此问题。
+  对企业的打击是非常致命的。我们团队有来自360的资深安全开发工程师cover此问题。
 
 
 * **高性能，高稳定性**：得益于Go出色的工程能力，简单有效的并发控制能力，OpenSCRM具备比肩头部Saas厂商的高性能和高稳定
 
 
 * **代码可读性优先**：我们深刻认同Google对于代码管理的看法，项目开发完成只是项目的开始，更多的工作在于维护和迭代，
-唯有易读的代码才能保证后期迭代的高质量，高效率，这也是Go语言的设计目标。我们有非常完善的代码注释，所有代码力求清晰易读。
+  唯有易读的代码才能保证后期迭代的高质量，高效率，这也是Go语言的设计目标。我们有非常完善的代码注释，所有代码力求清晰易读。
 
 
 * **易开发**：作为开源项目，我们为了让更多的人可以受益于此项目，我们做了大量工作力求项目简单易上手。
-我们只做必要抽象（MVC），避免引入新慨念。我们坚持尽量少的中间件依赖，仅依赖Mysql和Redis，
-比如延迟队列我们基于Redis实现， 没有引入Kafka；比如全文检索基于Mysql8全文检索实现，没有引入ES。
+  我们只做必要抽象（MVC），避免引入新慨念。我们坚持尽量少的中间件依赖，仅依赖Mysql和Redis，
+  比如延迟队列我们基于Redis实现， 没有引入Kafka；比如全文检索基于Mysql8全文检索实现，没有引入ES。
 
 > Python，PHP，NodeJS开发者可以放心使用本项目，本项目做了大量工作力求简单，非常容易上手。
 
