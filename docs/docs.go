@@ -584,64 +584,6 @@ var doc = `{
                 }
             }
         },
-        "/api/v1/customer_frontend/action/login": {
-            "get": {
-                "description": "同时支持get和post请求，get可自动跳转，post可获取详细信息",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "客户前台"
-                ],
-                "summary": "客户H5登录",
-                "parameters": [
-                    {
-                        "description": "客户H5登录请求",
-                        "name": "params",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/entities.CustomerLoginReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/app.JSONResult"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/entities.CustomerLoginResp"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "400": {
-                        "description": "非法请求",
-                        "schema": {
-                            "$ref": "#/definitions/app.JSONResult"
-                        }
-                    },
-                    "500": {
-                        "description": "内部错误",
-                        "schema": {
-                            "$ref": "#/definitions/app.JSONResult"
-                        }
-                    }
-                }
-            }
-        },
         "/api/v1/customer_frontend/action/login_callback": {
             "post": {
                 "consumes": [
@@ -2559,7 +2501,7 @@ var doc = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/requests.UpdateCustomerTagsReq"
+                            "$ref": "#/definitions/requests.UpdateCustomerInternalTagsReq"
                         }
                     }
                 ],
@@ -3607,7 +3549,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户群发"
+                    "客户群群发"
                 ],
                 "summary": "获取客户群发详情",
                 "responses": {
@@ -3650,12 +3592,12 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户管理"
+                    "客户群群发"
                 ],
                 "summary": "群发消息列表",
                 "parameters": [
                     {
-                        "description": "群发消息列表请求",
+                        "description": "客户群群发消息列表请求",
                         "name": "params",
                         "in": "body",
                         "required": true,
@@ -5385,7 +5327,6 @@ var doc = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "description": "IsDefault 是否为默认分组，1：是；2：否",
                                             "type": "integer"
                                         }
                                     }
@@ -8917,50 +8858,6 @@ var doc = `{
                 }
             }
         },
-        "entities.CustomerLoginReq": {
-            "type": "object",
-            "required": [
-                "source_url"
-            ],
-            "properties": {
-                "ext_corp_id": {
-                    "description": "ExtCorpID 外部企业ID",
-                    "type": "string"
-                },
-                "source_url": {
-                    "description": "SourceURL 登录来源页面URL，登录成功自动跳转过去",
-                    "type": "string"
-                }
-            }
-        },
-        "entities.CustomerLoginResp": {
-            "type": "object",
-            "required": [
-                "source_url"
-            ],
-            "properties": {
-                "app_id": {
-                    "description": "AppID 外部企业ID",
-                    "type": "string"
-                },
-                "location_url": {
-                    "description": "LocationURL 完整的跳转URL",
-                    "type": "string"
-                },
-                "redirect_uri": {
-                    "description": "RedirectURI 重定向地址，需要进行UrlEncode，授权回调地址",
-                    "type": "string"
-                },
-                "source_url": {
-                    "description": "SourceURL 登录来源页面URL，登录成功自动跳转过去",
-                    "type": "string"
-                },
-                "state": {
-                    "description": "State",
-                    "type": "string"
-                }
-            }
-        },
         "entities.DeleteGroupChatGroupReq": {
             "type": "object",
             "properties": {
@@ -9215,9 +9112,16 @@ var doc = `{
         },
         "entities.StaffAdminLoginReq": {
             "type": "object",
+            "required": [
+                "source_url"
+            ],
             "properties": {
                 "ext_corp_id": {
                     "description": "ExtCorpID 外部企业ID",
+                    "type": "string"
+                },
+                "source_url": {
+                    "description": "SourceURL 登录来源页面URL，登录成功自动跳转过去",
                     "type": "string"
                 }
             }
@@ -10099,6 +10003,12 @@ var doc = `{
                 "id": {
                     "description": "ID",
                     "type": "string"
+                },
+                "internal_tag_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "internal_tags": {
                     "type": "array",
@@ -12371,11 +12281,14 @@ var doc = `{
         "requests.CreateInternalTagReq": {
             "type": "object",
             "required": [
-                "name"
+                "names"
             ],
             "properties": {
-                "name": {
-                    "type": "string"
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },
@@ -13902,6 +13815,33 @@ var doc = `{
                 },
                 "remove_tag_ids": {
                     "description": "删除标签的ID列表",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "requests.UpdateCustomerInternalTagsReq": {
+            "type": "object",
+            "required": [
+                "ext_customer_id",
+                "ext_staff_id"
+            ],
+            "properties": {
+                "add_tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ext_customer_id": {
+                    "type": "string"
+                },
+                "ext_staff_id": {
+                    "type": "string"
+                },
+                "remove_tags": {
                     "type": "array",
                     "items": {
                         "type": "string"

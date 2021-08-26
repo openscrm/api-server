@@ -17,3 +17,6 @@ docs/swagger.yaml
 docker/data/mysql/db/*
 docker/data/nginx/logs/*
 docker/data/redis/db/*
+
+scripts/deploy-test.bat
+go.sum
