@@ -161,13 +161,6 @@ func (o *Login) StaffAdminForceLogin(c *gin.Context) {
 		return
 	}
 
-	if conf.Settings.App.Env == constants.TEST && item.RoleType != string(constants.RoleTypeStaff) {
-		// 测试环境仅允许普通员工调试登录
-		err = errors.WithStack(ecode.ForbiddenError)
-		handler.ResponseError(err)
-		return
-	}
-
 	handler.StaffAdminSession.Set(string(constants.StaffInfo), util.JsonEncode(item))
 	err = handler.StaffAdminSession.Save()
 	if err != nil {
