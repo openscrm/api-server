@@ -80,14 +80,14 @@ services:
       - |
         /srv/api-server
     depends_on:
-      - msg_arch
+      - msg-archive-server
       - redis
       - mysql
     networks:
       - openscrm
 
   # 会话存档服务
-  msg_arch:
+  msg-archive-server:
     image: centos
     volumes:
       - ./bin/msg-arch-server:/srv/msg-arch-server

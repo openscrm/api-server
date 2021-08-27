@@ -58,7 +58,7 @@ func AutoMigrate(db *gorm.DB) error {
 		return nil
 	}
 
-	db = db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci")
+	db = db.Set("gorm:table_options", "ENGINE=InnoDB")
 	err := db.AutoMigrate(
 		// 此处顺序不可改动，以免处罚外键约束
 		&Customer{},

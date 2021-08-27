@@ -5327,6 +5327,7 @@ var doc = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
+                                            "description": "IsDefault 是否为默认分组，1：是；2：否",
                                             "type": "integer"
                                         }
                                     }
