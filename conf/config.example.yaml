@@ -15,6 +15,8 @@ App:
 Server:
   #debug or release
   RunMode: debug
+  # 主服务监听Host
+  HttpHost: 0.0.0.0
   # 主服务监听端口
   HttpPort: 9001
   # 会话存档服务监听端口

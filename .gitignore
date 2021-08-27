@@ -7,6 +7,8 @@
 .idea
 conf/config.yaml
 conf/config.test.yaml
+conf/config.test.yaml
+conf/config.prod.yaml
 release
 
 docker/bin/api-server
@@ -20,4 +22,5 @@ docker/data/nginx/logs/*
 docker/data/redis/db/*
 
 scripts/deploy-test.bat
+scripts/deploy-*.bat
 go.sum

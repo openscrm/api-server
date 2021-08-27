@@ -42,8 +42,9 @@ type AppConfig struct {
 }
 
 type serverConfig struct {
-	RunMode         string        `validate:"required,oneof=debug test release"`
-	HttpPort        int           `validate:"required,gt=0"`
+	RunMode         string `validate:"required,oneof=debug test release"`
+	HttpPort        int    `validate:"required,gt=0"`
+	HttpHost        string
 	ReadTimeout     time.Duration `validate:"required,gt=0"`
 	WriteTimeout    time.Duration `validate:"required,gt=0"`
 	MsgArchHttpPort int
