@@ -127,7 +127,7 @@ func (tg TagGroup) Upsert(group *TagGroup) error {
 
 	err := DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "ext_id"}},
-		DoUpdates: clause.AssignmentColumns([]string{"create_time", "group_name", "order"})},
+		DoUpdates: clause.AssignmentColumns([]string{"create_time", "name", "order"})},
 	).Omit("Tags").Create(&group).Error
 	if err != nil {
 		return err
