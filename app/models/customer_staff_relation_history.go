@@ -187,8 +187,7 @@ func (o CustomerStaffRelationHistory) QueryCustomerDeleteStaff(
 			" s.ext_id as ext_staff_id, " +
 			" s.id as staff_id, " +
 			" s.avatar_url as staff_avatar, " +
-			" timestampdiff(day, customer_staff_relation_history.createtime ,customer_staff_relation_history.customer_delete_staff_at) as in_connection_time_range, " +
-			" customer_staff.ext_tag_ids as ext_tag_ids ").
+			" timestampdiff(day, customer_staff_relation_history.createtime ,customer_staff_relation_history.customer_delete_staff_at) as in_connection_time_range").
 		Where("customer_staff_relation_history.customer_delete_staff_at is not null")
 
 	if extCorpID != "" {
