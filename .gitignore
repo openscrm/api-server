@@ -3,6 +3,7 @@
 *.dll
 *.so
 *.dylib
+!libWeWorkFinanceSdk_C.so
 
 .idea
 conf/config.yaml
