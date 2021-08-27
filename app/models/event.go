@@ -36,6 +36,7 @@ func (e EventNotify) Get(extCorpID string) (notify EventNotify, err error) {
 			return EventNotify{
 				IsNotifyAdmins: constants.EventNotifyStatusOff,
 				IsNotifyStaff:  constants.EventNotifyStatusOff,
+				NotifyType:     constants.EventNotifyTimeRealTime,
 			}, nil
 		}
 		return EventNotify{}, err
