@@ -143,7 +143,8 @@ func (o *Login) StaffAdminForceLogin(c *gin.Context) {
 		return
 	}
 
-	if conf.Settings.App.Env != constants.DEV && conf.Settings.App.Env != constants.TEST {
+	// 生产环境不允许使用调试登录
+	if conf.Settings.App.Env == constants.PROD {
 		err = errors.WithStack(ecode.ForbiddenError)
 		handler.ResponseError(err)
 		return
@@ -299,7 +300,8 @@ func (o *Login) StaffForceLogin(c *gin.Context) {
 		return
 	}
 
-	if conf.Settings.App.Env != constants.DEV && conf.Settings.App.Env != constants.TEST {
+	// 生产环境不允许使用调试登录
+	if conf.Settings.App.Env == constants.PROD {
 		err = errors.WithStack(ecode.ForbiddenError)
 		handler.ResponseError(err)
 		return

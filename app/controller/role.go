@@ -3,9 +3,11 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
+	"openscrm/app/constants"
 	"openscrm/app/requests"
 	"openscrm/app/services"
 	"openscrm/common/app"
+	"openscrm/common/ecode"
 	"openscrm/conf"
 )
 
@@ -94,6 +96,13 @@ func (o *Role) Create(c *gin.Context) {
 		return
 	}
 
+	// 演示环境不允许修改角色
+	if conf.Settings.App.Env == constants.DEMO {
+		err = errors.WithStack(ecode.ForbiddenError)
+		handler.ResponseError(err)
+		return
+	}
+
 	item, err := o.srv.Create(req, conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
 		err = errors.Wrap(err, "Create failed")
@@ -120,6 +129,13 @@ func (o *Role) Update(c *gin.Context) {
 	ok, err := handler.BindAndValidateReq(&req)
 	if !ok {
 		handler.ResponseBadRequestError(errors.WithStack(err))
+		return
+	}
+
+	// 演示环境不允许修改角色
+	if conf.Settings.App.Env == constants.DEMO {
+		err = errors.WithStack(ecode.ForbiddenError)
+		handler.ResponseError(err)
 		return
 	}
 
@@ -155,6 +171,13 @@ func (o *Role) AssignToStaffs(c *gin.Context) {
 	ok, err := handler.BindAndValidateReq(&req)
 	if !ok {
 		handler.ResponseBadRequestError(errors.WithStack(err))
+		return
+	}
+
+	// 演示环境不允许修改权限
+	if conf.Settings.App.Env == constants.DEMO {
+		err = errors.WithStack(ecode.ForbiddenError)
+		handler.ResponseError(err)
 		return
 	}
 

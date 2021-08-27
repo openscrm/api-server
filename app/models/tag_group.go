@@ -136,7 +136,7 @@ func (tg TagGroup) Upsert(group *TagGroup) error {
 	if len(group.Tags) > 0 {
 		err = DB.Clauses(clause.OnConflict{
 			Columns:   []clause.Column{{Name: "ext_id"}},
-			DoUpdates: clause.AssignmentColumns([]string{"create_time", "group_name", "order", "ext_group_id", "name"})},
+			DoUpdates: clause.AssignmentColumns([]string{"create_time", "name", "order", "ext_group_id", "name"})},
 		).Create(&group.Tags).Error
 		if err != nil {
 			return err
@@ -154,7 +154,7 @@ func (tg TagGroup) Update(group *TagGroup) error {
 	}
 	err := DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "ext_id"}},
-		DoUpdates: clause.AssignmentColumns([]string{"create_time", "group_name", "order", "department_list"})},
+		DoUpdates: clause.AssignmentColumns([]string{"create_time", "name", "order", "department_list"})},
 	).Omit("Tags").Create(&group).Error
 	if err != nil {
 		return err
