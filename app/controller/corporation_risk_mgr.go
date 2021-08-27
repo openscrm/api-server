@@ -104,6 +104,7 @@ func (m CorpRiskMgr) Get(c *gin.Context) {
 		handler.ResponseError(err)
 		return
 	}
+
 	handler.ResponseItem(items)
 }
 
