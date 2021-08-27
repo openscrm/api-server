@@ -68,7 +68,7 @@ func main() {
 	gin.SetMode(conf.Settings.Server.RunMode)
 	router := routers.NewRouter()
 	s := &http.Server{
-		Addr:           fmt.Sprintf(":%d", conf.Settings.Server.HttpPort),
+		Addr:           fmt.Sprintf("%s:%d", conf.Settings.Server.HttpHost, conf.Settings.Server.HttpPort),
 		Handler:        router,
 		ReadTimeout:    conf.Settings.Server.ReadTimeout,
 		WriteTimeout:   conf.Settings.Server.WriteTimeout,
@@ -76,10 +76,13 @@ func main() {
 	}
 
 	go func() {
-		if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		err := s.ListenAndServe()
+		if err != nil && err != http.ErrServerClosed {
 			log.Fatalf("s.ListenAndServe err: %v", err)
 		}
 	}()
+
+	log.Printf("Api Server Listen on %s", s.Addr)
 
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
