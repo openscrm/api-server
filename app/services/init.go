@@ -12,6 +12,7 @@ func Syncs() {
 	groupChatService := NewGroupChatService()
 	staffService := NewStaffService()
 	customerService := NewCustomer()
+	tagService := NewTag()
 
 	err = departmentService.Sync(conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
@@ -29,6 +30,11 @@ func Syncs() {
 	}
 
 	err = customerService.Sync(conf.Settings.WeWork.ExtCorpID)
+	if err != nil {
+		panic(err)
+	}
+
+	err = tagService.Sync(conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
 		panic(err)
 	}
