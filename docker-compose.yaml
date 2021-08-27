@@ -4,7 +4,6 @@ services:
   redis:
     hostname: redis
     image: redis:5.0.3
-    container_name: redis
     restart: always
     command: redis-server /etc/redis.conf
     environment:
@@ -51,7 +50,6 @@ services:
   # nginx服务，前端项目挂载在此处
   nginx:
     image: daocloud.io/library/nginx:1.14
-    container_name: nginx
     restart: always
     privileged: true
     environment:
@@ -68,7 +66,7 @@ services:
     networks:
       - openscrm
 
- # 主Api服务
+  # 主Api服务
   api-server:
     image: centos
     volumes:
@@ -76,7 +74,6 @@ services:
       - ./conf/:/conf/
     ports:
       - 9001:9001
-    container_name: api-server
     command:
       - sh
       - -c
@@ -98,7 +95,6 @@ services:
       - ./conf/:/conf/
     ports:
       - 9002:9002
-    container_name: msg_arch
     environment:
       - LD_LIBRARY_PATH=/srv/lib
     command:
