@@ -2,6 +2,7 @@ package services
 
 import (
 	"bytes"
+	errors2 "errors"
 	"fmt"
 	"github.com/360EntSecGroup-Skylar/excelize/v2"
 	"github.com/gogf/gf/crypto/gmd5"
@@ -240,6 +241,16 @@ func (o CustomerService) SyncSingleCustomerData(extStaffID, extCustomerID string
 	// 拉取外部联系人数据
 	contactInfo, err := client.Customer.GetExternalContact(extCustomerID)
 	if err != nil {
+		rootErr := errors.Cause(err) //获取根错误
+
+		// 微信返回的错误转换为ecode错误码
+		if clientError, ok := rootErr.(*workwx.ClientError); ok {
+			rootErr = ecode.Int(int(clientError.Code))
+			if errors2.Is(rootErr, ecode.ErrCode84061) {
+				log.Sugar.Info(extCustomerID, " has no external contact")
+				return nil
+			}
+		}
 		log.Sugar.Error("GetExternalContact failed", err)
 		return err
 	}
@@ -926,7 +937,6 @@ func (o CustomerService) BatchFetchCustomers(extStaff []*workwx.UserInfo) (total
 				} else {
 					log.Sugar.Errorf("ListExternalContact failed:%s, %#v", extStaffID, err)
 				}
-				log.Sugar.Errorf("ListExternalContact failed:%s, %#v", extStaffID, err)
 				if o.isNoCustomerErr(err) {
 					return nil
 				}

@@ -158,7 +158,7 @@ func (s CustomerStatistic) UpsertByStatistic(extStaffID string, num int64) (err 
 // UpsertByCount 用count员工-客户关系表的方式
 func (s CustomerStatistic) UpsertByCount(extStaffID string, num int64) (err error) {
 	extCorpID := conf.Settings.WeWork.ExtCorpID
-	date := time.Now().Format(constants.DateLayout)
+	date := constants.DateField(time.Now().Format(constants.DateLayout))
 	return DB.Transaction(func(tx *gorm.DB) error {
 		var total int64
 		err = tx.Model(&CustomerStaff{}).
@@ -171,7 +171,7 @@ func (s CustomerStatistic) UpsertByCount(extStaffID string, num int64) (err erro
 			ExtCorpModel:     ExtCorpModel{ID: id_generator.StringID(), ExtCreatorID: extStaffID, ExtCorpID: extCorpID},
 			ExtStaffID:       extStaffID,
 			TotalCustomerNum: total,
-			Date:             constants.DateField(date),
+			Date:             date,
 		}
 
 		// 当天已有数据则使用当天数据,否则新建.
@@ -182,7 +182,7 @@ func (s CustomerStatistic) UpsertByCount(extStaffID string, num int64) (err erro
 			err = errors.WithStack(err)
 			return err
 		}
-
+		data.Date = date
 		data.TotalCustomerNum = total
 		if num < 0 {
 			data.DecreaseCustomerNum += 1
