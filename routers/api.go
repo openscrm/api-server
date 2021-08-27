@@ -38,7 +38,7 @@ func NewRouter() *gin.Engine {
 	// 基础服务API
 	{
 		// 仅开发和测试环境可用的API
-		if conf.Settings.App.Env == c.DEV || conf.Settings.App.Env == c.TEST {
+		if conf.Settings.App.Env != c.PROD {
 			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 		}
 
