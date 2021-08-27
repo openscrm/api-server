@@ -33,7 +33,7 @@ type delayQueueConfig struct {
 type AppConfig struct {
 	Name               string `validate:"required"`
 	Key                string `validate:"required,base64"` //应用秘钥 64位，生成命令：openssl rand 64 -base64
-	Env                string `validate:"required,oneof=PROD DEV TEST"`
+	Env                string `validate:"required,oneof=PROD DEV TEST DEMO"`
 	AutoMigration      bool
 	AutoSyncWeWorkData bool // 启动时同步微信数据
 	// SuperAdminPhone 此处手机号对应员工的赋予超级管理员权限
