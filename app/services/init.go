@@ -6,12 +6,8 @@ import (
 )
 
 // Syncs 同步所有企业的全部信息
-func Syncs(config conf.AppConfig) {
+func Syncs() {
 	var err error
-	if !config.AutoSyncWeWorkData {
-		return
-	}
-
 	departmentService := NewDepartment()
 	groupChatService := NewGroupChatService()
 	staffService := NewStaffService()

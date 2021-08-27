@@ -56,7 +56,7 @@ func init() {
 	tasks.Start()
 	models.SetupIDConverter()
 
-	services.Syncs(conf.Settings.App)
+	services.Syncs()
 }
 
 //go:generate swag init
