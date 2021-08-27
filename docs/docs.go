@@ -2463,14 +2463,26 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户管理"
+                    "客户标签"
                 ],
-                "summary": "同步企微客户数据",
+                "summary": "同步企微客户标签",
                 "responses": {
                     "200": {
                         "description": "成功",
                         "schema": {
-                            "$ref": "#/definitions/app.JSONResult"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/app.JSONResult"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/models.TagGroupSwagger"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
@@ -3549,7 +3561,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户群群发"
+                    "客户群发"
                 ],
                 "summary": "获取客户群发详情",
                 "responses": {
@@ -3592,12 +3604,12 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户群群发"
+                    "客户管理"
                 ],
                 "summary": "群发消息列表",
                 "parameters": [
                     {
-                        "description": "客户群群发消息列表请求",
+                        "description": "群发消息列表请求",
                         "name": "params",
                         "in": "body",
                         "required": true,
@@ -5327,7 +5339,7 @@ var doc = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "description": "开启会话存档 1-是 2-否",
+                                            "description": "是否为顶级分组",
                                             "type": "integer"
                                         }
                                     }
@@ -7014,12 +7026,39 @@ var doc = `{
                 "tags": [
                     "话术库"
                 ],
-                "summary": "查询企业话术库",
+                "summary": "H5查询企业话术库",
                 "responses": {
                     "200": {
                         "description": "成功",
                         "schema": {
-                            "$ref": "#/definitions/app.JSONResult"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/app.JSONResult"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "allOf": [
+                                                {
+                                                    "$ref": "#/definitions/app.ItemsData"
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/models.QuickReply"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
