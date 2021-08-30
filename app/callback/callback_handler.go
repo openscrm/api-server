@@ -170,16 +170,20 @@ func (o *Handler) ProtectRun(entry func(msg *workwx.RxMessage) error, msg *workw
 	// 延迟处理的函数
 	defer func() {
 		// 发生宕机时，获取panic传递的上下文并打印
-		err := recover()
-		switch err.(type) {
-		case runtime.Error: // 运行时错误
-			log.Sugar.Error("runtime error:", err)
-		default: // 非运行时错误
-			log.Sugar.Error("error:", err)
+		if err != nil {
+
+			err := recover()
+			switch err.(type) {
+			case runtime.Error: // 运行时错误
+				log.Sugar.Error("runtime error:", err)
+			default: // 非运行时错误
+				log.Sugar.Error("error:", err)
+			}
 		}
 	}()
 	err = entry(msg)
 	if err != nil {
+		log.Sugar.Error(err)
 		return
 	}
 	return

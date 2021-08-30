@@ -359,26 +359,23 @@ func (o CustomerService) UpdateCustomerStaffRelation(staff workwx.FollowUser, ex
 		OperUserID:     staff.OperUserID,
 		State:          staff.State,
 	}
+
 	relation = updateFields
 	extCorpID := conf.Settings.WeWork.ExtCorpID
 	relation.ExtCorpModel = models.ExtCorpModel{ID: id_generator.StringID(), ExtCorpID: extCorpID, ExtCreatorID: staff.UserID}
 	relation.DeletedAt = gorm.DeletedAt{}
 
-	n := models.DB.Model(&models.CustomerStaff{}).Unscoped().
-		Where("ext_customer_id = ? and ext_staff_id = ?", extCustomerID, staff.UserID).
-		Updates(&updateFields).RowsAffected
-	if n == 0 {
-		if err = o.customerStaffRepo.Create(&relation); err != nil {
-			log.Sugar.Error("create customer_event failed", err)
-			return
-		}
-	} else {
-		relation, err = o.customerStaffRepo.Get(relation)
-		if err != nil {
-			return
-		}
+	err = o.customerStaffRepo.Upsert(relation)
+	if err != nil {
+		return
 	}
-	return
+
+	return o.customerStaffRepo.Get(
+		models.CustomerStaff{
+			ExtCorpModel:  models.ExtCorpModel{ExtCorpID: extCorpID},
+			ExtCustomerID: relation.ExtCustomerID,
+			ExtStaffID:    relation.ExtStaffID},
+	)
 }
 
 // NewCustomerModel

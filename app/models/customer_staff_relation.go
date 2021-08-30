@@ -1,9 +1,7 @@
 package models
 
 import (
-	"database/sql"
 	"github.com/pkg/errors"
-	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 	"openscrm/app/constants"
 	"openscrm/app/requests"
@@ -232,31 +230,15 @@ func (o CustomerStaff) GetStaffDeleteCustomerHistory(extStaffID, extCorpID strin
 	return
 }
 
-func (o CustomerStaff) Upsert(relation *CustomerStaff) error {
+func (o CustomerStaff) Upsert(relation CustomerStaff) error {
 
-	return DB.Transaction(func(tx *gorm.DB) error {
-		relation.DeletedAt = gorm.DeletedAt(sql.NullTime{})
-		updates := tx.Model(&CustomerStaff{}).
-			Where(" ext_customer_id = ? and ext_staff_id = ?", relation.ExtCustomerID, relation.ExtStaffID).
-			Where(" customer_delete_staff_at = ? and staff_delete_customer_at = ? ", nil, nil).
-			Omit("CustomerStaffTags").Updates(&relation)
-		if updates.Error != nil {
-			return updates.Error
-		}
-		if updates.RowsAffected == 0 {
-			// DB没有记录
-			err := tx.Create(&relation).Error
-			if err != nil {
-				return err
-			}
-		} else {
-			err := CustomerStaffTag{}.Upsert(relation.CustomerStaffTags)
-			if err != nil {
-				return err
-			}
-		}
-		return nil
-	})
+	return DB.Clauses(clause.OnConflict{
+		Columns: []clause.Column{{Name: "ext_customer_id"}, {Name: "ext_staff_id"}},
+		DoUpdates: clause.AssignmentColumns([]string{
+			"ext_customer_id", "deleted_at", "ext_staff_id", "remark", "description",
+			"createtime", "remark_corp_name", "remark_mobiles", "add_way", "oper_user_id", "state"}),
+	}).Unscoped().Create(&relation).Error
+
 }
 
 func (o CustomerStaff) Update(staff *CustomerStaff, extStaffID string, extCustomerID string) error {
