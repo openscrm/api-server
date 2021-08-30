@@ -8,10 +8,10 @@
 
 <h4 align="center">
 
-<a href="https://docs.openscrm.cn/" target="_blank">文档</a> |
+<a href="https://www.yuque.com/gargantuax/openscrm/txlx9s" target="_blank">文档</a> |
 [截图](#项目截图) |
 <a href="http://dashboard.demo.openscrm.cn:8000/" target="_blank">演示</a> |
-<a href="https://docs.openscrm.cn/an-zhuang-jiao-cheng" target="_blank">安装</a> 
+<a href="https://www.yuque.com/gargantuax/openscrm/zioec5" target="_blank">安装</a> 
 
 </h4>
 
@@ -145,7 +145,7 @@ Go基础库不熟，可以使用goframe过渡。
 ```
 
 ### 安装教程
-https://docs.openscrm.cn/an-zhuang-jiao-cheng
+https://www.yuque.com/gargantuax/openscrm/zioec5
 
 ### 联系作者
 
