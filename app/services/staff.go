@@ -15,6 +15,7 @@ import (
 	"openscrm/common/app"
 	"openscrm/common/id_generator"
 	"openscrm/common/log"
+	"openscrm/common/util"
 	"openscrm/common/we_work"
 	"openscrm/conf"
 	gowx "openscrm/pkg/easywework"
@@ -317,6 +318,7 @@ func (o StaffService) UpdateCustomerInternalTag(
 // UpdateCustomerTag
 // Description: 员工更新客户标签
 func (o StaffService) UpdateCustomerTag(req requests.UpdateCustomerTagsReq, extStaffID, extCorpID string) error {
+	defer util.FuncTracer("req", req)()
 	for _, extCustomerID := range req.ExtCustomerIDs {
 		// 查所有客户
 		relations, err := o.customerStaffRepo.GetRelationsByExtCustomerID(extCustomerID, "", extCorpID)
@@ -567,7 +569,7 @@ func (o StaffService) SendWelcomeMsg(
 
 	_, err = wxClient.Customer.SendWelcomeMsg(req)
 	if err != nil {
-		log.Sugar.Errorw("send welcome msg failed", "err", err)
+		log.Sugar.Infow("send welcome msg failed", "err", err)
 		return err
 	}
 

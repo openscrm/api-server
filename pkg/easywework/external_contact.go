@@ -88,7 +88,7 @@ func (c *App) DelExternalContactCorpTag(tagID, groupID []string) error {
 	return err
 }
 
-// MarkExternalContactTag 标记客户企业标签
+// MarkExternalContactTag 编辑客户的企业标签
 func (c *App) MarkExternalContactTag(userID, externalUserID string, addTag, removeTag []string) error {
 	_, err := c.execExternalContactMarkTag(externalContactMarkTagReq{
 		UserID:         userID,

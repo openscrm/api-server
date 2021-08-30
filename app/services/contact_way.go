@@ -297,13 +297,11 @@ func (o *ContactWay) DealAddCustomerEvent(tx *gorm.DB, event workwx.EventAddExte
 	}
 
 	if contactWay.AutoTagEnable.Bool() {
-		updateCustomerTagErr := staffSrv.UpdateCustomerTag(requests.UpdateCustomerTagsReq{
-			ExtCustomerIDs: []string{event.GetExternalUserID()},
-			AddExtTagIDs:   contactWay.CustomerTagExtIDs,
-		}, contactWay.ExtCreatorID, contactWay.ExtCorpID)
-		if updateCustomerTagErr != nil {
-			log.Sugar.Errorw("UpdateCustomerTag failed", "contactWay", contactWay, "err", updateCustomerTagErr)
+		addTagErr := client.Customer.MarkExternalContactTag(extStaffID, extCustomerID, contactWay.CustomerTagExtIDs, nil)
+		if addTagErr != nil {
+			log.Sugar.Errorw("MarkExternalContactTag failed", "contactWay", contactWay, "err", addTagErr)
 		}
+		log.Sugar.Debugw("自动打标签成功", "extStaffID", extStaffID, "extCustomerID", extCustomerID, "contactWay.CustomerTagExtIDs", contactWay.CustomerTagExtIDs)
 	}
 
 	// 修改客户备注，客户描述
@@ -341,7 +339,7 @@ func (o *ContactWay) DealAddCustomerEvent(tx *gorm.DB, event workwx.EventAddExte
 		sendErr := staffSrv.SendWelcomeMsg(contactWay.AutoReply, event.GetWelcomeCode(), contactWay.ExtCorpID, contactWay.ExtCreatorID)
 		if sendErr != nil {
 			// 其他三方应用可能使用掉这里的WelcomeCode，导致发送报错
-			log.Sugar.Warnw("SendWelcomeMsg failed", "contactWay", contactWay, "err", sendErr)
+			log.Sugar.Infow("SendWelcomeMsg failed", "contactWay", contactWay, "err", sendErr)
 		}
 	}
 
