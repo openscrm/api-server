@@ -8,10 +8,10 @@
 
 <h4 align="center">
 
-<a href="https://docs.openscrm.cn/" target="_blank">文档</a> |
+<a href="https://www.yuque.com/gargantuax/openscrm/txlx9s" target="_blank">文档</a> |
 [截图](#项目截图) |
-[演示](#联系作者) |
-<a href="https://docs.openscrm.cn/an-zhuang-jiao-cheng" target="_blank">安装</a> 
+<a href="http://dashboard.demo.openscrm.cn:8000/" target="_blank">演示</a> |
+<a href="https://www.yuque.com/gargantuax/openscrm/zioec5" target="_blank">安装</a> 
 
 </h4>
 
@@ -19,6 +19,10 @@
 ### 项目简介
 
 > OpenSCRM是一套基于**Go**和**React**的**超高质量**企业微信私域流量管理系统
+
+### 在线演示
+
+[http://dashboard.demo.openscrm.cn:8000/](http://dashboard.demo.openscrm.cn:8000/)
 
 ### 项目特点
 
@@ -141,16 +145,13 @@ Go基础库不熟，可以使用goframe过渡。
 ```
 
 ### 安装教程
-https://docs.openscrm.cn/an-zhuang-jiao-cheng
-
-### 演示地址
-请联系作者获取演示地址
+https://www.yuque.com/gargantuax/openscrm/zioec5
 
 ### 联系作者
 
 <img src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/qrcode.png" width="200" />
 
-扫码可加入交流群/获取演示地址
+扫码可加入交流群
 
 ### 版权声明
 

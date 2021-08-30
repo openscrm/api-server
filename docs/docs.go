@@ -7014,39 +7014,12 @@ var doc = `{
                 "tags": [
                     "话术库"
                 ],
-                "summary": "H5查询企业话术库",
+                "summary": "查询企业话术库",
                 "responses": {
                     "200": {
                         "description": "成功",
                         "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/app.JSONResult"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "allOf": [
-                                                {
-                                                    "$ref": "#/definitions/app.ItemsData"
-                                                },
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "items": {
-                                                            "type": "array",
-                                                            "items": {
-                                                                "$ref": "#/definitions/models.QuickReply"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                }
-                            ]
+                            "$ref": "#/definitions/app.JSONResult"
                         }
                     },
                     "400": {

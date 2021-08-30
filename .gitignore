@@ -3,11 +3,13 @@
 .idea
 conf/config.yaml
 conf/config.test.yaml
-conf/config.test.yaml
+conf/config.demo.yaml
+conf/config.dev.yaml
 conf/config.prod.yaml
 release
 
 docker/bin/api-server
+bin/api-server
 
 conf/*.key
 docs/swagger.json
