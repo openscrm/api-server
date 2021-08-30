@@ -2463,26 +2463,14 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户标签"
+                    "客户管理"
                 ],
-                "summary": "同步企微客户标签",
+                "summary": "同步企微客户数据",
                 "responses": {
                     "200": {
                         "description": "成功",
                         "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/app.JSONResult"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/models.TagGroupSwagger"
-                                        }
-                                    }
-                                }
-                            ]
+                            "$ref": "#/definitions/app.JSONResult"
                         }
                     },
                     "400": {
@@ -3561,7 +3549,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户群发"
+                    "客户群群发"
                 ],
                 "summary": "获取客户群发详情",
                 "responses": {
@@ -3604,12 +3592,12 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户管理"
+                    "客户群群发"
                 ],
                 "summary": "群发消息列表",
                 "parameters": [
                     {
-                        "description": "群发消息列表请求",
+                        "description": "客户群群发消息列表请求",
                         "name": "params",
                         "in": "body",
                         "required": true,

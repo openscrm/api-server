@@ -121,7 +121,7 @@ func (o CustomerStaffRelationHistory) QueryStaffDeleteCustomer(
 			" customer_staff_relation_history.createtime as  relation_create_at, " +
 			" customer_staff_relation_history.staff_delete_customer_at as relation_delete_at, " +
 			" staff.name as staff_name, " +
-			" staff.ext_staff_id as ext_staff_id, " +
+			" staff.ext_id as ext_staff_id, " +
 			" staff.id as staff_id, " +
 			" staff.avatar_url as ext_staff_avatar ")
 
