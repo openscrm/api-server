@@ -6,14 +6,14 @@ import (
 )
 
 type ContactWayStaffParam struct {
-	ID                  string `json:"id" gorm:"primaryKey;type:bigint;comment:'ID'" validate:"omitempty,int64"`
-	DayAddCustomerLimit int    `json:"day_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
-	ExtStaffID          string `json:"ext_staff_id" gorm:"index;unique:contact_way_id_and_ext_staff_id;comment:'外部员工ID'" validate:"required,word"`
+	ID                    string `json:"id" gorm:"primaryKey;type:bigint;comment:'ID'" validate:"omitempty,int64"`
+	DailyAddCustomerLimit int    `json:"daily_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
+	ExtStaffID            string `json:"ext_staff_id" gorm:"index;unique:contact_way_id_and_ext_staff_id;comment:'外部员工ID'" validate:"required,word"`
 }
 
 type ContactWayScheduleParam struct {
-	ID                  string `json:"id" gorm:"primaryKey;type:bigint;comment:'ID'" validate:"omitempty,int64"`
-	DayAddCustomerLimit int    `json:"day_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
+	ID                    string `json:"id" gorm:"primaryKey;type:bigint;comment:'ID'" validate:"omitempty,int64"`
+	DailyAddCustomerLimit int    `json:"daily_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
 	// Weekdays 工作日
 	Weekdays constants.StringArrayField `json:"weekdays" gorm:"json;comment:'工作日'" validate:"required,dive,weekday"`
 	// StartTime 开始时间

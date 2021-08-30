@@ -15,7 +15,6 @@ import (
 	"openscrm/common/util"
 	"openscrm/common/we_work"
 	"openscrm/pkg/easywework"
-	"runtime"
 )
 
 var eventHandlers map[services.Event]services.CallbackHandlerFunc
@@ -144,7 +143,7 @@ func (o *Handler) HandleCallback(c *gin.Context) {
 	log.Sugar.Debug(util.JsonEncode(msg))
 
 	//err = o.HandleCallbackMsg(msg)
-	err = o.ProtectRun(o.HandleCallbackMsg, msg)
+	err = o.ExecuteWithRecover(o.HandleCallbackMsg, msg)
 	if err != nil {
 		handler.ResponseError(err)
 		return
@@ -166,23 +165,17 @@ func (o *Handler) GetEventHandlerFunc(
 	return handler, nil
 }
 
-func (o *Handler) ProtectRun(entry func(msg *workwx.RxMessage) error, msg *workwx.RxMessage) (err error) {
+func (o *Handler) ExecuteWithRecover(entry func(msg *workwx.RxMessage) error, msg *workwx.RxMessage) error {
 	// 延迟处理的函数
 	defer func() {
 		// 发生宕机时，获取panic传递的上下文并打印
 		err := recover()
-		switch err.(type) {
-		case runtime.Error: // 运行时错误
-			log.Sugar.Error("runtime error:", err)
-		default: // 非运行时错误
-			log.Sugar.Error("error:", err)
+		if err != nil {
+			log.Sugar.Error("panic:", err)
 		}
 	}()
-	err = entry(msg)
-	if err != nil {
-		return
-	}
-	return
+
+	return entry(msg)
 }
 
 func (o *Handler) HandleCallbackMsg(msg *workwx.RxMessage) error {

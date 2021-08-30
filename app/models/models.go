@@ -60,7 +60,7 @@ func AutoMigrate(db *gorm.DB) error {
 
 	db = db.Set("gorm:table_options", "ENGINE=InnoDB")
 	err := db.AutoMigrate(
-		// 此处顺序不可改动，以免处罚外键约束
+		// 此处顺序不可改动，以免触发外键约束
 		&Customer{},
 		&CustomerInfo{},
 		&CustomerInfoDisplayRule{},

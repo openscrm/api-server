@@ -9,7 +9,7 @@ type GroupChatAutoJoinCodeStaffParam struct {
 	// 员工外部ID
 	ExtStaffID string `json:"staff_id"  validate:"required"`
 	// 每日添加客户数上线
-	DayAddCustomerLimit int `json:"day_add_customer_limit" validate:"omitempty"`
+	DailyAddCustomerLimit int `json:"daily_add_customer_limit" validate:"omitempty"`
 }
 
 type CreateGroupChatAutoJoinCodeReq struct {

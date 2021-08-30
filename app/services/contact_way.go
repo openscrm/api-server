@@ -170,6 +170,7 @@ func (o *ContactWay) Preprocess(mode preprocessMode, item *models.ContactWay, ex
 			for j := range schedule.Staffs {
 				if len(item.Schedules[i].Staffs[j].ID) == 0 {
 					item.Schedules[i].Staffs[j].ID = id_generator.StringID()
+					item.Schedules[i].Staffs[j].DailyAddCustomerLimit = item.DailyAddCustomerLimit
 				}
 			}
 		}
@@ -210,6 +211,7 @@ func (o *ContactWay) Preprocess(mode preprocessMode, item *models.ContactWay, ex
 			item.Schedules[i].Staffs[j].ContactWayScheduleID = item.Schedules[i].ID
 			item.Schedules[i].Staffs[j].ExtCorpID = extCorpID
 			item.Schedules[i].Staffs[j].ExtCreatorID = extCreatorID
+			item.Schedules[i].Staffs[j].DailyAddCustomerLimit = item.DailyAddCustomerLimit
 		}
 	}
 
@@ -338,7 +340,8 @@ func (o *ContactWay) DealAddCustomerEvent(tx *gorm.DB, event workwx.EventAddExte
 		shouldSendWelcomeMsg = false
 		sendErr := staffSrv.SendWelcomeMsg(contactWay.AutoReply, event.GetWelcomeCode(), contactWay.ExtCorpID, contactWay.ExtCreatorID)
 		if sendErr != nil {
-			log.Sugar.Errorw("SendWelcomeMsg failed", "contactWay", contactWay, "err", sendErr)
+			// 其他三方应用可能使用掉这里的WelcomeCode，导致发送报错
+			log.Sugar.Warnw("SendWelcomeMsg failed", "contactWay", contactWay, "err", sendErr)
 		}
 	}
 
@@ -364,15 +367,15 @@ func (o *ContactWay) DealAddCustomerEvent(tx *gorm.DB, event workwx.EventAddExte
 	}
 
 	err = tx.Model(&contactWayStaff).Updates(map[string]interface{}{
-		"add_customer_count":     gorm.Expr("add_customer_count + 1"),
-		"day_add_customer_count": gorm.Expr("day_add_customer_count + 1"),
+		"add_customer_count":       gorm.Expr("add_customer_count + 1"),
+		"daily_add_customer_count": gorm.Expr("daily_add_customer_count + 1"),
 	}).Error
 	if err != nil {
 		err = errors.Wrap(err, "update contactWayStaff failed")
 		return
 	}
 
-	if contactWayStaff.DailyAddCustomerCount >= contactWayStaff.DailyAddCustomerLimit {
+	if contactWayStaff.DailyAddCustomerCount >= contactWay.DailyAddCustomerLimit && contactWay.DailyAddCustomerLimit >= 1 {
 		log.Sugar.Infow("[渠道码][员工添加客户数量超过限制]", "contactWayID", contactWayID, "extStaffID", extStaffID)
 		contactWay, err = models.ContactWay{}.Refresh(tx, contactWayID)
 		if err != nil {

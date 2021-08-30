@@ -27,7 +27,7 @@ type ContactWayScheduleStaff struct {
 
 // DailyClean 每日清空添加数统计
 func (o ContactWayScheduleStaff) DailyClean() (err error) {
-	err = DB.Model(&ContactWayScheduleStaff{}).Update("day_add_customer_count", 0).Error
+	err = DB.Model(&ContactWayScheduleStaff{}).Update("daily_add_customer_count", 0).Error
 	if err != nil {
 		err = errors.Wrap(err, "update failed")
 		return

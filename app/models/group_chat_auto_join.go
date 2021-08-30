@@ -75,9 +75,9 @@ type GroupChatAutoJoinCodeStaff struct {
 	ExtCorpModel
 	// 自动拉群码id
 	GroupChatAutoJoinCodeID string `json:"group_chat_auto_join_code_id" gorm:"type:bigint;index;unique:idx_group_chat_auto_join_code_id_staff_id;comment:'自动拉群码id'"`
-	DayAddCustomerCount     int    `json:"day_add_customer_count" gorm:"default:0;comment:'员工每日添加客户计数'"`
+	DailyAddCustomerCount   int    `json:"daily_add_customer_count" gorm:"default:0;comment:'员工每日添加客户计数'"`
 	AddCustomerCount        int    `json:"add_customer_count" gorm:"default:0;comment:'员工累计添加客户计数'"`
-	DayAddCustomerLimit     int    `json:"day_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
+	DailyAddCustomerLimit   int    `json:"daily_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
 	Avatar                  string `json:"avatar" gorm:"comment:'员工头像'"`
 	StaffID                 string `json:"staff_id" gorm:"unique:idx_group_chat_auto_join_code_id_staff_id;type:bigint;comment:'员工ID'"`
 	ExtStaffID              string `json:"ext_staff_id" gorm:"index;comment:'外部员工ID'"`

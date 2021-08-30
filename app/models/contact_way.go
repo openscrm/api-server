@@ -53,7 +53,7 @@ type ContactWay struct {
 	// DailyAddCustomerLimitEnable 是否开启员工每日添加上限
 	DailyAddCustomerLimitEnable constants.Boolean `json:"daily_add_customer_limit_enable" gorm:"comment:是否开启员工每日添加上限" validate:"oneof=1 2"`
 	// 员工每日添加上限
-	DailyAddCustomerLimit int64 `json:"daily_add_customer_limit" gorm:"comment:员工每日添加上限" validate:"gte=0"`
+	DailyAddCustomerLimit int `json:"daily_add_customer_limit" gorm:"comment:员工每日添加上限" validate:"gte=0"`
 	// ScheduleEnable 是否开启工作日调度
 	ScheduleEnable constants.Boolean `json:"schedule_enable" gorm:"comment:是否开启工作日调度" validate:"oneof=1 2"`
 	// StaffControlEnable 是否开启员工自行上下线

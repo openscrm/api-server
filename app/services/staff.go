@@ -570,6 +570,7 @@ func (o StaffService) SendWelcomeMsg(
 		log.Sugar.Errorw("send welcome msg failed", "err", err)
 		return err
 	}
+
 	return nil
 }
 

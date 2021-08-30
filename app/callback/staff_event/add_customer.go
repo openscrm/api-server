@@ -40,7 +40,23 @@ func EventAddExternalContactHandler(msg *gowx.RxMessage) error {
 	log.Sugar.Debugw("call back biz info:",
 		"customerID", extCustomerID, "staffID", extStaffID, "welcomeCode", welcomeCode)
 
-	err := SyncExternalContact(extStaffID, extCustomerID)
+	customerSrv := services.NewCustomer()
+	err := customerSrv.SyncSingleCustomerData(extStaffID, extCustomerID)
+	if err != nil {
+		log.Sugar.Errorw("customerSrv.SyncSingleCustomerData failed",
+			"extStaffID", extStaffID, "extCustomerID", extCustomerID)
+		return err
+	}
+
+	// 更新员工的客户数
+	err = models.CustomerStatistic{}.Upsert(extStaffID, 1)
+	if err != nil {
+		log.Sugar.Errorw("update customer statistics failed",
+			"extStaffID", extStaffID, "extCustomerID", extCustomerID)
+		return err
+	}
+
+	err = SyncExternalContact(extStaffID, extCustomerID)
 	if err != nil {
 		log.Sugar.Errorw("add sync job failed", "err", err)
 		return err
