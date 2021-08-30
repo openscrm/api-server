@@ -2463,14 +2463,26 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户管理"
+                    "客户标签"
                 ],
-                "summary": "同步企微客户数据",
+                "summary": "同步企微客户标签",
                 "responses": {
                     "200": {
                         "description": "成功",
                         "schema": {
-                            "$ref": "#/definitions/app.JSONResult"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/app.JSONResult"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/models.TagGroupSwagger"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
@@ -5327,7 +5339,7 @@ var doc = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "description": "IsDefault 是否为默认分组，1：是；2：否",
+                                            "description": "是否为顶级分组",
                                             "type": "integer"
                                         }
                                     }
