@@ -43,14 +43,6 @@
 
 > Python，PHP，NodeJS开发者可以放心使用本项目，本项目做了大量工作力求简单，非常容易上手。
 
-### 对于PHPer
-我想大多数PHPer看到本项目一定有强烈的熟悉感，没错，此项目吸收了大量Laravel的宝贵经验，代码清晰易读，
-几乎没有额外门槛。对于没有接触过Go的PHPer，只需学习掌握Go的管道协程即可驾驭本项目。
-> 与其学Swoole，何不用Go
-
-Swoole和Go的学习成本是差不多的，最核心的都是协程，管道。额外的只需学习Go生态的Gin和GORM两个库即可。
-Go基础库不熟，可以使用goframe过渡。
-
 ### 项目截图
 
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E5%90%8E%E5%8F%B0%E9%A6%96%E9%A1%B5.png)
