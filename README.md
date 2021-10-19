@@ -139,6 +139,9 @@
 ### 安装教程
 https://www.yuque.com/gargantuax/openscrm/zioec5
 
+### Api调试
+`docs目录包含postman导出文件，可方便调试api`
+
 ### 联系作者
 
 <img src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/qrcode.png" width="200" />
@@ -147,6 +150,4 @@ https://www.yuque.com/gargantuax/openscrm/zioec5
 
 ### 版权声明
 
-OpenSCRM是开源软件，但仅用于学习和研究，商用请联系我们购买授权。
-
-<img src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/OpenSCRM%E7%A7%81%E5%9F%9F%E6%B5%81%E9%87%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E8%AF%81%E4%B9%A6.jpg" width="400" />
+OpenSCRM遵循Apache2.0协议，可免费商用

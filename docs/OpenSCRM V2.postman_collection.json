@@ -1,0 +1,6445 @@
+{
+	"info": {
+		"_postman_id": "e6e7d51d-b459-469a-b2a6-7645f181aef3",
+		"name": "OpenSCRM V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "员工前台(侧边栏)",
+			"item": [
+				{
+					"name": "素材",
+					"item": [
+						{
+							"name": "素材列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/material/lib",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"material",
+										"lib"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "标签列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/material/lib/tags",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"material",
+										"lib",
+										"tags"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "话术库(快捷回复)",
+					"item": [
+						{
+							"name": "话术列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/quick-replies?group_id=132456",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"quick-replies"
+									],
+									"query": [
+										{
+											"key": "group_id",
+											"value": "132456",
+											"description": "1410169347598454784"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "话术分组",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/quick-reply-groups",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"quick-reply-groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "搜索分组",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/quick-reply-group/action/search?keyword=方法对付",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"quick-reply-group",
+										"action",
+										"search"
+									],
+									"query": [
+										{
+											"key": "keyword",
+											"value": "方法对付"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新话术分组",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"1425055049058357248\",\r\n    \"name\":\"modified\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/quick-reply-group",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"quick-reply-group"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除分组",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ids\":[\"1425056145088712704\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/quick-reply-group/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"quick-reply-group",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "客户",
+					"item": [
+						{
+							"name": "客户详情",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/customer/wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"customer",
+										"wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "跟进",
+					"item": [
+						{
+							"name": "更新",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/customer/clue-manual/1423601433894195200?content=noho",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"customer",
+										"clue-manual",
+										"1423601433894195200"
+									],
+									"query": [
+										{
+											"key": "content",
+											"value": "noho"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/customer/clue-manual?ext_staff_id=ethan&ext_customer_id=132&content=todo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"customer",
+										"clue-manual"
+									],
+									"query": [
+										{
+											"key": "ext_staff_id",
+											"value": "ethan"
+										},
+										{
+											"key": "ext_customer_id",
+											"value": "132"
+										},
+										{
+											"key": "content",
+											"value": "todo"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ids\":[\"1423601433894195200\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/customer/clue-manual/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"customer",
+										"clue-manual",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "提醒",
+					"item": [
+						{
+							"name": "新建",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/customer/remainder?send_at=2021-07-31 12:05:13&customer_name=li&content=1232&ext_staff_id=ethan&ext_customer_id=wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"customer",
+										"remainder"
+									],
+									"query": [
+										{
+											"key": "send_at",
+											"value": "2021-07-31 12:05:13"
+										},
+										{
+											"key": "customer_name",
+											"value": "li"
+										},
+										{
+											"key": "content",
+											"value": "1232"
+										},
+										{
+											"key": "ext_staff_id",
+											"value": "ethan"
+										},
+										{
+											"key": "ext_customer_id",
+											"value": "wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/customer/remainder/1423606505831141376?content=963",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"customer",
+										"remainder",
+										"1423606505831141376"
+									],
+									"query": [
+										{
+											"key": "content",
+											"value": "963"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ids\":[\"1423606505831141376\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/customer/clue-manual/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"customer",
+										"clue-manual",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "js-ticket",
+					"item": [
+						{
+							"name": "获取JS Config参数",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"url\":\"http://dev.ixj.cn:8090/staff-frontend/script-library\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/action/get-js-config",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"action",
+										"get-js-config"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取JS Agent Config参数",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"url\":\"http://dev.ixj.cn:8090/staff-frontend/script-library\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-frontend/action/get-js-agent-config",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-frontend",
+										"action",
+										"get-js-agent-config"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ext_corp_id\":\"\",\n    \"source_url\":\"http://dev.ixj.cn:8090/staff-frontend/script-library\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/staff-frontend/action/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-frontend",
+								"action",
+								"login"
+							],
+							"query": [
+								{
+									"key": "ext_corp_id",
+									"value": "wwacfbf964143dc303",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上传临时素材",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"image\",\n    \"url\": \"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/staff-frontend/action/upload-media",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-frontend",
+								"action",
+								"upload-media"
+							],
+							"query": [
+								{
+									"key": "ext_corp_id",
+									"value": "wwacfbf964143dc303",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取当前登录员工",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ext_corp_id\":\"\",\n    \"source_url\":\"http://127.0.0.1:8080/api/v1/staff_frontend/sidebar/customer_portrait\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/staff-frontend/action/get-current-staff",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-frontend",
+								"action",
+								"get-current-staff"
+							],
+							"query": [
+								{
+									"key": "ext_corp_id",
+									"value": "wwacfbf964143dc303",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "调试接口-侧边栏强制登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ext_staff_id\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/staff-frontend/action/force-login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-frontend",
+								"action",
+								"force-login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "客户前台",
+			"item": [
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ext_corp_id\":\"wwacfbf964143dc303\",\n    \"source_url\":\"http://testw20210101.ixj.cn/api/v1/customer_frontend/welcome\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/customer-frontend/action/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer-frontend",
+								"action",
+								"login"
+							],
+							"query": [
+								{
+									"key": "ext_corp_id",
+									"value": "wwacfbf964143dc303",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "客户详情",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v1/staff-frontend/customer/wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-frontend",
+								"customer",
+								"wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "企业管理后台",
+			"item": [
+				{
+					"name": "渠道码分组",
+					"item": [
+						{
+							"name": "查询渠道码分组列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way-groups",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way-groups"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建渠道码分组",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"111\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way-group",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way-group"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改渠道码分组",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way-group/1396707064482369536",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way-group",
+										"1396707064482369536"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取渠道码分组详情",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way-group/1396707064482369536",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way-group",
+										"1396707064482369536"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除渠道码分组",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\":[\"1396708097312952320\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way-group/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way-group",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "渠道码",
+					"item": [
+						{
+							"name": "查询渠道码列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-ways",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-ways"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建渠道码",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"测试渠道码\",\n    \"group_id\": \"1400492439055110144\",\n    \"remark\": \"备注\",\n    \"skip_verify\": 1,\n    \"auto_reply_type\": 1,\n    \"auto_reply\": {\n        \"text\": \"欢迎\",\n        \"attachments\": [\n            {\n                \"msgtype\": \"text\",\n                \"text\": {\n                    \"content\": \"欢迎欢迎\"\n                }\n            }\n        ]\n    },\n    \"customer_desc\": \"客户描述\",\n    \"customer_desc_enable\": 1,\n    \"customer_remark\": \"客户备注\",\n    \"customer_remark_enable\": 1,\n    \"daily_add_customer_limit_enable\": 1,\n    \"schedule_enable\": 1,\n    \"auto_tag_enable\": 1,\n    \"customer_tag_ids\": [\n        \"1397155167312285696\"\n    ],\n    \"staffs\": [\n        {\n            \"ext_staff_id\": \"admin\",\n            \"day_add_customer_limit\": 100\n        },\n        {\n            \"ext_staff_id\": \"ethan\",\n            \"day_add_customer_limit\": 100\n        }\n    ],\n    \"backup_staffs\": [\n        {\n            \"ext_staff_id\": \"admin\",\n            \"day_add_customer_limit\": 100\n        }\n    ],\n    \"schedules\": [\n        {\n            \"day_add_customer_limit\": 400,\n            \"start_time\": \"08:00:00\",\n            \"end_time\": \"18:00:00\",\n            \"weekdays\": [\n                \"周一\",\n                \"周二\"\n            ],\n            \"staffs\": [\n                {\n                    \"ext_staff_id\": \"admin\",\n                    \"day_add_customer_limit\": 100\n                }\n            ]\n        }\n    ],\n    \"auto_skip_verify_enable\": 1,\n    \"skip_verify_start_time\": \"00:00:00\",\n    \"skip_verify_end_time\": \"08:01:01\",\n    \"staff_control_enable\": 1,\n    \"nickname_block_enable\": 1,\n    \"nickname_block_list\": [\n        \"老师\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改渠道码",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"测试渠道码2\",\n    \"group_id\": \"1400492439055110144\",\n    \"remark\": \"备注\",\n    \"skip_verify\": 1,\n    \"auto_reply_type\": 1,\n    \"auto_reply\": {\n        \"text\": \"欢迎\",\n        \"attachments\": [\n            {\n                \"msgtype\": \"text\",\n                \"text\": {\n                    \"content\": \"欢迎欢迎\"\n                }\n            }\n        ]\n    },\n    \"customer_desc\": \"客户描述\",\n    \"customer_desc_enable\": 1,\n    \"customer_remark\": \"客户备注\",\n    \"customer_remark_enable\": 1,\n    \"daily_add_customer_limit_enable\": 1,\n    \"schedule_enable\": 2,\n    \"auto_tag_enable\": 1,\n    \"customer_tag_ids\": [\n        \"1397155167312285696\"\n    ],\n    \"staffs\": [\n        {\n            \"schedule_enable\": 1,\n            \"ext_staff_id\": \"admin\",\n            \"day_add_customer_limit\": 400,\n            \"start_time\": \"08:00:00\",\n            \"end_time\": \"18:00:00\",\n            \"weekdays\": [\n                \"周一\",\n                \"周二\"\n            ]\n        }\n    ],\n    \"backup_staffs\": [\n        {\n            \"schedule_enable\": 2,\n            \"ext_staff_id\": \"admin\",\n            \"day_add_customer_limit\": 100\n        },\n        {\n            \"schedule_enable\": 2,\n            \"ext_staff_id\": \"ethan\",\n            \"day_add_customer_limit\": 200\n        }\n    ],\n     \"schedules\": [\n            {\n                \"id\": \"1414516064179458052\",\n                \"ext_corp_id\": \"wwacfbf964143dc303\",\n                \"ext_creator_id\": \"\",\n                \"contact_way_id\": \"1414516064179458048\",\n                \"day_add_customer_limit\": 400,\n                \"weekdays\": [\n                    \"周一\",\n                    \"周二\"\n                ],\n                \"start_time\": \"08:00:00\",\n                \"end_time\": \"18:00:00\",\n                \"staffs\": [\n                    {\n                        \"id\": \"1414516064179458053\",\n                        \"ext_corp_id\": \"wwacfbf964143dc303\",\n                        \"ext_creator_id\": \"\",\n                        \"contact_way_id\": \"1414516064179458048\",\n                        \"contact_way_schedule_id\": \"1414516064179458052\",\n                        \"add_customer_count\": 0,\n                        \"day_add_customer_count\": 0,\n                        \"day_add_customer_limit\": 100,\n                        \"ext_staff_id\": \"admin\",\n                        \"online\": 1,\n                        \"created_at\": \"2021-07-12T17:24:45.933+08:00\",\n                        \"updated_at\": \"2021-07-12T17:24:45.933+08:00\",\n                        \"deleted_at\": null\n                    },\n                    {\n                        \"id\": \"1414516064179458054\",\n                        \"ext_corp_id\": \"wwacfbf964143dc303\",\n                        \"ext_creator_id\": \"\",\n                        \"contact_way_id\": \"1414516064179458048\",\n                        \"contact_way_schedule_id\": \"1414516064179458052\",\n                        \"add_customer_count\": 0,\n                        \"day_add_customer_count\": 0,\n                        \"day_add_customer_limit\": 100,\n                        \"ext_staff_id\": \"ethan\",\n                        \"online\": 1,\n                        \"created_at\": \"2021-07-12T17:24:45.933+08:00\",\n                        \"updated_at\": \"2021-07-12T17:24:45.933+08:00\",\n                        \"deleted_at\": null\n                    }\n                ],\n                \"created_at\": \"2021-07-12T17:24:45.86+08:00\",\n                \"updated_at\": \"2021-07-12T17:24:45.86+08:00\",\n                \"deleted_at\": null\n            }\n        ],\n    \"auto_skip_verify_enable\": 1,\n    \"skip_verify_start_time\": \"00:00:00\",\n    \"skip_verify_end_time\": \"08:01:01\",\n    \"staff_control_enable\": 1,\n    \"nickname_block_enable\": 1,\n    \"nickname_block_list\": [\n        \"老师\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way/1414782317016125440",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way",
+										"1414782317016125440"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取渠道码详情",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way/1400862319101087744",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way",
+										"1400862319101087744"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除渠道码",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\":[\"1396708097312952320\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "批量更新渠道码",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\":[\"1396708097312952320\"],\n    \"group_id\":\"1400492439055110144\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/contact-way/action/batch-update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"contact-way",
+										"action",
+										"batch-update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "员工管理",
+					"item": [
+						{
+							"name": "单个员工详情",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/staff/ethan",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"staff",
+										"ethan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "员工列表",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/staffs?enable_msg_arch=1&ext_department_ids=7&ext_department_ids=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"staffs"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "李",
+											"disabled": true
+										},
+										{
+											"key": "role_type",
+											"value": "admin",
+											"disabled": true
+										},
+										{
+											"key": "enable_msg_arch",
+											"value": "1"
+										},
+										{
+											"key": "ext_department_ids",
+											"value": "7"
+										},
+										{
+											"key": "ext_department_ids",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "单个员工客户变化情况",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/statistics/ethan",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"statistics",
+										"ethan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "同步员工数据",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/staff",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"staff"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "批量开启、关闭员工",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/staff",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"staff"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "员工简况列表",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/staff/action/get-all",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"staff",
+										"action",
+										"get-all"
+									],
+									"query": [
+										{
+											"key": "ext_department_id",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "ext_staff_id",
+											"value": "ethan",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "客户管理",
+					"item": [
+						{
+							"name": "客户标签",
+							"item": [
+								{
+									"name": "企业标签",
+									"item": [
+										{
+											"name": "标签组列表",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/tag-groups?name=CF17&ext_department_id=",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"tag-groups"
+													],
+													"query": [
+														{
+															"key": "name",
+															"value": "CF17",
+															"description": "标签组名或标签名"
+														},
+														{
+															"key": "ext_department_id",
+															"value": "",
+															"description": "可用部门ext id"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除标签组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"ext_ids\": [\n        \"etIJlkCwAAz47r08efsbbFiipLQbrp5w\"\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/tag-group/action/delete",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"tag-group",
+														"action",
+														"delete"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "添加标签",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"ext_tag_group_id\": \"etIJlkCwAAD_AOrIVKhLub2qT1mgbM6w\",\n    \"names\": [\"aasqwdaf12r31\",\"zxasdfdqwf\"]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/tag",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"tag"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "同步标签数据",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/tag/action/sync",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"tag",
+														"action",
+														"sync"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "创建标签组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"group_name\": \"keg1\",\n    \"tag_name\": [\n        \"he-1\"\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/tag-group",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"tag-group"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新标签组",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"name\": \"GROUP_NAME-1\",\r\n   \r\n    \"tags\": [\r\n        {\r\n            \"name\": \"TAG_NAME_145\"\r\n        },\r\n        {\r\n            \"name\": \"TAG_NAME_179\"\r\n        }\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/tag-group/etIJlkCwAAD_AOrIVKhLub2qT1mgbM6w",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"tag-group",
+														"etIJlkCwAAD_AOrIVKhLub2qT1mgbM6w"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "标签上下移动",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"1412361723708444672\",\r\n    \"exchange_order_id\": \"1412287528462979072\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/tag-group/action/exchange-order?exchange_order_id=1406764621360009216&id=1406768066754252800",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"tag-group",
+														"action",
+														"exchange-order"
+													],
+													"query": [
+														{
+															"key": "exchange_order_id",
+															"value": "1406764621360009216"
+														},
+														{
+															"key": "id",
+															"value": "1406768066754252800"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "内部标签",
+									"item": [
+										{
+											"name": "添加内部标签",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n  \"name\": \"123\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/internal_tag",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"internal_tag"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "内部标签列表",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n  \"ext_staff_id\": \"ethan\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/internal_tags?ext_staff_id=ethan",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"internal_tags"
+													],
+													"query": [
+														{
+															"key": "ext_staff_id",
+															"value": "ethan"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除内部标签",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ids\":[\"1407952440841474048\"]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/internal_tag/action/delete",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"internal_tag",
+														"action",
+														"delete"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "客户信息",
+							"item": [
+								{
+									"name": "客户基本信息",
+									"item": [
+										{
+											"name": "客户基本信息展示规则",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/info/displays",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"info",
+														"displays"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "客户基本信息展示规则修改",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n  \"cancel_display_field_list\": [\r\n    \"weibo\"\r\n  ],\r\n  \"display_field_list\":[\r\n      \"qq\"\r\n  ],\r\n  \"corp_id\": \"1310832952200000999\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/info/displays",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"info",
+														"displays"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "客户信息/自定义信息更新",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ext_staff_id\": \"ethan\",\r\n    \"ext_customer_id\": \"wmIJlkCwAAYMNU95jnq-1M5HWZreQb1g\",\r\n    \"age\": 10,\r\n    \"description\": \"xx\",\r\n    \"email\": \"112121@gmail.com\",\r\n    \"phone_number\": \"1212\",\r\n    \"remark_field\": [\r\n        {\r\n            \"remark_id\": \"string\",\r\n            \"remark_type\": \"string\",\r\n            \"remark_value\": \"string\"\r\n        }\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/info",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"info"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "客户信息/自定义信息",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/info?ext_staff_id=ethan&ext_customer_id=wmIJlkCwAAYMNU95jnq-1M5HWZreQb1g",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"info"
+													],
+													"query": [
+														{
+															"key": "ext_staff_id",
+															"value": "ethan"
+														},
+														{
+															"key": "ext_customer_id",
+															"value": "wmIJlkCwAAYMNU95jnq-1M5HWZreQb1g"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "自定义信息",
+									"item": [
+										{
+											"name": "自定义信息选项",
+											"item": [
+												{
+													"name": "选项类型自定义信息选-新增",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n  \"name\": \"t2-1\",\r\n  \"remark_id\": \"1407253243758645248\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark/option",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark",
+																"option"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "选项类型自定义信息-更新",
+													"request": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n  \"name\": \"t2-1\",\r\n  \"remark_option_id\": \"1407270581803421697\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark/option",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark",
+																"option"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "选项类型自定义信息选项-删除",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n  \"ids\": [\"1407253243758645248\"]\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark/option/action/delete",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark",
+																"option",
+																"action",
+																"delete"
+															]
+														}
+													},
+													"response": []
+												}
+											]
+										},
+										{
+											"name": "自定义信息",
+											"item": [
+												{
+													"name": "删除自定义信息",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"ids\":[\"1407252107110649856\"]\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark/action/delete",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark",
+																"action",
+																"delete"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "更细自定义信息",
+													"request": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"id\":\"1407253243758645248\",\r\n    \"name\":\"123\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "新建自定义信息",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n  \"field_name\": \"t22\",\r\n  \"field_type\": \"option_text\",\r\n  \"option_name_list\": [\r\n    \"t1-1\",\r\n    \"t2-1\"\r\n  ]\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "自定义信息-上下移动",
+													"request": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"id\":\"1407252107110649856\",\r\n    \"exchange_order_id\":\"1407253243758645248\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark/action/exchange_order",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark",
+																"action",
+																"exchange_order"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "自定义信息列表",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{host}}/api/v1/staff-admin/customer/remark",
+															"host": [
+																"{{host}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"staff-admin",
+																"customer",
+																"remark"
+															]
+														}
+													},
+													"response": []
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "客户信息",
+									"item": [
+										{
+											"name": "客户列表",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customers",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customers"
+													],
+													"query": [
+														{
+															"key": "name",
+															"value": "Ethanic",
+															"description": "客户名字，支持模糊查询",
+															"disabled": true
+														},
+														{
+															"key": "ext_staff_id",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "tags",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "channel_type",
+															"value": "1",
+															"disabled": true
+														},
+														{
+															"key": "gender",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "start_time",
+															"value": "2021-12-4",
+															"disabled": true
+														},
+														{
+															"key": "end_time",
+															"value": "2021-07-10",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "同步企业微信客户",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "",
+														"value": "",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/action/sync",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"action",
+														"sync"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "客户详情",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/wmIJlkCwAAg-n149-juVIt0y63qshg2A",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"wmIJlkCwAAg-n149-juVIt0y63qshg2A"
+													],
+													"query": [
+														{
+															"key": "channel_type",
+															"value": "8",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "给客户打企业标签",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"add_ext_tag_ids\": [\"etIJlkCwAAMcXNUxUSzZp7ljq-JbcV6w\"],\r\n    \"ext_customer_ids\": [\"wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ\"]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/action/update-tags",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"action",
+														"update-tags"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "给客户打个人标签",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"add_tags\": [\r\n        \"1415554430471770112\"\r\n    ],\r\n    \"ext_customer_id\": \"wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ\",\r\n    \"ext_staff_id\": \"ethan\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/action/update-internal-tags",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"action",
+														"update-internal-tags"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "导出客户",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customers/action/export",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customers",
+														"action",
+														"export"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "客户事件",
+									"item": [
+										{
+											"name": "客户事件列表",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/events?ext_customer_id=wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ&ext_staff_id=ethan",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"events"
+													],
+													"query": [
+														{
+															"key": "ext_customer_id",
+															"value": "wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ"
+														},
+														{
+															"key": "ext_staff_id",
+															"value": "ethan"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "流失提醒",
+							"item": [
+								{
+									"name": "获取流失记录",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/losses?ext_staff_id=&loss_start=&loss_end=&connection_create_start=&connection_create_end=&time_span_lower_limit=&time_span_upper_limit=&page=&page_size=&sort_field=relation_create_at&sort_type=asc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"losses"
+											],
+											"query": [
+												{
+													"key": "ext_staff_id",
+													"value": "",
+													"description": "员工企微id"
+												},
+												{
+													"key": "loss_start",
+													"value": "",
+													"description": "流失查询-开始时间"
+												},
+												{
+													"key": "loss_end",
+													"value": "",
+													"description": "流失查询-截止时间"
+												},
+												{
+													"key": "connection_create_start",
+													"value": "",
+													"description": "添加好友-开始时间"
+												},
+												{
+													"key": "connection_create_end",
+													"value": "",
+													"description": "添加好友-结束时间"
+												},
+												{
+													"key": "time_span_lower_limit",
+													"value": "",
+													"description": "保持好友关系时长/天"
+												},
+												{
+													"key": "time_span_upper_limit",
+													"value": ""
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "page_size",
+													"value": ""
+												},
+												{
+													"key": "sort_field",
+													"value": "relation_create_at"
+												},
+												{
+													"key": "sort_type",
+													"value": "asc"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取流失提醒规则",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/action/get-loss-notify-rule",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"action",
+												"get-loss-notify-rule"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "设置流失提醒规则",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"is_notify_staff\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/action/update-loss-notify-rule",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"action",
+												"update-loss-notify-rule"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "流失数据导出",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/action/customers-losses-data-export?ext_staff_id=&loss_start=&loss_end=&connection_create_start=&connection_create_end=&time_span_lower_limit=&time_span_upper_limit=&page=&page_size=&sort_field=createtime&sort_type=asc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"action",
+												"customers-losses-data-export"
+											],
+											"query": [
+												{
+													"key": "ext_staff_id",
+													"value": ""
+												},
+												{
+													"key": "loss_start",
+													"value": ""
+												},
+												{
+													"key": "loss_end",
+													"value": ""
+												},
+												{
+													"key": "connection_create_start",
+													"value": ""
+												},
+												{
+													"key": "connection_create_end",
+													"value": ""
+												},
+												{
+													"key": "time_span_lower_limit",
+													"value": ""
+												},
+												{
+													"key": "time_span_upper_limit",
+													"value": ""
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "page_size",
+													"value": ""
+												},
+												{
+													"key": "sort_field",
+													"value": "createtime"
+												},
+												{
+													"key": "sort_type",
+													"value": "asc"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "侧边栏",
+							"item": [
+								{
+									"name": "提醒",
+									"item": [
+										{
+											"name": "添加提醒",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n  \"content\": \"sdafdafdshi\",\r\n  \"ext_staff_id\":\"ethan\",\r\n  \"ext_customer_id\":\"wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ\",\r\n  \"customer_name\":\"li\",\r\n  \"send_at\": \"2021-06-28 10:35:00\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/remainder",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"remainder"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除提醒",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ids\": [\"1408328801359761408\"]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/clue-manual/action/delete/",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"clue-manual",
+														"action",
+														"delete",
+														""
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "修改提醒",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"content\": \"hi udpated\",\r\n    \"send_at\": \"2121-02-12 1:12:12\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/remainder/1409339102054060032",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"remainder",
+														"1409339102054060032"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "跟进",
+									"item": [
+										{
+											"name": "添加跟进",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ext_staff_id\": \"required\",\r\n    \"ext_customer_id\": \"required\",\r\n    \"content\": \"required\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/clue-manual",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"clue-manual"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除跟进",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": ""
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "修改跟进",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"content\": \"hi udpated\",\r\n    \"send_at\": \"2121-02-12 1:12:12\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer/remainder/1409339102054060032",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer",
+														"remainder",
+														"1409339102054060032"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "查询事件",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": ""
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "客户转化",
+					"item": [
+						{
+							"name": "消息群发",
+							"item": [
+								{
+									"name": "添加企业群发消息任务",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set('now',Math.round(new Date()/1000));"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"chat_type\": \"single\",\n  \"ext_customer_filter\": {\n    \"end_time\": \"2021-07-10\",\n    \"start_time\": \"2021-06-29\"\n  },\n  \"ext_customer_filter_enable\": 1,\n  \"ext_department_ids\": [\n    1\n  ],\n  \"ext_staff_ids\": [\n    \"ethan\"\n  ],\n  \"msg\": {\n    \"attachments\": [\n      {\n        \"image\": {\n          \"size\": \"string\",\n          \"pic_url\": \"http://test-xjyj.oss-cn-hangzhou.aliyuncs.com/wwacfbf964143dc303%2Fpublic%2F1.png?Expires=1627962419&OSSAccessKeyId=LTAI5tDkKnQ7LowufFFSrKfd&Signature=UadoxjZ4Plm7LILMm8ulJa1u4%2Bo%3D\",\n          \"title\": \"1.png\"\n        },\n        \"attachment_type\": \"image\",\n        \"link\": {\n          \"desc\": \"string\",\n          \"picurl\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"string\"\n        },\n        \"pdf\": {\n          \"title\": \"string\",\n          \"size\": \"string\",\n          \"file_url\": \"string\"\n        },\n        \"video\": {\n          \"media_id\": \"string\",\n          \"title\": \"string\"\n        },\n        \"text\":{\n              \"content\": \"123\"\n        }\n      }\n    ]\n  },\n  \"send_at\": \"\",\n  \"send_type\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新企业群发消息任务",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set('now',Math.round(new Date()/1000));"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"chat_type\": \"single\",\n    \"exd_staff_ids\": [\n        \"ethan\"\n    ],\n    \"msg\": {\n        \"attachments\": [\n            {\n                \"image\": {\n                    \"media_id\": \"string\",\n                    \"pic_url\": \"string\"\n                },\n                \"link\": {\n                    \"desc\": \"string\",\n                    \"picurl\": \"string\",\n                    \"title\": \"string\",\n                    \"url\": \"string\"\n                },\n                \"miniprogram\": {\n                    \"app_id\": \"string\",\n                    \"page\": \"string\",\n                    \"pic_media_id\": \"string\",\n                    \"title\": \"string\"\n                },\n                \"msgtype\": \"string\",\n                \"video\": {\n                    \"media_id\": \"string\"\n                }\n            }\n        ],\n        \"text\": \"hi\"\n    },\n    \"ext_staff_filter\": {\n        \"ext_staff_ids\": [\n            \"ethan\"\n        ],\n        \"ext_customer_ids\": [\n            \"wmIJlkCwAAFLRtOZ8_ZNk6hzaIghzCCQ\"\n        ]\n    },\n    \"send_at\": \"2021-07-23 10:01:01\",\n    \"send_type\": 1,\n    \"ext_department_ids\": [\n        1,\n        2\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg/1419567721372192768",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg",
+												"1419567721372192768"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取群发结果",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg/result/1418847936313298944",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg",
+												"result",
+												"1418847936313298944"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取消息群发详情",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg/1419567721372192768",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg",
+												"1419567721372192768"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除定时群发消息",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set('now',Math.round(new Date()/1000));"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg/action/delete/1418839729113141248",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg",
+												"action",
+												"delete",
+												"1418839729113141248"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "提醒发送群发消息",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg/notify/1418847936313298944",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg",
+												"notify",
+												"1418847936313298944"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "群发消息列表",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msgs",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msgs"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "筛选客户",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg/customer-filter?ext_group_ids=&tag_logical_condition=and&exclude_ext_tags_ids=&gender=&start_time=&end_time=&ext_tag_ids=etIJlkCwAAl6SUtwvxEL7_5mv740r7Tw&ext_customer_filter_enable=1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg",
+												"customer-filter"
+											],
+											"query": [
+												{
+													"key": "ext_group_ids",
+													"value": "",
+													"description": "外部群聊 id"
+												},
+												{
+													"key": "tag_logical_condition",
+													"value": "and"
+												},
+												{
+													"key": "exclude_ext_tags_ids",
+													"value": ""
+												},
+												{
+													"key": "gender",
+													"value": ""
+												},
+												{
+													"key": "start_time",
+													"value": "",
+													"description": "添加好友时间，开始"
+												},
+												{
+													"key": "end_time",
+													"value": "",
+													"description": "添加好友时间，结束"
+												},
+												{
+													"key": "ext_tag_ids",
+													"value": "etIJlkCwAAl6SUtwvxEL7_5mv740r7Tw"
+												},
+												{
+													"key": "ext_customer_filter_enable",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取上传文件的地址",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"filename\": \"1.jpg\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/mass-msg/action/get-upload-url",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"mass-msg",
+												"action",
+												"get-upload-url"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "话术库",
+							"item": [
+								{
+									"name": "话术库分组",
+									"item": [
+										{
+											"name": "新增分组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"departments\": [\n    7\n  ],\n  \"name\": \"t11\",\n  \"sub_groups\": [\n    {\n      \"name\": \"t111\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply-group",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply-group"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新分组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"departments\": [\n    7\n  ],\n  \"name\": \"t\",\n  \"sub_group\": [\n    {\n      \"deleted\": 0,\n      \"name\": \"t1\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply-group",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply-group"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除话库库组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"ids\": [\n        \"1407175437087412224\"\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply-group/action/delete",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply-group",
+														"action",
+														"delete"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "话术库分组详情",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply-groups",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply-groups"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "话术",
+									"item": [
+										{
+											"name": "查询话术",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-replies",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-replies"
+													],
+													"query": [
+														{
+															"key": "group_id",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "department_ids",
+															"value": "1",
+															"disabled": true
+														},
+														{
+															"key": "key_word",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "department_ids",
+															"value": "7",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除话术",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ids\": [\r\n        \"1410175088644329472\"\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply/action/delete",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply",
+														"action",
+														"delete"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新增话术",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"group_id\": \"1410169347598454784\",\n  \"name\": \"123\",\n  \"reply_details\": [\n    {\n      \"content_type\": 3,\n      \"id\": \"string\",\n      \"quick_reply_content\": {\n        \"image\": {\n          \"picurl\": \"https://test-xjyj.oss-cn-hangzhou.aliyuncs.com/wwacfbf964143dc303/public/1.png?Expires=1628278775&OSSAccessKeyId=TMP.3KdqKZJRfSCV3bKigLz2ao6ZJbPh6naPBdsaocznnBNKw7Tbotc7qYrNrXM43nvVgesnpLp1HNeuZGYYxth82pyBpSkFPf&Signature=E8Ba2lhSuAN0Zjr8InVK0dKJJzw%3D\",\n          \"size\": \"10.56k\",\n          \"title\": \"1.png\"\n        },\n        \"link\": {\n          \"desc\": \"string\",\n          \"picurl\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"string\"\n        },\n        \"pdf\": {\n          \"fileurl\": \"string\",\n          \"size\": \"string\",\n          \"title\": \"string\"\n        },\n        \"text\": {\n          \"content\": \"string\"\n        },\n        \"video\": {\n          \"picurl\": \"string\",\n          \"size\": \"string\",\n          \"title\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新话术",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"1424355348130566144\",\n    \"name\": \"okd-----1\",\n    \"group_id\": \"1410169347598454784\",\n    \"reply_details\": [\n        {\n            \"id\": \"1424355348130566145\",\n            \"content_type\": 5,\n            \"quick_reply_content\": {\n                \"pdf\": {\n                    \"fileurl\": \"xxxxxxxxxxxxxxxxxx\",\n                    \"size\": \"string\",\n                    \"title\": \"string\"\n                }\n            }\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "获取上传文件的地址",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"filename\":\"下载.jpg\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/quick-reply/action/get-upload-url",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"quick-reply",
+														"action",
+														"get-upload-url"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "欢迎语",
+							"item": [
+								{
+									"name": "创建欢迎语",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"xx\",\r\n    \"welcome_msg\": {\r\n        \"text\": \"hi\",\r\n        \"attachments\": [\r\n            {\r\n                \"msgtype\": \"link\",\r\n                \"link\": {\r\n                    \"title\": \"xx\",\r\n                    \"pic_url\": \"https://test-xjyj.oss-cn-hangzhou.aliyuncs.com/wwacfbf964143dc303/quick_reply/%E5%90%B4%E9%B9%8F%E9%A3%9E/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210720171736.png?Expires=1627660047&OSSAccessKeyId=TMP.3KeZGA1UsZhx6fpkGF9fr5Kg4spmaM2DUcvxgZ4b1bLbUZGYruWobi6YPcNeC1Y1WDX5zqzf2U9FRp6cX1RkSSYQQufdZY&Signature=P1Ov1R0dw1BnkI8I2Pobtoh2Lgk%3D\"\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"ext_staff_ids\":[\"ethan\"],\r\n    \"enable_time_period_msg\": 1,\r\n    \"ext_department_ids\": [\r\n        1\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/welcome-msg",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"welcome-msg"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "欢迎语列表",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/welcome-msgs",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"welcome-msgs"
+											],
+											"query": [
+												{
+													"key": "ext_staff_id",
+													"value": "ethan",
+													"disabled": true
+												},
+												{
+													"key": "name",
+													"value": "123",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新欢迎语",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"attachments\": {\r\n        \"text\": \"hi\",\r\n        \"attachments\": [\r\n            {\r\n                \"msgtype\": \"link\",\r\n                \"link\": {\r\n                    \"title\": \"xx\",\r\n                    \"url\": \"xx\"\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"staff_ids\":[\"1409404874629582848\"],\r\n    \"enable_time_period_msg\": 1,\r\n    \"ext_department_ids\": [\r\n        2\r\n    ],\r\n    \"time_period_msg\": [\r\n        {\r\n            \"attachments\": {\r\n                \"text\": \"hi\",\r\n                \"attachments\": [\r\n                    {\r\n                        \"msgtype\": \"link\",\r\n                        \"link\": {\r\n                            \"title\": \"xx\",\r\n                            \"url\": \"xx\"\r\n                        }\r\n                    }\r\n                ]\r\n            },\r\n            \"effective_at\": [\r\n                1,\r\n                2,\r\n                3\r\n            ],\r\n            \"start_time\": \"11:00:00\",\r\n            \"end_time\": \"23:00:00\"\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/welcome-msg/1417668647253446656",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"welcome-msg",
+												"1417668647253446656"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "欢迎语详情",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/welcome-msg/1418581662895181824",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"welcome-msg",
+												"1418581662895181824"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "上传image",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "file",
+											"file": {
+												"src": "/C:/Users/gargantuax/OneDrive/Images/壁纸/adam-thomas-M6L1aMutXm4-unsplash.jpg"
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/customer/welcome-msg/action/upload-image?filename=a.img",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"customer",
+												"welcome-msg",
+												"action",
+												"upload-image"
+											],
+											"query": [
+												{
+													"key": "filename",
+													"value": "a.img"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "部门管理",
+					"item": [
+						{
+							"name": "同步部门数据",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/department",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"department"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "部门列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/departments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"departments"
+									],
+									"query": [
+										{
+											"key": "ext_department_id",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "企业风控",
+					"item": [
+						{
+							"name": "设置删人提醒规则",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"is_notify_staff\": 1,\n    \"notify_type\": 1,\n    \"ext_staff_ids\": [\n        \"wangqiang\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/notify/delete-customer/status",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"notify",
+										"delete-customer",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取删人提醒规则",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/notify/delete-customer/status",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"notify",
+										"delete-customer",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删人提醒记录",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/notify/delete-customers?ext_department_id=&ext_staff_id=&connection_create_start=&connection_create_end=&delete_customer_start=&delete_customer_end=&page=1&page_size`=1&sort_field=relation_delete_at&sort_type=asc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"notify",
+										"delete-customers"
+									],
+									"query": [
+										{
+											"key": "ext_department_id",
+											"value": ""
+										},
+										{
+											"key": "ext_staff_id",
+											"value": ""
+										},
+										{
+											"key": "connection_create_start",
+											"value": ""
+										},
+										{
+											"key": "connection_create_end",
+											"value": ""
+										},
+										{
+											"key": "delete_customer_start",
+											"value": ""
+										},
+										{
+											"key": "delete_customer_end",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size`",
+											"value": "1"
+										},
+										{
+											"key": "sort_field",
+											"value": "relation_delete_at"
+										},
+										{
+											"key": "sort_type",
+											"value": "asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删人记录导出",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/staff/action/delete-customers-data-export?ext_department_id=&ext_staff_id=&connection_create_start=&connection_create_end=&delete_customer_start=&delete_customer_end=&page=1&page_size`=1&sort_field=relation_delete_at&sort_type=asc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"staff",
+										"action",
+										"delete-customers-data-export"
+									],
+									"query": [
+										{
+											"key": "ext_department_id",
+											"value": ""
+										},
+										{
+											"key": "ext_staff_id",
+											"value": ""
+										},
+										{
+											"key": "connection_create_start",
+											"value": ""
+										},
+										{
+											"key": "connection_create_end",
+											"value": ""
+										},
+										{
+											"key": "delete_customer_start",
+											"value": ""
+										},
+										{
+											"key": "delete_customer_end",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size`",
+											"value": "1"
+										},
+										{
+											"key": "sort_field",
+											"value": "relation_delete_at"
+										},
+										{
+											"key": "sort_type",
+											"value": "asc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "客户群管理",
+					"item": [
+						{
+							"name": "群列表",
+							"item": [
+								{
+									"name": "群列表",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chats",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chats"
+											],
+											"query": [
+												{
+													"key": "owners",
+													"value": "ethan",
+													"disabled": true
+												},
+												{
+													"key": "create_time_start",
+													"value": "2021-03-09",
+													"disabled": true
+												},
+												{
+													"key": "create_time_end",
+													"value": "2021-10-10",
+													"disabled": true
+												},
+												{
+													"key": "owners",
+													"value": "li",
+													"disabled": true
+												},
+												{
+													"key": "name",
+													"value": "ee",
+													"disabled": true
+												},
+												{
+													"key": "status",
+													"value": "2",
+													"disabled": true
+												},
+												{
+													"key": "group_tag_ids",
+													"value": "1423154942239051776",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "群列表导出",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chats/action/export",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chats",
+												"action",
+												"export"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "群列表导出结果",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"format\":\"excel\",\r\n    \"type\":\"group_chat_list\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/action/data-export/1410893341431697408",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"action",
+												"data-export",
+												"1410893341431697408"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "群列表导出后下载",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "群主列表",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/owners",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"owners"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "所有群列表",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/action/get-all",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"action",
+												"get-all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "给群打标签",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"group_chat_ids\":[\"1413401257388806144\",\"1413401259360129024\"],\r\n    \"add_tag_ids\":[\"1423154942239051776\"]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/action/update-tags",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"action",
+												"update-tags"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "自动拉群",
+							"item": [
+								{
+									"name": "群组",
+									"item": [
+										{
+											"name": "创建群组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"name\":\"t-2\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/auto-join/group",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"auto-join",
+														"group"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新组名",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"name\":\"t.1\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer_group/auto_join/group/1404706439934513152",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer_group",
+														"auto_join",
+														"group",
+														"1404706439934513152"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除群组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ids\":[\"1404706439934513152\"]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer_group/auto_join/action/delete",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer_group",
+														"auto_join",
+														"action",
+														"delete"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "群组列表",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/auto-join/group",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"auto-join",
+														"group"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "群二维码",
+									"item": [
+										{
+											"name": "更新自动拉群码",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"auto_reply\": \"hello\",\r\n    \"auto_tag_enable\": 2,\r\n    \"create_type\": 2,\r\n    \"ext_staff_ids\": [\r\n        \"wuchengyue\"\r\n    ],\r\n    \"backup_staff_ids\": [\r\n        \"ethan\"\r\n    ],\r\n    \"customer_tag_ids\": [\r\n        \"etIJlkCwAAMcXNUxUSzZp7ljq-JbcV6w\"\r\n    ],\r\n    \"daily_add_customer_limit_enable\": 2,\r\n    \"group_chat_qr_code\": [\r\n        {\r\n            \"order\": 1,\r\n            \"qr_media_id\": \"aabbccdd\",\r\n            \"qr_url\": \"http://test.cnn\",\r\n            \"status\": 2,\r\n            \"user_limit\": 2\r\n        }\r\n    ],\r\n    \"group_id\": \"1404707642626019328\",\r\n    \"remark\": \"t-2\",\r\n    \"skip_verify\": 0,\r\n    \"staffs\": [\r\n        {\r\n            \"day_add_customer_limit\": 100,\r\n            \"staff_id\": \"1402443533280874496\"\r\n        }\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/auto-join-code/1405078836151848960",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"auto-join-code",
+														"1405078836151848960"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "批量分组",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ids\":[\"1405078836151848960\"],\r\n    \"new_group_id\":\"1410435545431019520\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/auto-join-code/action/batch-regroup",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"auto-join-code",
+														"action",
+														"batch-regroup"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除自动拉群码",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ids\": [\r\n        \"321\"\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer_group/auto_join_code/action/delete",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer_group",
+														"auto_join_code",
+														"action",
+														"delete"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "自动拉群码列表",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/auto-join-code?remark=t-2&group_id=1410435545431019520",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"auto-join-code"
+													],
+													"query": [
+														{
+															"key": "remark",
+															"value": "t-2"
+														},
+														{
+															"key": "group_id",
+															"value": "1410435545431019520"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新建自动拉群码",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"auto_reply\": \"hello\",\r\n    \"auto_tag_enable\": 2,\r\n    \"create_type\": 2,\r\n    \"ext_staff_ids\": [\r\n        \"ethan\"\r\n    ],\r\n    \"backup_staff_ids\": [\r\n        \"ethan\"\r\n    ],\r\n    \"customer_tag_ids\": [\r\n        \"etIJlkCwAAMcXNUxUSzZp7ljq-JbcV6w\"\r\n    ],\r\n    \"daily_add_customer_limit_enable\": 2,\r\n    \"group_chat_qr_code\": [\r\n        {\r\n            \"order\": 1,\r\n            \"qr_media_id\": \"aabbccdd\",\r\n            \"qr_url\": \"http://test.cn\",\r\n            \"status\": 2,\r\n            \"user_limit\": 2\r\n        }\r\n    ],\r\n    \"group_id\": \"1404707642626019328\",\r\n    \"remark\": \"t-2\",\r\n    \"skip_verify\": 0,\r\n    \"staffs\": [\r\n        {\r\n            \"day_add_customer_limit\": 100,\r\n            \"staff_id\": \"1398931833478975488\"\r\n        }\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/customer-group/auto-join-code",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"customer-group",
+														"auto-join-code"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "群标签",
+							"item": [
+								{
+									"name": "群标签组",
+									"item": [
+										{
+											"name": "新建组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"name\": \"1212121465asdd122\",\r\n    \"tags\": [\r\n        {\r\n            \"name\": \"465\"\r\n        }\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/tag-group",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"tag-group"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新组",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"1415249287926779904\",\r\n    \"name\": \"0986\",\r\n    \"delete_tag_ids\": [\r\n        \"1415568324057632768\",\r\n        \"1415568503678701568\",\r\n        \"1415567617686507521\",\r\n        \"1415568597962461184\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n                \"id\": \"1415567617686507521\",\r\n                \"ext_corp_id\": \"wwacfbf964143dc303\",\r\n                \"ext_creator_id\": \"\",\r\n                \"customer_group_tag_group_id\": \"1415249287926779904\",\r\n                \"name\": \"4691134561\"\r\n            }\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/tag-group",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"tag-group"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "删除组",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"ids\": [\"12321421412\"]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/tag-group/action/delete",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"tag-group",
+														"action",
+														"delete"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "组查询",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/tag-groups?name=qwer",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"tag-groups"
+													],
+													"query": [
+														{
+															"key": "name",
+															"value": "qwer"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "群标签",
+									"item": [
+										{
+											"name": "标签组加标签",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"group_id\": \"1414783203046068224\",\r\n    \"names\": [\r\n        \"x\",\r\n        \"y\"\r\n    ]\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{host}}/api/v1/staff-admin/group-chat/tag",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"staff-admin",
+														"group-chat",
+														"tag"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "群打标签",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"group_chat_ids\":[\"1413401257388806144\",\"1413401259360129024\"],\r\n    \"add_tag_ids\":[\"1423154942239051776\"]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/action/update-tags",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"action",
+												"update-tags"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "入群欢迎语",
+							"item": [
+								{
+									"name": "新增入群欢迎语",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"content\": \"132\",\r\n    \"notify_staffs_enable\": 2,\r\n    \"attachment_type\": \"text\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/welcome-msg",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"welcome-msg"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新入群欢迎语",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"content\": \"56\",\r\n    \"notify_staffs_enable\": 2,\r\n    \"attachment_type\": \"text\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/welcome-msg/1421045375107600384",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"welcome-msg",
+												"1421045375107600384"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除入群欢迎语",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": [\"132\"]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/welcome-msg/action/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"welcome-msg",
+												"action",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "入群欢迎语列表",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/welcome-msgs?content=12",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"welcome-msgs"
+											],
+											"query": [
+												{
+													"key": "content",
+													"value": "12"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "客户群群发",
+							"item": [
+								{
+									"name": "创建客户群群发",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ext_staff_ids\": [\r\n    \"ethan\"\r\n  ],\r\n  \"msg\": {\r\n    \"attachments\": [\r\n      {\r\n        \"image\": {\r\n          \"media_id\": \"string\",\r\n          \"pic_url\": \"string\",\r\n          \"title\": \"string\"\r\n        },\r\n        \"link\": {\r\n          \"desc\": \"string\",\r\n          \"picurl\": \"string\",\r\n          \"title\": \"string\",\r\n          \"url\": \"string\"\r\n        },\r\n        \"miniprogram\": {\r\n          \"app_id\": \"string\",\r\n          \"page\": \"string\",\r\n          \"pic_media_id\": \"string\",\r\n          \"title\": \"string\"\r\n        },\r\n        \"msgtype\": \"string\",\r\n        \"video\": {\r\n          \"media_id\": \"string\",\r\n          \"title\": \"string\"\r\n        }\r\n      }\r\n    ],\r\n    \"text\": \"12312\"\r\n  },\r\n  \"send_at\": \"2021-09-03\",\r\n  \"send_type\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/mass-msg",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"mass-msg"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除客户群群发",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ext_staff_ids\": [\r\n    \"ethan\"\r\n  ],\r\n  \"msg\": {\r\n    \"attachments\": [\r\n      {\r\n        \"image\": {\r\n          \"media_id\": \"string\",\r\n          \"pic_url\": \"string\",\r\n          \"title\": \"string\"\r\n        },\r\n        \"link\": {\r\n          \"desc\": \"string\",\r\n          \"picurl\": \"string\",\r\n          \"title\": \"string\",\r\n          \"url\": \"string\"\r\n        },\r\n        \"miniprogram\": {\r\n          \"app_id\": \"string\",\r\n          \"page\": \"string\",\r\n          \"pic_media_id\": \"string\",\r\n          \"title\": \"string\"\r\n        },\r\n        \"msgtype\": \"string\",\r\n        \"video\": {\r\n          \"media_id\": \"string\",\r\n          \"title\": \"string\"\r\n        }\r\n      }\r\n    ],\r\n    \"text\": \"12312\"\r\n  },\r\n  \"send_at\": \"2021-09-03\",\r\n  \"send_type\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/mass-msg",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"mass-msg"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "客户群群发详情",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ext_staff_ids\": [\r\n    \"ethan\"\r\n  ],\r\n  \"msg\": {\r\n    \"attachments\": [\r\n      {\r\n        \"image\": {\r\n          \"media_id\": \"string\",\r\n          \"pic_url\": \"string\",\r\n          \"title\": \"string\"\r\n        },\r\n        \"link\": {\r\n          \"desc\": \"string\",\r\n          \"picurl\": \"string\",\r\n          \"title\": \"string\",\r\n          \"url\": \"string\"\r\n        },\r\n        \"miniprogram\": {\r\n          \"app_id\": \"string\",\r\n          \"page\": \"string\",\r\n          \"pic_media_id\": \"string\",\r\n          \"title\": \"string\"\r\n        },\r\n        \"msgtype\": \"string\",\r\n        \"video\": {\r\n          \"media_id\": \"string\",\r\n          \"title\": \"string\"\r\n        }\r\n      }\r\n    ],\r\n    \"text\": \"12312\"\r\n  },\r\n  \"send_at\": \"2021-09-03\",\r\n  \"send_type\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/group-chat/mass-msg",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"group-chat",
+												"mass-msg"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "素材管理",
+					"item": [
+						{
+							"name": "上传临时素材",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"file_type\": \"image\",\r\n    \"file_url\": \"http://testw20210101.ixj.cn/storage/public/test/a.jpg?expire_at=2488246254&signature=1af2d1eb316954318d22903689db3cc3a3fc9be9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/material/lib",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"material",
+										"lib"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "素材库",
+					"item": [
+						{
+							"name": "素材库标签",
+							"item": [
+								{
+									"name": "添加标签",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"xa\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/material/lib/tag",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"material",
+												"lib",
+												"tag"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "素材列表",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/material/lib/tags?name=",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"material",
+												"lib",
+												"tags"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "删除标签",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\":[\r\n        \"1415206475889905664\"\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/v1/staff-admin/material/lib/tag/action/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"staff-admin",
+												"material",
+												"lib",
+												"tag",
+												"action",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "上传素材",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"file_size\": \"10.1K\",\r\n  \"material_type\": \"link\",\r\n  \"title\": \"t2\",\r\n  \"url\": \"http://test.org\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/material/lib",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"material",
+										"lib"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除素材",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ids\": [\"1408244768873385984\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/material/lib/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"material",
+										"lib",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新素材",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"material_type\": \"link\",\r\n    \"link\": \"https://baidu.com\",\r\n    \"title\": \"xyz\",\r\n    \"digest\": \"on the way\",\r\n    \"file_url\": \"https://test-xjyj.oss-cn-hangzhou.aliyuncs.com/wwacfbf964143dc303/quick_reply/admin/%E4%B8%8B%E8%BD%BD.jpg?Expires=1627042136&OSSAccessKeyId=TMP.3KjSMScnFFuSyoQGdHU4u3LrcJuSDmo2YqaHVQE4sUn8za7DxtbECvNt7g69uBPMgren4PrG87u9C8pUZjiGBTzd9heaEN&Signature=pofJZ3e6YdFel6u3OODDjMqTY34%3D\",\r\n    \"file_size\": \"\",\r\n    \"id\": \"1420674025113260032\",\r\n    \"material_tag_list\": [\r\n        \"1420666507058221057\",\r\n        \"1420311208895975424\",\r\n        \"1420960813077762048\",\r\n        \"1420925593326718976\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/material/lib/1420674025113260032",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"material",
+										"lib",
+										"1420674025113260032"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "素材列表",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/material/libs?material_type=link",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"material",
+										"libs"
+									],
+									"query": [
+										{
+											"key": "material_type",
+											"value": "link"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "素材库侧边栏状态",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/material/lib/sidebar-status",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"material",
+										"lib",
+										"sidebar-status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "素材库侧边栏状态更改",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/material/lib/sidebar-status",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"material",
+										"lib",
+										"sidebar-status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "会话存档",
+					"item": [
+						{
+							"name": "同步数据",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/chat-msg/sync",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"chat-msg",
+										"sync"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "会话列表",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/customer/chat-sessions?session_type=external&ext_staff_id=ethan",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"customer",
+										"chat-sessions"
+									],
+									"query": [
+										{
+											"key": "session_type",
+											"value": "external",
+											"description": "external  room internal\n"
+										},
+										{
+											"key": "ext_staff_id",
+											"value": "ethan"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "会话消息列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/customer/session-msgs?ext_staff_id=ethan&receiver_id=wmIJlkCwAAYMNU95jnq-1M5HWZreQb1g&max_id=1422819284744146944&min_id&limit=2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"customer",
+										"session-msgs"
+									],
+									"query": [
+										{
+											"key": "ext_staff_id",
+											"value": "ethan"
+										},
+										{
+											"key": "receiver_id",
+											"value": "wmIJlkCwAAYMNU95jnq-1M5HWZreQb1g"
+										},
+										{
+											"key": "page_size",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "session_type",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "max_id",
+											"value": "1422819284744146944"
+										},
+										{
+											"key": "min_id",
+											"value": null
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "搜索消息",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"keyword\": \"123\",\r\n    \"ext_staff_id\": \"ethan\",\r\n    \"ext_peer_id\": \"ethan\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/customer/session-msg/action/search",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"customer",
+										"session-msg",
+										"action",
+										"search"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "权限管理",
+					"item": [
+						{
+							"name": "查询权限列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/permissions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"permissions"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取权限详情",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/permission/1398613013933592593",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"permission",
+										"1398613013933592593"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "角色管理",
+					"item": [
+						{
+							"name": "查询角色列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/roles",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"roles"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建角色",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ext_corp_id\": \"wwacfbf964143dc303\",\n    \"name\": \"员工\",\n    \"description\": \"员工\",\n    \"permission_ids\": [\n        \"BizQuickReply_Read\",\n        \"BizQuickReply_Full\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/corp_admin/role",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"corp_admin",
+										"role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改角色",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"员工2\",\n    \"description\": \"员工\",\n    \"permission_ids\": [\"aaa\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/role/1415906230022443008",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"role",
+										"1415906230022443008"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取角色详情",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/role/1415906230022443008",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"role",
+										"1415906230022443008"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改员工角色",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"role_id\": \"1399384698983026688\",\n    \"ext_staff_ids\": [\n        \"admin\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/role/action/assign-to-staffs",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"role",
+										"action",
+										"assign-to-staffs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询授权员工",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"\",\n    \"name\": \"\",\n    \"role_id\": \"\",\n    \"role_type\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/role/action/query-staffs",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"role",
+										"action",
+										"query-staffs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "首页",
+					"item": [
+						{
+							"name": "客户统计",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/action/get-trend?statistic_type=increase&start_time=2021-07-15&end_time=2021-07-19",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"action",
+										"get-trend"
+									],
+									"query": [
+										{
+											"key": "statistic_type",
+											"value": "increase",
+											"description": "total increase decrease net_increase"
+										},
+										{
+											"key": "start_time",
+											"value": "2021-07-15"
+										},
+										{
+											"key": "end_time",
+											"value": "2021-07-19"
+										},
+										{
+											"key": "ext_staff_id",
+											"value": "ethan",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "员工客户数/群统计",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/staff-admin/action/get-summary",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff-admin",
+										"action",
+										"get-summary"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "获取当前登录员工详情",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/staff-admin/action/get-current-staff",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-admin",
+								"action",
+								"get-current-staff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "企业微信扫码登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v1/staff-admin/action/login?ext_corp_id=wwacfbf964143dc303",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-admin",
+								"action",
+								"login"
+							],
+							"query": [
+								{
+									"key": "ext_corp_id",
+									"value": "wwacfbf964143dc303"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "企业系统管理后台",
+			"item": [
+				{
+					"name": "管理员信息",
+					"item": [
+						{
+							"name": "修改管理员信息",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"默认企业管理员\",\n    \"phone\":\"13108329522\",\n    \"password\":\"123456\",\n    \"re_password\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/corp_admin/tenant/action/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"corp_admin",
+										"tenant",
+										"action",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取管理员信息",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/corp_admin/tenant/action/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"corp_admin",
+										"tenant",
+										"action",
+										"get"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "企业信息",
+					"item": [
+						{
+							"name": "查询企业列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/corp_admin/corporations",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"corp_admin",
+										"corporations"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改企业",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ext_corp_id\":\"wwacfbf964143dc303\",\n    \"auth_agent_id\":\"1000006\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/corp_admin/corporation/1310832952200000999",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"corp_admin",
+										"corporation",
+										"1310832952200000999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取企业详情",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/corp_admin/corporation/1310832952200000999",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"corp_admin",
+										"corporation",
+										"1310832952200000999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"13108329522\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/corp_admin/action/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"corp_admin",
+								"action",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "saas管理后台",
+			"item": [
+				{
+					"name": "租户",
+					"item": [
+						{
+							"name": "查询租户列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/tenants",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"tenants"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建租户",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"企业系统管理员\",\n    \"phone\": \"17716108535\",\n    \"password\":\"123456\",\n    \"re_password\":\"123456\",\n    \"sort_weight\": 1000,\n    \"enable\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/tenant",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"tenant"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改租户",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"租户2\",\n    \"password\":\"12345\",\n    \"re_password\":\"12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/tenant/1396764612833054720",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"tenant",
+										"1396764612833054720"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取租户详情",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/tenant/1396764612833054720",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"tenant",
+										"1396764612833054720"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除渠道码分组",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\":[\"1396708097312952320\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/tenant/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"tenant",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "企业",
+					"item": [
+						{
+							"name": "查询企业列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/corporations",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"corporations"
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort_field",
+											"value": "sort_weight",
+											"disabled": true
+										},
+										{
+											"key": "sort_type",
+											"value": "asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建企业",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"小橘科技\",\n    \"tenant_id\": \"1397141081954455552\",\n    \"ext_corp_id\":\"wwacfbf964143dc303\",\n    \"contact_secret\":\"Wm5IB46weqBRUIRf_bcV965VU1NijFQKz5JA8dH3BN0\",\n    \"customer_secret\": \"hSTuiKmc0_8YIHgHnXRYs4f91OMd_q0p0qhpfAroxws\",\n    \"auth_agent_id\":1000006,\n    \"auth_agent_secret\":\"HlqfkkajtkSosVsj6cjqXyzPNVTWlyIMMcx7jlIulhQ\",\n    \"enable\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/corporation",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"corporation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改企业",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"小橘科技2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/corporation/1397142460446019584",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"corporation",
+										"1397142460446019584"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取企业详情",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"测试分组2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/corporation/1397142460446019584",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"corporation",
+										"1397142460446019584"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除企业",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\":[\"1396708097312952320\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/v1/saas_admin/corporation/action/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"saas_admin",
+										"corporation",
+										"action",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"13108329522\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/saas_admin/action/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"saas_admin",
+								"action",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "公共基础服务",
+			"item": [
+				{
+					"name": "解析URL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v1/staff-admin/common/action/parse-link?url=https://www.baidu.com",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-admin",
+								"common",
+								"action",
+								"parse-link"
+							],
+							"query": [
+								{
+									"key": "url",
+									"value": "https://www.baidu.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上传文件",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"file_name\":\"1.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/staff-admin/common/action/get-signed-url",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"staff-admin",
+								"common",
+								"action",
+								"get-signed-url"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "废弃",
+			"item": [
+				{
+					"name": "本地存储",
+					"item": [
+						{
+							"name": "调试接口-获取预签名URL",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"object_key\":\"/test/a.jpg\",\n    \"method\":\"GET\",\n    \"expired_in_sec\":864000000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/storage/action/get_signed_url",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"storage",
+										"action",
+										"get_signed_url"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "调试接口-上传文件",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "/C:/Users/ethan/Downloads/media.jpg"
+									}
+								},
+								"url": {
+									"raw": "{{host}}/storage/public/test/a.jpg?expire_at=2488246229&signature=b7cb76fd1710bbbb6a0828b81125c4129b89eb93",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"storage",
+										"public",
+										"test",
+										"a.jpg"
+									],
+									"query": [
+										{
+											"key": "expire_at",
+											"value": "2488246229"
+										},
+										{
+											"key": "signature",
+											"value": "b7cb76fd1710bbbb6a0828b81125c4129b89eb93"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "调试接口-下载文件",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": ""
+									}
+								},
+								"url": {
+									"raw": "{{host}}/storage/public/test/a.jpg?expire_at=2488246254&signature=1af2d1eb316954318d22903689db3cc3a3fc9be9",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"storage",
+										"public",
+										"test",
+										"a.jpg"
+									],
+									"query": [
+										{
+											"key": "expire_at",
+											"value": "2488246254"
+										},
+										{
+											"key": "signature",
+											"value": "1af2d1eb316954318d22903689db3cc3a3fc9be9"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "调试接口-强制登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ext_corp_id\":\"wwacfbf964143dc303\",\r\n    \"ext_staff_id\":\"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/staff-admin/action/force-login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"staff-admin",
+						"action",
+						"force-login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "callback url test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<xml> \n  <ToUserName><![CDATA[wx5823bf96d3bd56c7]]></ToUserName>\n  <Encrypt><![CDATA[RypEvHKD8QQKFhvQ6QleEB4J58tiPdvo+rtK1I9qca6aM/wvqnLSV5zEPeusUiX5L5X/0lWfrf0QADHHhGd3QczcdCUpj911L3vg3W/sYYvuJTs3TUUkSUXxaccAS0qhxchrRYt66wiSpGLYL42aM6A8dTT+6k4aSknmPj48kzJs8qLjvd4Xgpue06DOdnLxAUHzM6+kDZ+HMZfJYuR+LtwGc2hgf5gsijff0ekUNXZiqATP7PF5mZxZ3Izoun1s4zG4LUMnvw2r+KqCKIw+3IQH03v+BCA9nMELNqbSf6tiWSrXJB3LAVGUcallcrw8V2t9EL4EhzJWrQUax5wLVMNS0+rUPA3k22Ncx4XXZS9o0MBH27Bo6BpNelZpS+/uh9KsNlY6bHCmJU9p8g7m3fVKn28H3KDYA5Pl/T8Z1ptDAVe0lXdQ2YoyyH2uyPIGHBZZIs2pDBS8R07+qN+E7Q==]]></Encrypt>  \n  <AgentID><![CDATA[218]]></AgentID> \n</xml>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:80/api/v1/callback?msg_signature=477715d11cdb4164915debcba66cb864d751f3e6&timestamp=1409659813&nonce=1372623149",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"v1",
+						"callback"
+					],
+					"query": [
+						{
+							"key": "msg_signature",
+							"value": "477715d11cdb4164915debcba66cb864d751f3e6"
+						},
+						{
+							"key": "timestamp",
+							"value": "1409659813"
+						},
+						{
+							"key": "nonce",
+							"value": "1372623149"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
