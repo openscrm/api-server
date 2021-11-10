@@ -15,7 +15,7 @@ type Material struct {
 	// 标题
 	Title string `json:"title" gorm:"type:char(64);index;comment:素材标题"`
 	// 文件大小
-	FileSize string `json:"file_size" gorm:"type:unsigned bigint;comment:素材文件大小"`
+	FileSize string `json:"file_size" gorm:"type:bigint;comment:素材文件大小"`
 	// 素材地址
 	FileUrl string `json:"url" gorm:"type:varchar(512);comment:素材下载地址"`
 	// Link

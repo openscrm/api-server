@@ -43,7 +43,7 @@ type ChatMsg struct {
 	// 聊天的文本内容
 	ContentText string `gorm:"class:FULLTEXT,option:WITH PARSER ngram;comment:聊天的文本内容" json:"content_text"`
 	//消息的seq值，标识消息的序号。再次拉取需要带上上次回包中最大的seq。Uint64类型，范围0-pow(2,64)-1
-	Seq uint64 `gorm:"type:bigint unsigned;comment:消息的seq值，标识消息的序号。再次拉取需要带上上次回包中最大的seq。Uint64类型，范围0-pow(2,64)-1" json:"seq"`
+	Seq uint64 `gorm:"type:bigint;comment:消息的seq值，标识消息的序号。再次拉取需要带上上次回包中最大的seq。Uint64类型，范围0-pow(2,64)-1" json:"seq"`
 	// 发送-接收双方ID hash得到
 	SessionID string `gorm:"type:char(128);comment:消息的会话ID,相同收发方的会话ID相同" json:"session_id"`
 	// 会话类型
@@ -183,7 +183,7 @@ type ChatSessions struct {
 	// 聊天的文本内容
 	ContentText string `gorm:"class:FULLTEXT,option:WITH PARSER ngram" json:"content_text"`
 	//消息的seq值，标识消息的序号。再次拉取需要带上上次回包中最大的seq。Uint64类型，范围0-pow(2,64)-1
-	Seq uint64 `gorm:"type:bigint unsigned" json:"seq"`
+	Seq uint64 `gorm:"type:bigint" json:"seq"`
 	// 发送-接收双方ID hash得到
 	SessionID string `json:"session_id"`
 	// 会话类型
