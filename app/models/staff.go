@@ -347,7 +347,7 @@ func (s Staff) GetMainInfo(extStaffID string, extCorpID string) (res StaffMainIn
 // UpdateStaffMsgArchStatus 更新员工会话存档开关
 func (s Staff) UpdateStaffMsgArchStatus(extCorpID string, extStaffIDs []string, status constants.Boolean) (err error) {
 	return DB.Model(&Staff{}).
-		Where("ext_corp_id = ? and  ext_staff_id in (?)", extCorpID, extStaffIDs).
+		Where("ext_corp_id = ? and ext_id in (?)", extCorpID, extStaffIDs).
 		Update("enable_msg_arch", status).Error
 }
 
