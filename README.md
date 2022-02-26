@@ -8,7 +8,7 @@
 
 <h4 align="center">
 
-<a href="https://www.yuque.com/gargantuax/openscrm/txlx9s" target="_blank">文档</a> |
+<a href="https://github.com/openscrm/api-server/wiki" target="_blank">文档</a> |
 [截图](#项目截图) |
 <a href="http://dashboard.demo.openscrm.cn:8000/" target="_blank">演示</a> |
 <a href="https://www.yuque.com/gargantuax/openscrm/zioec5" target="_blank">安装</a> 
