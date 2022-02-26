@@ -3549,7 +3549,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户群群发"
+                    "客户群发"
                 ],
                 "summary": "获取客户群发详情",
                 "responses": {
@@ -3592,12 +3592,12 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "客户群群发"
+                    "客户管理"
                 ],
                 "summary": "群发消息列表",
                 "parameters": [
                     {
-                        "description": "客户群群发消息列表请求",
+                        "description": "群发消息列表请求",
                         "name": "params",
                         "in": "body",
                         "required": true,
@@ -5327,7 +5327,7 @@ var doc = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "description": "是否为顶级分组",
+                                            "description": "NicknameBlockEnable 是否开启客户昵称屏蔽欢迎语",
                                             "type": "integer"
                                         }
                                     }
@@ -7014,12 +7014,39 @@ var doc = `{
                 "tags": [
                     "话术库"
                 ],
-                "summary": "查询企业话术库",
+                "summary": "H5查询企业话术库",
                 "responses": {
                     "200": {
                         "description": "成功",
                         "schema": {
-                            "$ref": "#/definitions/app.JSONResult"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/app.JSONResult"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "allOf": [
+                                                {
+                                                    "$ref": "#/definitions/app.ItemsData"
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/models.QuickReply"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "400": {
@@ -10320,10 +10347,10 @@ var doc = `{
                 "created_at": {
                     "type": "string"
                 },
-                "day_add_customer_count": {
+                "daily_add_customer_count": {
                     "type": "integer"
                 },
-                "day_add_customer_limit": {
+                "daily_add_customer_limit": {
                     "type": "integer"
                 },
                 "ext_corp_id": {
@@ -10478,10 +10505,10 @@ var doc = `{
                 "created_at": {
                     "type": "string"
                 },
-                "day_add_customer_count": {
+                "daily_add_customer_count": {
                     "type": "integer"
                 },
-                "day_add_customer_limit": {
+                "daily_add_customer_limit": {
                     "type": "integer"
                 },
                 "ext_corp_id": {
@@ -11929,7 +11956,7 @@ var doc = `{
                 "weekdays"
             ],
             "properties": {
-                "day_add_customer_limit": {
+                "daily_add_customer_limit": {
                     "type": "integer"
                 },
                 "end_time": {
@@ -11965,7 +11992,7 @@ var doc = `{
                 "ext_staff_id"
             ],
             "properties": {
-                "day_add_customer_limit": {
+                "daily_add_customer_limit": {
                     "type": "integer"
                 },
                 "ext_staff_id": {
@@ -12576,7 +12603,7 @@ var doc = `{
                 "staff_id"
             ],
             "properties": {
-                "day_add_customer_limit": {
+                "daily_add_customer_limit": {
                     "description": "每日添加客户数上线",
                     "type": "integer"
                 },

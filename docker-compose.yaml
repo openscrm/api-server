@@ -16,6 +16,8 @@ services:
       - 9379:9379
     networks:
       - openscrm
+    extra_hosts:
+          - "host.docker.internal:host-gateway"
 
   # mysql数据库服务
   mysql:
@@ -46,6 +48,8 @@ services:
       retries: 10
     networks:
       - openscrm
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   # nginx服务，前端项目挂载在此处
   nginx:
@@ -65,6 +69,8 @@ services:
       - ./docker/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
     networks:
       - openscrm
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   # 主Api服务
   api-server:
@@ -85,6 +91,8 @@ services:
       - mysql
     networks:
       - openscrm
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   # 会话存档服务
   msg-archive-server:
@@ -107,6 +115,8 @@ services:
       - mysql
     networks:
       - openscrm
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   openscrm:
