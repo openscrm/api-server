@@ -137,7 +137,7 @@
 ```
 
 ### 安装教程
-https://www.yuque.com/gargantuax/openscrm/zioec5
+https://github.com/openscrm/api-server/wiki/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B
 
 ### Api调试
 `docs目录包含postman导出文件，可方便调试api`
