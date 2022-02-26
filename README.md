@@ -11,7 +11,7 @@
 <a href="https://github.com/openscrm/api-server/wiki" target="_blank">文档</a> |
 [截图](#项目截图) |
 <a href="http://dashboard.demo.openscrm.cn:8000/" target="_blank">演示</a> |
-<a href="https://www.yuque.com/gargantuax/openscrm/zioec5" target="_blank">安装</a> 
+<a href="https://github.com/openscrm/api-server/wiki/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank">安装</a> 
 
 </h4>
 
