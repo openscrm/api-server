@@ -4,13 +4,6 @@ import (
 	"bytes"
 	errors2 "errors"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize/v2"
-	"github.com/gogf/gf/crypto/gmd5"
-	"github.com/gogf/gf/os/gfile"
-	"github.com/jinzhu/copier"
-	"github.com/pkg/errors"
-	"golang.org/x/sync/errgroup"
-	"gorm.io/gorm"
 	"net/url"
 	"openscrm/app/constants"
 	"openscrm/app/entities"
@@ -24,13 +17,22 @@ import (
 	"openscrm/common/util"
 	"openscrm/common/we_work"
 	"openscrm/conf"
-	"openscrm/pkg/easywework"
+	workwx "openscrm/pkg/easywework"
 	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/360EntSecGroup-Skylar/excelize/v2"
+	"github.com/gogf/gf/crypto/gmd5"
+	"github.com/gogf/gf/os/gfile"
+	"github.com/gogf/gf/os/grpool"
+	"github.com/jinzhu/copier"
+	"github.com/pkg/errors"
+	"golang.org/x/sync/errgroup"
+	"gorm.io/gorm"
 )
 
 type CustomerService struct {
@@ -148,7 +150,7 @@ func (o CustomerService) Sync(extCorpID string) error {
 	for _, idSign := range idSigns {
 		for k, relation := range csRelationModels {
 			if relation.Signature == idSign.Signature {
-				for i, _ := range relation.CustomerStaffTags {
+				for i := range relation.CustomerStaffTags {
 					csRelationModels[k].CustomerStaffTags[i].CustomerStaffID = idSign.ID
 				}
 
@@ -175,7 +177,7 @@ func Deduplicate(extCustomerIDs []string) (uniqueExtCustomerIDs []string, err er
 	for _, id := range extCustomerIDs {
 		mapSet[id] = struct{}{}
 	}
-	for k, _ := range mapSet {
+	for k := range mapSet {
 		uniqueExtCustomerIDs = append(uniqueExtCustomerIDs, k)
 	}
 
@@ -918,10 +920,11 @@ func (o CustomerService) BatchFetchCustomers(extStaff []*workwx.UserInfo) (total
 		wg.Done()
 	}()
 
-	var g errgroup.Group
-	for i, _ := range extStaff {
+	// 使用goframe的grpool限定请求并发
+	pool := grpool.New(5)
+	for i := range extStaff {
 		extStaffID := extStaff[i].UserID
-		g.Go(func() error {
+		pool.Add(func() {
 			defer wg.Done()
 			extCustomerIDs, err := client.Customer.ListExternalContact(extStaffID)
 			if err != nil {
@@ -934,13 +937,8 @@ func (o CustomerService) BatchFetchCustomers(extStaff []*workwx.UserInfo) (total
 				} else {
 					log.Sugar.Errorf("ListExternalContact failed:%s, %#v", extStaffID, err)
 				}
-				if o.isNoCustomerErr(err) {
-					return nil
-				}
-				return err
 			}
 			responseChannel <- extCustomerIDs
-			return nil
 		})
 	}
 
@@ -987,7 +985,7 @@ func (o CustomerService) BatchFetchContactInfo(extCustomerIDs []string) (cs []*w
 	}()
 
 	var g errgroup.Group
-	for i, _ := range extCustomerIDs {
+	for i := range extCustomerIDs {
 		extCustomerID := extCustomerIDs[i]
 		g.Go(func() error {
 			defer wg.Done()
