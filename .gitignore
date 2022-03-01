@@ -22,3 +22,4 @@ docker/data/redis/db/*
 scripts/deploy-test.bat
 scripts/deploy-*.bat
 go.sum
+main

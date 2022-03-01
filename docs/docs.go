@@ -4898,7 +4898,7 @@ var doc = `{
                 }
             }
         },
-        "/api/v1/staff-admin/department": {
+        "/api/v1/staff-admin/department/{ext_id}": {
             "get": {
                 "consumes": [
                     "application/json"

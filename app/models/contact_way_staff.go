@@ -1,21 +1,22 @@
 package models
 
 import (
+	"openscrm/app/constants"
+
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
-	"openscrm/app/constants"
 )
 
 // ContactWayStaff 渠道码绑定的员工
 type ContactWayStaff struct {
 	ExtCorpModel
 	// 渠道码ID
-	ContactWayID          string `json:"contact_way_id" gorm:"index;unique:ContactWayID_ExtStaffID;type:bigint;comment:'渠道码ID'"`
+	ContactWayID          string `json:"contact_way_id" gorm:"index:contactWayIndex;type:bigint;comment:'渠道码ID'"`
 	AddCustomerCount      int    `json:"add_customer_count" gorm:"->;default:0;comment:'员工累计添加客户计数'"`
 	DailyAddCustomerCount int    `json:"daily_add_customer_count" gorm:"->;default:0;comment:'员工每日添加客户计数'"`
 	DailyAddCustomerLimit int    `json:"daily_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
-	ExtStaffID            string `json:"ext_staff_id" gorm:"index;unique:ContactWayID_ExtStaffID;comment:'外部员工ID'"`
+	ExtStaffID            string `json:"ext_staff_id" gorm:"index:contactWayIndex;comment:'外部员工ID'"`
 	// 员工名称
 	Name string `gorm:"type:varchar(255);comment:员工名" json:"name"`
 	// 头像url
