@@ -1,11 +1,12 @@
 package models
 
 import (
+	"openscrm/app/constants"
+	"openscrm/common/app"
+
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
-	"openscrm/app/constants"
-	"openscrm/common/app"
 )
 
 type Department struct {
@@ -73,35 +74,40 @@ func (o Department) GetByExtIDs(extIDs []int64, extCorpID string) (depts []Depar
 	return
 }
 
+// Get
+// Description: 按部门id查询部门与子部门信息
 func (o Department) Get(ExtDeptID int64, extCorpID string) (Department, error) {
 	var rootDept Department
 	db := DB.Model(&Department{}).
 		Where("ext_corp_id =?", extCorpID)
 
+	// 根据本级id查询
 	if ExtDeptID != 0 {
 		db = db.Where("ext_id = ?", ExtDeptID)
 	}
+	db.First(&rootDept)
 
-	//parentDepts := []*Department{rootDept}
-	//subDepts := make([]Department, 0)
-	//
-	//for len(parentDepts) != 0 {
-	//	department := parentDepts[0]
-	//	parentDepts = parentDepts[1:]
-	//
-	//	err = DB.Model(&Department{}).
-	//		Where("ext_corp_id = ? ", extCorpID).
-	//		Where("ext_parent_id in (?)", department.ExtID).
-	//		Find(&subDepts).Error
-	//	if err != nil {
-	//		return nil, err
-	//	}
-	//	department.SubDepartments = subDepts
-	//
-	//	for i := range subDepts {
-	//		parentDepts = append(parentDepts, &subDepts[i])
-	//	}
-	//}
+	parentDepts := []*Department{&rootDept}
+	subDepts := make([]Department, 0)
+
+	for len(parentDepts) != 0 {
+		department := parentDepts[0]
+		parentDepts = parentDepts[1:]
+
+		// 查询子部门
+		err := DB.Model(&Department{}).
+			Where("ext_corp_id = ? ", extCorpID).
+			Where("ext_parent_id in (?)", department.ExtID).
+			Find(&subDepts).Error
+		if err != nil {
+			return Department{}, err
+		}
+		department.SubDepartments = subDepts
+
+		for i := range subDepts {
+			parentDepts = append(parentDepts, &subDepts[i])
+		}
+	}
 	return rootDept, nil
 }
 
