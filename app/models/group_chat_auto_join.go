@@ -1,15 +1,16 @@
 package models
 
 import (
-	"github.com/jinzhu/copier"
-	"github.com/pkg/errors"
-	"gorm.io/gorm"
-	"gorm.io/gorm/clause"
 	"openscrm/app/constants"
 	"openscrm/common/app"
 	"openscrm/common/ecode"
 	"openscrm/common/we_work"
-	"openscrm/pkg/easywework"
+	workwx "openscrm/pkg/easywework"
+
+	"github.com/jinzhu/copier"
+	"github.com/pkg/errors"
+	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 )
 
 // GroupChatAutoJoinCode 自动拉群码
@@ -74,12 +75,12 @@ type GroupChatAutoJoinBackupStaff struct {
 type GroupChatAutoJoinCodeStaff struct {
 	ExtCorpModel
 	// 自动拉群码id
-	GroupChatAutoJoinCodeID string `json:"group_chat_auto_join_code_id" gorm:"type:bigint;index;unique:idx_group_chat_auto_join_code_id_staff_id;comment:'自动拉群码id'"`
+	GroupChatAutoJoinCodeID string `json:"group_chat_auto_join_code_id" gorm:"type:bigint;index:GroupChatAutoJoinCodeIndex;comment:'自动拉群码id'"`
 	DailyAddCustomerCount   int    `json:"daily_add_customer_count" gorm:"default:0;comment:'员工每日添加客户计数'"`
 	AddCustomerCount        int    `json:"add_customer_count" gorm:"default:0;comment:'员工累计添加客户计数'"`
 	DailyAddCustomerLimit   int    `json:"daily_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
 	Avatar                  string `json:"avatar" gorm:"comment:'员工头像'"`
-	StaffID                 string `json:"staff_id" gorm:"unique:idx_group_chat_auto_join_code_id_staff_id;type:bigint;comment:'员工ID'"`
+	StaffID                 string `json:"staff_id" gorm:"index:index:GroupChatAutoJoinCodeIndex;type:bigint;comment:'员工ID'"`
 	ExtStaffID              string `json:"ext_staff_id" gorm:"index;comment:'外部员工ID'"`
 	Name                    string `json:"name" gorm:"comment:'员工名称'"`
 	Timestamp
