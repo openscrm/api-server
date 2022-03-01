@@ -80,7 +80,7 @@ type GroupChatAutoJoinCodeStaff struct {
 	AddCustomerCount        int    `json:"add_customer_count" gorm:"default:0;comment:'员工累计添加客户计数'"`
 	DailyAddCustomerLimit   int    `json:"daily_add_customer_limit" gorm:"comment:'员工每日添加客户上限'"`
 	Avatar                  string `json:"avatar" gorm:"comment:'员工头像'"`
-	StaffID                 string `json:"staff_id" gorm:"index:index:GroupChatAutoJoinCodeIndex;type:bigint;comment:'员工ID'"`
+	StaffID                 string `json:"staff_id" gorm:"index:GroupChatAutoJoinCodeIndex;type:bigint;comment:'员工ID'"`
 	ExtStaffID              string `json:"ext_staff_id" gorm:"index;comment:'外部员工ID'"`
 	Name                    string `json:"name" gorm:"comment:'员工名称'"`
 	Timestamp
