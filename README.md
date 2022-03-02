@@ -53,12 +53,6 @@
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E4%BF%AE%E6%94%B9%E7%BE%A4%E5%8F%91.png)
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E4%BF%AE%E6%94%B9%E6%AC%A2%E8%BF%8E%E8%AF%AD.png)
 
-### 联系作者加入交流群
-
-<img src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/qrcode.png" width="200" />
-
-扫码可加入交流群
-
 ### 技术栈
 #### 后端技术栈
 * [Go](https://learnku.com/docs/the-way-to-go)
@@ -141,12 +135,6 @@ https://github.com/openscrm/api-server/wiki/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B
 
 ### Api调试
 `docs目录包含postman导出文件，可方便调试api`
-
-### 联系作者
-
-<img src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/qrcode.png" width="200" />
-
-扫码可加入交流群
 
 ### 版权声明
 
