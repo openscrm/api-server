@@ -131,7 +131,6 @@ func (qg QuickReplyGroup) QueryByID(extCorpID string, groupIDs []string, replies
 		Where("id in (?)", groupIDs).
 		Find(&groups).Error
 	return
-
 }
 
 func (qg QuickReplyGroup) GetByIDs(ids []string) (groups []QuickReplyGroup, err error) {

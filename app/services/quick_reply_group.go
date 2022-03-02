@@ -160,12 +160,6 @@ func (o QuickReplyGroup) QueryQuickReply(
 		return
 	}
 
-	groupsByQuickReplyGroup, err := o.QuickReplyGroupRepo.QueryByKeyword(req.Keyword, extCorpID, pager)
-	if err != nil {
-		err = errors.WithStack(err)
-		return
-	}
-	groups = append(groups, groupsByQuickReplyGroup...)
 	total = int64(len(groups))
 	return
 }
