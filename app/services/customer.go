@@ -4,6 +4,7 @@ import (
 	"bytes"
 	errors2 "errors"
 	"fmt"
+	"github.com/gogf/gf/crypto/gmd5"
 	"net/url"
 	"openscrm/app/constants"
 	"openscrm/app/entities"
@@ -25,12 +26,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/360EntSecGroup-Skylar/excelize/v2"
-	"github.com/gogf/gf/crypto/gmd5"
 	"github.com/gogf/gf/os/gfile"
 	"github.com/gogf/gf/os/grpool"
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"
+	"github.com/xuri/excelize/v2"
 	"golang.org/x/sync/errgroup"
 	"gorm.io/gorm"
 )

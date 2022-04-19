@@ -3,11 +3,11 @@ package services
 import (
 	"bytes"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize/v2"
 	"github.com/gogf/gf/os/gfile"
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"
 	"github.com/thoas/go-funk"
+	"github.com/xuri/excelize/v2"
 	"openscrm/app/constants"
 	"openscrm/app/models"
 	"openscrm/app/requests"

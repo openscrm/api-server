@@ -3,7 +3,6 @@ module openscrm
 go 1.16
 
 require (
-	github.com/360EntSecGroup-Skylar/excelize/v2 v2.4.0
 	github.com/ChimeraCoder/gojson v1.1.0
 	github.com/PuerkitoBio/goquery v1.7.1
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
@@ -38,10 +37,10 @@ require (
 	github.com/tencentyun/cos-go-sdk-v5 v0.7.25
 	github.com/thoas/go-funk v0.8.0
 	github.com/urfave/cli/v2 v2.3.0
+	github.com/xuri/excelize/v2 v2.6.0
 	go.uber.org/zap v1.17.0
-	golang.org/x/net v0.0.0-20210716203947-853a461950ff
+	golang.org/x/net v0.0.0-20220407224826-aac1ed45d8e3
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/tools v0.1.5 // indirect
 	gopkg.in/guregu/null.v4 v4.0.0
 	gorm.io/driver/mysql v1.1.0

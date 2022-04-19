@@ -3,8 +3,8 @@ package consumers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize/v2"
 	"github.com/gogf/gf/os/gfile"
+	"github.com/xuri/excelize/v2"
 	"openscrm/common/app"
 	"path"
 	"path/filepath"
