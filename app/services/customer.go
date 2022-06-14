@@ -318,7 +318,7 @@ func thumbAvatar(avatar string) (newAvatar string, err error) {
 	} else if URLParsed.Host == constants.WxPicHost {
 		newAvatar = fmt.Sprint(strings.Trim(avatar, "/0"), "/64")
 	} else {
-		err = errors.New("unknown wx host")
+		newAvatar = avatar
 	}
 	return
 }
