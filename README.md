@@ -18,7 +18,7 @@
 
 ### 项目简介
 
-> OpenSCRM是一套基于**Go**和**React**的**超高质量**企业微信私域流量管理系统
+> OpenSCRM是一套基于**Go**和**React**的**高质量**企业微信私域流量管理系统
 
 ### 在线演示
 
@@ -27,7 +27,7 @@
 ### 项目特点
 
 * **安全性高**：企业微信控制了企业所有员工和客户的敏感数据，如电话号码，职位，客户标签，联系方式等，如果发生泄露，
-  对企业的打击是非常致命的。我们团队有来自360的资深安全开发工程师cover此问题。
+  对企业的打击将是致命的。我们团队有丰富的Web安全经验保证项目安全性。
 
 
 * **高性能，高稳定性**：得益于Go出色的工程能力，简单有效的并发控制能力，OpenSCRM具备比肩头部Saas厂商的高性能和高稳定
@@ -58,7 +58,6 @@
 * [Go](https://learnku.com/docs/the-way-to-go)
 * [Gin](https://learnku.com/docs/gin-gonic/2019)
 * [GORM](https://gorm.io/zh_CN/docs/)
-* [Goframe](https://goframe.org/pages/viewpage.action?pageId=1114411)
 * Redis
 * Mysql >= 5.7
 
