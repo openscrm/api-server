@@ -5,9 +5,9 @@ App:
   Env: DEV
   # * 应用秘钥 64位，生成命令：openssl rand -base64 64
   Key: todo
-  # * 超级管理员手机号，自动设置此处手机号匹配到的员工为超级管理员权限
-  SuperAdminPhone:
-    - 13108329522
+  # 超级管理员userID
+  SuperAdmin:
+    - WangQiang
   # 是否开启Models自动迁移，修改Model定义自动同步Mysql表结构
   AutoMigration: true
 
@@ -15,7 +15,7 @@ App:
 Server:
   #debug or release
   RunMode: debug
-  # 主服务监听Host
+  # 主服务监听Host，使用docker部署时，注意127.0.0.1监听的是虚拟机本地请求，并非宿主机本地请求
   HttpHost: 0.0.0.0
   # 主服务监听端口
   HttpPort: 9001

@@ -507,7 +507,7 @@ func SetupStaffRole() {
 	}
 
 	// 根据conf里的SuperAdminPhone配置设置超级管理员员工
-	err = tx.Model(&Staff{}).Where("mobile in (?)", conf.Settings.App.SuperAdminPhone).Updates(&Staff{
+	err = tx.Model(&Staff{}).Where("ext_id in (?)", conf.Settings.App.SuperAdmin).Updates(&Staff{
 		RoleType: string(constants.RoleTypeSuperAdmin),
 		RoleID:   string(constants.DefaultCorpSuperAdminRoleID),
 	}).Error

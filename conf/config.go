@@ -36,8 +36,8 @@ type AppConfig struct {
 	Env                string `validate:"required,oneof=PROD DEV TEST DEMO"`
 	AutoMigration      bool
 	AutoSyncWeWorkData bool // 启动时同步微信数据
-	// SuperAdminPhone 此处手机号对应员工的赋予超级管理员权限
-	SuperAdminPhone []string `validate:"required,dive,phone"`
+	// SuperAdmin 此处userID对应员工的赋予超级管理员权限
+	SuperAdmin      []string `validate:"required,dive,gt=1"`
 	InnerSrvAppCode string   // 内部服务调用key
 }
 
@@ -149,7 +149,7 @@ func SetupSetting() error {
 	return nil
 }
 
-//SetupTestSetting 初始化单元测试的配置
+// SetupTestSetting 初始化单元测试的配置
 func SetupTestSetting() error {
 	var err error
 	viper.SetConfigName("config.test") // name of config file (without extension)

@@ -191,6 +191,7 @@ type userInfoGetResp struct {
 }
 
 // userDetailResp 成员详细信息的公共字段
+// 文档：https://developer.work.weixin.qq.com/document/path/90201
 type userDetailResp struct {
 	UserID         string   `json:"userid"`
 	Name           string   `json:"name"`
@@ -275,6 +276,7 @@ func (c *App) execUserGet(req userGetReq) (userGetResp, error) {
 }
 
 // execUserList 获取部门成员详情
+// 文档：https://developer.work.weixin.qq.com/document/path/90201
 func (c *App) execUserList(req userListReq) (userListResp, error) {
 	var resp userListResp
 	err := c.executeWXApiGet("/cgi-bin/user/list", req, &resp, true)

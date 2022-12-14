@@ -28,6 +28,9 @@ func reshapeDeptInfo(
 }
 
 func mustFromGenderStr(x string) UserGender {
+	if x == "" {
+		return UserGenderUnspecified
+	}
 	n, err := strconv.Atoi(x)
 	if err != nil {
 		panic(fmt.Sprintf("gender string parse failed: %+v", err))
