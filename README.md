@@ -24,6 +24,12 @@
 
 [http://dashboard.demo.openscrm.cn:8000/](http://dashboard.demo.openscrm.cn:8000/)
 
+### 子项目
+
+[会话存档服务](https://github.com/openscrm/msg-server)
+[管理面板](https://github.com/openscrm/dashboard)
+[企业微信H5侧边栏](https://github.com/openscrm/sidebar)
+
 ### 项目特点
 
 * **安全性高**：企业微信控制了企业所有员工和客户的敏感数据，如电话号码，职位，客户标签，联系方式等，如果发生泄露，
