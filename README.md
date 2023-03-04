@@ -53,7 +53,6 @@
 
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E5%90%8E%E5%8F%B0%E9%A6%96%E9%A1%B5.png)
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E4%BF%AE%E6%94%B9%E6%B8%A0%E9%81%93%E6%B4%BB%E7%A0%81.png)
-![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E4%BC%9A%E8%AF%9D%E5%AD%98%E6%A1%A3.png)
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E4%BF%AE%E6%94%B9%E6%B8%A0%E9%81%93%E6%B4%BB%E7%A0%812.png)
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E5%AE%A2%E6%88%B7%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86.png)
 ![](https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/screenshots/%E4%BF%AE%E6%94%B9%E7%BE%A4%E5%8F%91.png)
