@@ -16,7 +16,7 @@
 </h4>
 
 <p align="center">
-  <img width="200" src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/openscrm感谢赞助.png">
+  <img width="260" src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/感谢赞助.svg">
 </p>
 
 ### 项目简介
