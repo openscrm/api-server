@@ -14,10 +14,8 @@ services:
       - ./docker/data/redis/db:/var/lib/redis
     ports:
       - 9379:9379
-    networks:
-      - openscrm
     extra_hosts:
-          - "host.docker.internal:host-gateway"
+      - "host.docker.internal:172.17.0.1"
 
   # mysql数据库服务
   mysql:
@@ -46,10 +44,8 @@ services:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "mysql:9306" ]
       timeout: 20s
       retries: 10
-    networks:
-      - openscrm
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "host.docker.internal:172.17.0.1"
 
   # nginx服务，前端项目挂载在此处
   nginx:
@@ -66,10 +62,8 @@ services:
       - ./docker/data/dashboard:/opt/dashboard
       - ./docker/data/sidebar:/opt/sidebar
       - ./docker/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-    networks:
-      - openscrm
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "host.docker.internal:172.17.0.1"
 
   # 主Api服务
   api-server:
@@ -88,10 +82,8 @@ services:
       - msg-archive-server
       - redis
       - mysql
-    networks:
-      - openscrm
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "host.docker.internal:172.17.0.1"
 
   # 会话存档服务
   msg-archive-server:
@@ -112,11 +104,5 @@ services:
     depends_on:
       - redis
       - mysql
-    networks:
-      - openscrm
     extra_hosts:
-      - "host.docker.internal:host-gateway"
-
-networks:
-  openscrm:
-    driver: bridge
+      - "host.docker.internal:172.17.0.1"
