@@ -23,9 +23,18 @@
 
 > OpenSCRM是一套基于**Go**和**React**的**高质量**企业微信私域流量管理系统
 
-### 在线演示
+### 快速开始（docker-compose）
+我们已经在docker-compose.yaml文件中配置好所有依赖，修改应用配置信息即可启动。
 
-[http://dashboard.demo.openscrm.cn:8000/](http://dashboard.demo.openscrm.cn:8000/)
+#### 修改配置文件
+* conf/config.example.yaml -> conf/config.yaml
+* 修改配置文件的App.SuperAdmin节点，此项为企业微信中的管理员ID
+* 修改配置文件的WeWork节点
+
+#### 启动docker-compose
+```
+docker-compose up
+```
 
 ### 子项目
 
