@@ -20,9 +20,9 @@ services:
     restart: always
     environment:
       MYSQL_USER: "open_scrm_demo"
-      MYSQL_PASSWORD: "q7aZ4MA4&orawGHCWYmFEA3kJxZG$&Ws#z"
+      MYSQL_PASSWORD: "A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc"
       MYSQL_DATABASE: "open_scrm_demo"
-      MYSQL_ROOT_PASSWORD: "9oLNzY&WpqcVRPaPw9*T!YyS%P3cfy%kWe"
+      MYSQL_ROOT_PASSWORD: "9A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc"
     ports:
       - '3306:3306'
     volumes:

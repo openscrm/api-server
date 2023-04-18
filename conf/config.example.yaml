@@ -31,7 +31,7 @@ DB:
   Host: host.docker.internal:3306
   User: open_scrm_demo
   Name: open_scrm_demo
-  Password: q7aZ4MA4&orawGHCWYmFEA3kJxZG$&Ws#z
+  Password: A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc
 
 # redis服务器配置
 Redis:
