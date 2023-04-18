@@ -11,13 +11,13 @@ require (
 	github.com/cenkalti/backoff/v4 v4.1.1
 	github.com/cpuguy83/go-md2man/v2 v2.0.1 // indirect
 	github.com/gin-contrib/sessions v0.0.3
-	github.com/gin-gonic/gin v1.9.0 // indirect
+	github.com/gin-gonic/gin v1.9.0
 	github.com/go-playground/locales v0.14.1
 	github.com/go-playground/universal-translator v0.18.1
 	github.com/go-playground/validator/v10 v10.12.0
 	github.com/go-redis/redis/v8 v8.10.0
 	github.com/go-resty/resty/v2 v2.6.0
-	github.com/go-sql-driver/mysql v1.6.0
+	github.com/go-sql-driver/mysql v1.7.0
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/gogf/gf v1.16.2
 	github.com/google/uuid v1.1.2
@@ -46,6 +46,6 @@ require (
 	golang.org/x/sync v0.1.0
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/guregu/null.v4 v4.0.0
-	gorm.io/driver/mysql v1.1.0
-	gorm.io/gorm v1.21.10
+	gorm.io/driver/mysql v1.5.0
+	gorm.io/gorm v1.25.0
 )

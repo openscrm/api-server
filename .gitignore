@@ -14,9 +14,9 @@ conf/*.key
 docs/swagger.json
 docs/swagger.yaml
 
-docker/data/mysql/db/*
-docker/data/nginx/logs/*
-docker/data/redis/db/*
+docker/mysql/data/*
+docker/nginx/logs/*
+docker/redis/data/*
 
 scripts/deploy-test.bat
 scripts/deploy-*.bat

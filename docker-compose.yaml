@@ -1,47 +1,32 @@
 version: '3'
+
 services:
   # redis服务
   redis:
-    hostname: redis
-    image: redis:5.0.3
-    restart: always
-    command: redis-server /etc/redis.conf
-    environment:
-      - TZ=Asia/Shanghai
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./docker/data/redis/redis.conf:/etc/redis.conf
-      - ./docker/data/redis/db:/var/lib/redis
+    image: 'redis:latest'
     ports:
-      - 9379:9379
-
-  # mysql数据库服务
-  mysql:
-    image: mysql
-    restart: always
-    environment:
-      TZ: Asia/Shanghai
-      # mysql root 密码
-      MYSQL_ROOT_PASSWORD: NWVj5IowIGk0dZlBCSF
-      # 初始化数据库(后续的初始化sql会在这个库执行)
-      MYSQL_DATABASE: open_scrm_demo
-    security_opt:
-      - seccomp:unconfined
-    command:
-      --default-authentication-plugin=mysql_native_password
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_general_ci
-      --explicit_defaults_for_timestamp=true
-      --port=9306
-    ports:
-      - 9306:9306
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc
     volumes:
-      - ./docker/data/mysql/db/:/var/lib/mysql/
-      - ./docker/data/mysql/conf/:/etc/mysql/conf.d/:ro
+      - ./docker/redis/data:/data
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "mysql:9306" ]
-      timeout: 20s
-      retries: 10
+      test: ["CMD", "redis-cli", "-h", "localhost", "-p", "6379", "ping"]
+      interval: 2s
+      timeout: 1m30s
+      retries: 5
+
+  mysql:
+    image: 'mysql:8.0'
+    restart: always
+    environment:
+      MYSQL_USER: "open_scrm_demo"
+      MYSQL_PASSWORD: "q7aZ4MA4&orawGHCWYmFEA3kJxZG$&Ws#z"
+      MYSQL_DATABASE: "open_scrm_demo"
+      MYSQL_ROOT_PASSWORD: "9oLNzY&WpqcVRPaPw9*T!YyS%P3cfy%kWe"
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
 
   # nginx服务，前端项目挂载在此处
   nginx:
@@ -53,11 +38,11 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - ./docker/data/nginx/conf/conf.d/:/etc/nginx/conf.d/
-      - ./docker/data/nginx/logs:/var/log/nginx
-      - ./docker/data/dashboard:/opt/dashboard
-      - ./docker/data/sidebar:/opt/sidebar
-      - ./docker/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/conf/conf.d/:/etc/nginx/conf.d/
+      - ./docker/nginx/logs:/var/log/nginx
+      - ./docker/dashboard:/opt/dashboard
+      - ./docker/sidebar:/opt/sidebar
+      - ./docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
 
   # 主Api服务
   api-server:

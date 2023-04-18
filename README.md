@@ -28,13 +28,17 @@
 
 #### 修改配置文件
 * conf/config.example.yaml -> conf/config.yaml
+* 修改DB.Host节点。api-server在容器中跑时，DB.Host需要改成宿主机的IP（host.docker.internal/局域网IP）。api-server在本地跑时，DB.Host填localhost即可。
 * 修改配置文件的App.SuperAdmin节点，此项为企业微信中的管理员ID
 * 修改配置文件的WeWork节点
+* 如果你修改了docker-compose.yaml文件，不要忘记docker-compose down,docker-compose up重建容器让配置生效
 
 #### 启动docker-compose
 ```
 docker-compose up
 ```
+#### 访问站点
+http://dashboard.dev.openscrm.cn:9000/
 
 ### 搭建开发环境(可选)
 #### 安装go语言环境
@@ -44,6 +48,14 @@ https://go.dev/doc/install
 ```
 go install github.com/swaggo/swag/cmd/swag@latest
 ```
+
+#### 启动程序
+```
+go run main.go
+```
+
+#### 访问站点
+http://dashboard.dev.openscrm.cn:9000/
 
 ### 子项目
 
