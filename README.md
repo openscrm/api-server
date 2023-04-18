@@ -36,6 +36,7 @@
 #### 启动docker-compose
 ```
 cd /project-home-dir/
+openssl genpkey -algorithm RSA -out conf/private.key
 chmod +x bin/api-server bin/msg-arch-server
 docker-compose up
 ```
