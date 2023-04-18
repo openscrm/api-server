@@ -10,10 +10,10 @@ services:
     volumes:
       - ./docker/redis/data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "-h", "localhost", "-p", "6379", "ping"]
-      interval: 2s
-      timeout: 1m30s
-      retries: 5
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
 
   mysql:
     image: 'mysql:8.0'
@@ -27,6 +27,11 @@ services:
       - '3306:3306'
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   # nginx服务，前端项目挂载在此处
   nginx:
@@ -58,9 +63,10 @@ services:
       - |
         /srv/api-server
     depends_on:
-      - msg-archive-server
-      - redis
-      - mysql
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
   # 会话存档服务
   msg-archive-server:
@@ -79,5 +85,7 @@ services:
       - |
         /srv/msg-arch-server
     depends_on:
-      - redis
-      - mysql
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

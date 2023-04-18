@@ -52,7 +52,7 @@ func SetupDB() {
 	SetupCustomerInfoDisplayRule()
 }
 
-//AutoMigrate 用于根据结构体定义自动迁移表结构,只新增字段
+// AutoMigrate 用于根据结构体定义自动迁移表结构,只新增字段
 func AutoMigrate(db *gorm.DB) error {
 	if !conf.Settings.App.AutoMigration {
 		return nil
@@ -127,7 +127,7 @@ func AutoMigrate(db *gorm.DB) error {
 	return nil
 }
 
-//initDB 初始化数据库连接
+// initDB 初始化数据库连接
 func initDB(c conf.DBConfig) (db *gorm.DB) {
 	var err error
 
