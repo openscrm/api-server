@@ -36,6 +36,15 @@
 docker-compose up
 ```
 
+### 搭建开发环境(可选)
+#### 安装go语言环境
+https://go.dev/doc/install
+
+#### 安装swag
+```
+go install github.com/swaggo/swag/cmd/swag@latest
+```
+
 ### 子项目
 
 [会话存档服务](https://github.com/openscrm/msg-server)

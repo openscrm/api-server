@@ -133,7 +133,7 @@ func (o *Login) StaffAdminLoginCallback(c *gin.Context) {
 // @Success 200 {object} app.JSONResult{data=models.Staff} "成功"
 // @Failure 400 {object} app.JSONResult{} "非法请求"
 // @Failure 500 {object} app.JSONResult{} "内部错误"
-// @Router /api/v1/staff_admin/action/force_login [any]
+// @Router /api/v1/staff_admin/action/force_login [post]
 func (o *Login) StaffAdminForceLogin(c *gin.Context) {
 	req := entities.StaffAdminForceLoginReq{}
 	handler := app.NewHandler(c)
@@ -283,7 +283,7 @@ func (o *Login) StaffLoginCallback(c *gin.Context) {
 // @Success 200 {object} app.JSONResult{data=models.Staff} "成功"
 // @Failure 400 {object} app.JSONResult{} "非法请求"
 // @Failure 500 {object} app.JSONResult{} "内部错误"
-// @Router /api/v1/staff-frontend/action/force_login [any]
+// @Router /api/v1/staff-frontend/action/force_login [post]
 func (o *Login) StaffForceLogin(c *gin.Context) {
 	req := entities.StaffForceLoginReq{}
 	handler := app.NewHandler(c)

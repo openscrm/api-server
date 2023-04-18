@@ -23,7 +23,7 @@ type JsApiHandler struct {
 // @Success 200 {object} app.JSONResult{} "成功"
 // @Failure 400 {object} app.JSONResult{} "非法请求"
 // @Failure 500 {object} app.JSONResult{} "内部错误"
-// @Router /api/v1/staff-admin/action/get-js-config [any]
+// @Router /api/v1/staff-admin/action/get-js-config [post]
 func (o JsApiHandler) GetJsConfig(c *gin.Context) {
 	req := requests.GetJSConfigReq{}
 	handler := app.NewHandler(c)
@@ -58,7 +58,7 @@ func (o JsApiHandler) GetJsConfig(c *gin.Context) {
 // @Success 200 {object} app.JSONResult{} "成功"
 // @Failure 400 {object} app.JSONResult{} "非法请求"
 // @Failure 500 {object} app.JSONResult{} "内部错误"
-// @Router /api/v1/staff-admin/action/get-js-agent-config [any]
+// @Router /api/v1/staff-admin/action/get-js-agent-config [post]
 func (o JsApiHandler) GetJsAgentConfig(c *gin.Context) {
 	req := requests.GetJSAgentConfigReq{}
 	handler := app.NewHandler(c)

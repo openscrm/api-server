@@ -24,18 +24,18 @@ Server:
   ReadTimeout: 60
   WriteTimeout: 60
   # 会话存档服务访问地址
-  MsgArchSrvHost: host.docker.internal
+  MsgArchSrvHost: 172.17.0.1
 
 # Mysql数据库配置
 DB:
   User: root
   Name: open_scrm_demo
-  Host: host.docker.internal:9306
+  Host: 172.17.0.1:9306
   Password: NWVj5IowIGk0dZlBCSF
 
 # redis服务器配置
 Redis:
-  Host: host.docker.internal:9379
+  Host: 172.17.0.1:9379
   Password: XOvqH8qXoWE4RgFScSZ
   DBNumber: 0
   IdleTimeout: 5

@@ -9,7 +9,6 @@ conf/config.prod.yaml
 release
 
 docker/bin/api-server
-bin/api-server
 
 conf/*.key
 docs/swagger.json
