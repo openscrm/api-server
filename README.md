@@ -35,6 +35,8 @@
 
 #### 启动docker-compose
 ```
+cd /project-home-dir/
+chmod +x bin/api-server bin/msg-arch-server
 docker-compose up
 ```
 #### 访问站点

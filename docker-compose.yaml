@@ -4,6 +4,7 @@ services:
   # redis服务
   redis:
     image: 'redis:latest'
+    restart: always
     ports:
       - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning --requirepass A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc
@@ -52,6 +53,7 @@ services:
   # 主Api服务
   api-server:
     image: centos
+    restart: always
     volumes:
       - ./bin/api-server:/srv/api-server
       - ./conf/:/conf/
@@ -71,6 +73,7 @@ services:
   # 会话存档服务
   msg-archive-server:
     image: centos
+    restart: always
     volumes:
       - ./bin/msg-arch-server:/srv/msg-arch-server
       - ./docker/lib:/srv/lib
