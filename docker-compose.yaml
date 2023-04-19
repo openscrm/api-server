@@ -23,7 +23,7 @@ services:
       MYSQL_USER: "open_scrm_demo"
       MYSQL_PASSWORD: "A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc"
       MYSQL_DATABASE: "open_scrm_demo"
-      MYSQL_ROOT_PASSWORD: "9A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc"
+      MYSQL_ROOT_PASSWORD: "A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc"
     ports:
       - '3306:3306'
     volumes:
@@ -49,6 +49,8 @@ services:
       - ./docker/dashboard:/opt/dashboard
       - ./docker/sidebar:/opt/sidebar
       - ./docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - api-server
 
   # 主Api服务
   api-server:
