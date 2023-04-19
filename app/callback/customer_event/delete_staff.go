@@ -16,6 +16,7 @@ import (
 // EventDelFollowUserHandler
 // Description: 客户删除员工回调
 // Detail:
+//
 //	通知员工
 //	删除缓存
 func EventDelFollowUserHandler(msg *gowx.RxMessage) (err error) {
@@ -62,7 +63,7 @@ func EventDelFollowUserHandler(msg *gowx.RxMessage) (err error) {
 	}
 
 	extCorpID := conf.Settings.WeWork.ExtCorpID
-	staff, err := models.Staff{}.Get(extStaffID, extCorpID, false)
+	staff, err := (&models.Staff{}).Get(extStaffID, extCorpID, false)
 	if err != nil {
 		return err
 	}
@@ -94,7 +95,7 @@ func EventDelFollowUserHandler(msg *gowx.RxMessage) (err error) {
 	}
 
 	//删除首页的员工缓存数据
-	err = models.Staff{}.CleanStaffSummaryCache(extStaffID, extCorpID)
+	err = (&models.Staff{}).CleanStaffSummaryCache(extStaffID, extCorpID)
 	if err != nil {
 		return
 	}

@@ -12,8 +12,10 @@ import (
 // EventUpdateStaffHandler
 // Description: 更新员工回调
 // Detail:
+//
 //	同步员工数据
 //	维护部门人数
+//
 // Param: msg 解析后的回调消息
 func EventUpdateStaffHandler(msg *gowx.RxMessage) error {
 	if msg.MsgType != gowx.MessageTypeEvent ||
@@ -32,7 +34,7 @@ func EventUpdateStaffHandler(msg *gowx.RxMessage) error {
 	}
 	extStaffID := extras.GetUserID()
 	extCorpID := conf.Settings.WeWork.ExtCorpID
-	staff, err := models.Staff{}.Get(extStaffID, extCorpID, false)
+	staff, err := (&models.Staff{}).Get(extStaffID, extCorpID, false)
 	if err != nil {
 		return err
 	}
@@ -44,7 +46,7 @@ func EventUpdateStaffHandler(msg *gowx.RxMessage) error {
 	}
 
 	// 找出不同部门，然后新的部门增加人数，少的部门减少人数
-	newStaff, err := models.Staff{}.Get(extStaffID, extCorpID, false)
+	newStaff, err := (&models.Staff{}).Get(extStaffID, extCorpID, false)
 	if err != nil {
 		return err
 	}

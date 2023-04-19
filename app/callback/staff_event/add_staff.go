@@ -74,12 +74,12 @@ func SyncStaff(extCorpID string, ExtStaffID string) error {
 		DeptIds:   info.DeptIDs,
 	}
 
-	err = models.Staff{}.Upsert(staff)
+	err = (&models.Staff{}).Upsert(staff)
 	if err != nil {
 		return err
 	}
 
-	newStaff, err := models.Staff{}.Get(ExtStaffID, extCorpID, false)
+	newStaff, err := (&models.Staff{}).Get(ExtStaffID, extCorpID, false)
 	if err != nil {
 		return err
 	}

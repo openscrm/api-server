@@ -79,7 +79,7 @@ func (o *Login) StaffAdminLoginCallback(extCorpID string, code string) (item *mo
 		return
 	}
 
-	item, err = (models.Staff{}).Get(userInfo.UserID, "", false)
+	item, err = (&models.Staff{}).Get(userInfo.UserID, "", false)
 	if err != nil {
 		err = errors.Wrap(err, "GetStaffByUserID failed")
 		return
@@ -145,7 +145,7 @@ func (o *Login) StaffLoginCallback(extCorpID string, code string) (item *models.
 		return
 	}
 
-	item, err = (models.Staff{}).Get(userInfo.UserID, "", false)
+	item, err = (&models.Staff{}).Get(userInfo.UserID, "", false)
 	if err != nil {
 		err = errors.Wrap(err, "GetStaffByUserID failed")
 		return

@@ -2,6 +2,7 @@ package models
 
 import (
 	"github.com/pkg/errors"
+	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 	"openscrm/app/requests"
 	app "openscrm/common/app"
@@ -50,7 +51,20 @@ type Customer struct {
 	Timestamp
 }
 
-func (cs Customer) BatchUpsert(customers []Customer) (err error) {
+func (o *Customer) BeforeCreate(tx *gorm.DB) (err error) {
+	if o.Avatar == "" {
+		o.Avatar = "https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/avatar.svg"
+	}
+
+	if o.Name == "" {
+		o.Name = "未知"
+	}
+
+	return
+
+}
+
+func (o Customer) BatchUpsert(customers []Customer) (err error) {
 	err = DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "ext_id"}},
 		DoUpdates: clause.AssignmentColumns([]string{"position", "name", "corp_name", "avatar", "type", "gender", "unionid", "external_profile"}),
@@ -62,7 +76,7 @@ func (cs Customer) BatchUpsert(customers []Customer) (err error) {
 	return
 }
 
-func (cs Customer) Upsert(customer Customer) error {
+func (o Customer) Upsert(customer Customer) error {
 	updateFields := map[string]interface{}{
 		"name":             customer.Name,
 		"position":         customer.Position,
@@ -79,7 +93,7 @@ func (cs Customer) Upsert(customer Customer) error {
 	}).Omit("Staffs").Create(&customer).Error
 }
 
-func (cs Customer) Get(ID string, extCorpID string, withStaffRelation bool) (*Customer, error) {
+func (o Customer) Get(ID string, extCorpID string, withStaffRelation bool) (*Customer, error) {
 	customer := Customer{}
 	db := DB.Model(&Customer{}).Where("id = ? and ext_corp_id = ?", ID, extCorpID)
 	if withStaffRelation {
@@ -109,7 +123,7 @@ func (cs Customer) Get(ID string, extCorpID string, withStaffRelation bool) (*Cu
 //         join staff s on s.ext_staff_id = customer_staff.ext_staff_id
 //         left join customer_info ci on c.id = ci.ext_customer_id;
 
-func (cs Customer) QueryExport(req requests.QueryCustomerReq, extCorpID string, pager *app.Pager) ([]CustomerExportItem, int64, error) {
+func (o Customer) QueryExport(req requests.QueryCustomerReq, extCorpID string, pager *app.Pager) ([]CustomerExportItem, int64, error) {
 
 	db := DB.Table("customer_staff").
 		Joins("join customer c on c.ext_id = customer_staff.ext_customer_id").
@@ -147,7 +161,7 @@ func (cs Customer) QueryExport(req requests.QueryCustomerReq, extCorpID string, 
 
 // ExportQuery
 // Description: 查询需要导出的客户
-func (cs Customer) ExportQuery(
+func (o Customer) ExportQuery(
 	req requests.QueryCustomerReq, extCorpID string, pager *app.Pager) ([]*CustomerExportItem, int64, error) {
 
 	var customers []*CustomerExportItem
@@ -204,7 +218,7 @@ func (cs Customer) ExportQuery(
 
 // Query
 // Description: 查询客户
-func (cs Customer) Query(
+func (o Customer) Query(
 	req requests.QueryCustomerReq, extCorpID string, pager *app.Pager) ([]*Customer, int64, error) {
 
 	var customers []*Customer
@@ -262,7 +276,7 @@ func (cs Customer) Query(
 	return customers, total, nil
 }
 
-func (cs Customer) GetMassMsg(missionID string) (*MassMsg, error) {
+func (o Customer) GetMassMsg(missionID string) (*MassMsg, error) {
 	msg := &MassMsg{}
 	err := DB.Model(&MassMsg{}).Where("id = ?", missionID).First(&msg).Error
 	if err != nil {
@@ -271,7 +285,7 @@ func (cs Customer) GetMassMsg(missionID string) (*MassMsg, error) {
 	return msg, nil
 }
 
-func (cs Customer) GetByExtID(
+func (o Customer) GetByExtID(
 	ExtCustomerID string, extStaffIDs []string, withStaffRelation bool) (customer Customer, err error) {
 
 	db := DB.Model(&Customer{})

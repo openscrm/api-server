@@ -73,8 +73,21 @@ type Staff struct {
 	Timestamp
 }
 
-func (s Staff) TableName() string {
+func (s *Staff) TableName() string {
 	return "staff"
+}
+
+func (s *Staff) BeforeCreate(tx *gorm.DB) (err error) {
+	if s.AvatarURL == "" {
+		s.AvatarURL = "https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/avatar.svg"
+	}
+
+	if s.Name == "" {
+		s.Name = "未知"
+	}
+
+	return
+
 }
 
 // StaffMainInfo 员工的主要信息
@@ -104,7 +117,7 @@ type MainDepartment struct {
 	ExtParentID int64 `gorm:"type:int unsigned;comment:上级部门ID,根部门为1" json:"ext_parent_id"`
 }
 
-func (s Staff) Get(extStaffID string, extCorpID string, withDepartments bool) (*Staff, error) {
+func (s *Staff) Get(extStaffID string, extCorpID string, withDepartments bool) (*Staff, error) {
 	staff := &Staff{}
 	db := DB.Model(&Staff{}).Where("ext_id = ? ", extStaffID)
 
@@ -124,7 +137,7 @@ func (s Staff) Get(extStaffID string, extCorpID string, withDepartments bool) (*
 	return staff, nil
 }
 
-func (s Staff) Query(staff Staff, extCorpID string, sorter *app.Sorter, pager *app.Pager) ([]*Staff, int64, error) {
+func (s *Staff) Query(staff Staff, extCorpID string, sorter *app.Sorter, pager *app.Pager) ([]*Staff, int64, error) {
 	staffs := make([]*Staff, 0)
 	var total int64
 	db := DB.Model(&Staff{}).Where("ext_corp_id = ?", extCorpID)
@@ -168,7 +181,7 @@ func (s Staff) Query(staff Staff, extCorpID string, sorter *app.Sorter, pager *a
 	return staffs, total, nil
 }
 
-func (s Staff) BatchUpsert(staff []Staff) error {
+func (s *Staff) BatchUpsert(staff []Staff) error {
 
 	err := DB.Clauses(clause.OnConflict{
 		Columns: []clause.Column{{Name: "ext_corp_id"}, {Name: "ext_id"}},
@@ -181,7 +194,7 @@ func (s Staff) BatchUpsert(staff []Staff) error {
 	}
 	return nil
 }
-func (s Staff) Upsert(staff Staff) error {
+func (s *Staff) Upsert(staff Staff) error {
 
 	err := DB.Clauses(clause.OnConflict{
 		Columns: []clause.Column{{Name: "ext_corp_id"}, {Name: "ext_id"}},
@@ -195,7 +208,7 @@ func (s Staff) Upsert(staff Staff) error {
 	return nil
 }
 
-func (s Staff) GetMainInfoByMsgID(msgID string) (users []WelcomeMsgUser, err error) {
+func (s *Staff) GetMainInfoByMsgID(msgID string) (users []WelcomeMsgUser, err error) {
 	err = DB.Model(&Staff{}).Where("welcome_msg_id = ?", msgID).Find(&users).Error
 	if err != nil {
 		err = errors.WithStack(err)
@@ -204,7 +217,7 @@ func (s Staff) GetMainInfoByMsgID(msgID string) (users []WelcomeMsgUser, err err
 	return
 }
 
-func (s Staff) EnableInBatches(enableIDs []string, disableIDs []string, extCorpID string) error {
+func (s *Staff) EnableInBatches(enableIDs []string, disableIDs []string, extCorpID string) error {
 	if len(enableIDs) > 0 {
 		return DB.Model(&Staff{}).
 			Where("ext_corp_id = ?", extCorpID).
@@ -220,7 +233,7 @@ func (s Staff) EnableInBatches(enableIDs []string, disableIDs []string, extCorpI
 	return nil
 }
 
-func (s Staff) CleanCache(extCorpID string) (err error) {
+func (s *Staff) CleanCache(extCorpID string) (err error) {
 	keys := fmt.Sprintf(constants.CacheMainStaffInfoKeyPrefix, extCorpID)
 	log.Sugar.Debugw("args", "prefix", keys)
 	err = redis.RedisClient.Eval(context.TODO(), constants.DelCacheMainStaffInfoKeyScripts, []string{"KEYS"}, keys).Err()
@@ -233,7 +246,7 @@ func (s Staff) CleanCache(extCorpID string) (err error) {
 // CleanStaffSummaryCache
 // Description: 删除首页的员工缓存数据
 // Detail: 所有count的字段所在数据更新时均需要删除缓存,删除员工和admin/superAdmin 的缓存数据
-func (s Staff) CleanStaffSummaryCache(extStaffID, extCorpID string) (err error) {
+func (s *Staff) CleanStaffSummaryCache(extStaffID, extCorpID string) (err error) {
 	keys := []string{
 		fmt.Sprintf(constants.CacheCustomerSummaryKey, extCorpID, extStaffID),
 		fmt.Sprintf(constants.CacheCustomerSummaryKey, extCorpID, string(constants.RoleTypeSuperAdmin)),
@@ -253,7 +266,7 @@ func (s Staff) CleanStaffSummaryCache(extStaffID, extCorpID string) (err error) 
 	return
 }
 
-func (s Staff) GetWelcomeMsgByExtStaffID(extStaffID string, extCorpID string) (msg WelcomeMsg, err error) {
+func (s *Staff) GetWelcomeMsgByExtStaffID(extStaffID string, extCorpID string) (msg WelcomeMsg, err error) {
 	err = DB.Table("staff").Joins("join welcome_msg wm on staff.welcome_msg_id = wm.id").
 		Where(" staff.ext_corp_id = ?", extCorpID).
 		Where("staff.ext_id  = ?", extStaffID).Select("wm.*").Find(&msg).Error
@@ -264,7 +277,7 @@ func (s Staff) GetWelcomeMsgByExtStaffID(extStaffID string, extCorpID string) (m
 	return
 }
 
-func (s Staff) CachedQueryMainInfo(req requests.QueryMainStaffInfoReq, extCorpID string, pager *app.Pager) (StaffsMainInfoCache, error) {
+func (s *Staff) CachedQueryMainInfo(req requests.QueryMainStaffInfoReq, extCorpID string, pager *app.Pager) (StaffsMainInfoCache, error) {
 	var staffsCached StaffsMainInfoCache
 	err := redis.GetOrSetFunc(
 		fmt.Sprintf(constants.CacheMainStaffInfoKey, extCorpID, req.ExtDepartmentID, pager.GetOffset(), pager.GetLimit()),
@@ -277,7 +290,7 @@ func (s Staff) CachedQueryMainInfo(req requests.QueryMainStaffInfoReq, extCorpID
 	return staffsCached, err
 }
 
-func (s Staff) QueryMainInfo(req requests.QueryMainStaffInfoReq, extCorpID string, pager *app.Pager) (res StaffsMainInfoCache, err error) {
+func (s *Staff) QueryMainInfo(req requests.QueryMainStaffInfoReq, extCorpID string, pager *app.Pager) (res StaffsMainInfoCache, err error) {
 
 	db := DB.Table("staff").
 		Joins("left join staff_department sd on sd.staff_id = staff.id").
@@ -323,7 +336,7 @@ func (s Staff) QueryMainInfo(req requests.QueryMainStaffInfoReq, extCorpID strin
 	return res, err
 }
 
-func (s Staff) GetMainInfo(extStaffID string, extCorpID string) (res StaffMainInfo, err error) {
+func (s *Staff) GetMainInfo(extStaffID string, extCorpID string) (res StaffMainInfo, err error) {
 
 	var staff Staff
 	err = DB.Model(&Staff{}).
@@ -345,7 +358,7 @@ func (s Staff) GetMainInfo(extStaffID string, extCorpID string) (res StaffMainIn
 }
 
 // UpdateStaffMsgArchStatus 更新员工会话存档开关
-func (s Staff) UpdateStaffMsgArchStatus(extCorpID string, extStaffIDs []string, status constants.Boolean) (err error) {
+func (s *Staff) UpdateStaffMsgArchStatus(extCorpID string, extStaffIDs []string, status constants.Boolean) (err error) {
 	return DB.Model(&Staff{}).
 		Where("ext_corp_id = ? and ext_id in (?)", extCorpID, extStaffIDs).
 		Update("enable_msg_arch", status).Error
@@ -354,18 +367,18 @@ func (s Staff) UpdateStaffMsgArchStatus(extCorpID string, extStaffIDs []string, 
 // UpdateWelcomeMsg
 // Description: 更新员工欢迎语
 // Detail: 更新staff表welcome_msg_id
-func (s Staff) UpdateWelcomeMsg(tx *gorm.DB, extCorpID string, staffID []string, msgID string) error {
+func (s *Staff) UpdateWelcomeMsg(tx *gorm.DB, extCorpID string, staffID []string, msgID string) error {
 	return tx.Model(&Staff{}).
 		Where("ext_corp_id = ?", extCorpID).
 		Where("ext_id in (?)", staffID).
 		Update("welcome_msg_id", msgID).Error
 }
 
-func (s Staff) CreateStaffInBatches(newStaffs []Staff) error {
+func (s *Staff) CreateStaffInBatches(newStaffs []Staff) error {
 	return DB.Model(&Staff{}).CreateInBatches(newStaffs, len(newStaffs)).Error
 }
 
-func (s Staff) GetStaffByIDSAndSignatures(ids, signatures []string) (updatedIDs []string, err error) {
+func (s *Staff) GetStaffByIDSAndSignatures(ids, signatures []string) (updatedIDs []string, err error) {
 	if err = DB.Model(&Staff{}).
 		Where("ext_id in ? and signature not in ?", ids, signatures).
 		Pluck("ext_id", &updatedIDs).Error; err != nil {
@@ -375,7 +388,7 @@ func (s Staff) GetStaffByIDSAndSignatures(ids, signatures []string) (updatedIDs 
 	return
 }
 
-func (s Staff) GetAllStaffIDs() (allUserIds []string, err error) {
+func (s *Staff) GetAllStaffIDs() (allUserIds []string, err error) {
 	err = DB.Model(&Staff{}).Pluck("ext_id", &allUserIds).Error
 	if err != nil {
 		err = errors.Wrap(err, "GetAllStaffIDs failed")
@@ -391,7 +404,7 @@ type IDExtIDs struct {
 
 // GetIDsByExtIDs
 // Description: ext_id->id
-func (s Staff) GetIDsByExtIDs(extIDs []string) (res map[string]string, err error) {
+func (s *Staff) GetIDsByExtIDs(extIDs []string) (res map[string]string, err error) {
 	ids := make([]IDExtIDs, 0)
 	res = make(map[string]string, 0)
 	err = DB.Model(&Staff{}).Select("id, ext_id").Where("ext_id in (?)", extIDs).Find(&ids).Error
@@ -404,15 +417,15 @@ func (s Staff) GetIDsByExtIDs(extIDs []string) (res map[string]string, err error
 	return
 }
 
-func (s Staff) UpdateAuthorizedStatus(staffIDs []string) error {
+func (s *Staff) UpdateAuthorizedStatus(staffIDs []string) error {
 	return DB.Model(&Staff{}).Where("ext_id in (?)", staffIDs).Update("is_authorized", constants.True).Error
 }
 
-func (s Staff) RemoveOriginalWelcomeMsg(tx *gorm.DB, welcomeMsgId string) error {
+func (s *Staff) RemoveOriginalWelcomeMsg(tx *gorm.DB, welcomeMsgId string) error {
 	return tx.Model(&Staff{}).Where("welcome_msg_id = ?", welcomeMsgId).Update("welcome_msg_id", nil).Error
 }
 
-func (s Staff) CachedGetCustomerSummary(extStaffID, extCorpID string) (cs CustomerSummary, err error) {
+func (s *Staff) CachedGetCustomerSummary(extStaffID, extCorpID string) (cs CustomerSummary, err error) {
 	err = redis.GetOrSetFunc(
 		fmt.Sprintf(constants.CacheCustomerSummaryKey, extCorpID, extStaffID),
 		func() (interface{}, error) {
@@ -427,7 +440,7 @@ func (s Staff) CachedGetCustomerSummary(extStaffID, extCorpID string) (cs Custom
 // GetCustomerSummary
 // Description: 统计首页数据
 // Detail: 分角色查询
-func (s Staff) GetCustomerSummary(extStaffID string, extCorpID string) (cs CustomerSummary, err error) {
+func (s *Staff) GetCustomerSummary(extStaffID string, extCorpID string) (cs CustomerSummary, err error) {
 	todayStart := util.Today()
 	todayEnd := todayStart.Add(24 * time.Hour)
 	//db := DB.Model(&CorpSetting{}).Where("ext_corp_id = ?", extCorpID)
@@ -522,7 +535,7 @@ func SetupStaffRole() {
 		os.Exit(1)
 	}
 
-	err = Staff{}.CleanCache(conf.Settings.WeWork.ExtCorpID)
+	err = (&Staff{}).CleanCache(conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
 		log.TracedError("CleanCache failed", errors.WithStack(err))
 		os.Exit(1)

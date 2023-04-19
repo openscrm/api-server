@@ -25,7 +25,7 @@ func EventDelStaffHandler(msg *gowx.RxMessage) error {
 	}
 	extStaffID := extras.GetUserID()
 	extCorpID := conf.Settings.WeWork.ExtCorpID
-	staff, err := models.Staff{}.Get(extStaffID, extCorpID, false)
+	staff, err := (&models.Staff{}).Get(extStaffID, extCorpID, false)
 	if err != nil {
 		return err
 	}

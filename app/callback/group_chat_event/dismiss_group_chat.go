@@ -36,7 +36,7 @@ func EventDismissExternalChatHandler(msg *workwx.RxMessage) error {
 		return err
 	}
 
-	err = models.Staff{}.CleanStaffSummaryCache("", msg.ToUserID)
+	err = (&models.Staff{}).CleanStaffSummaryCache("", msg.ToUserID)
 	if err != nil {
 		err = errors.WithStack(err)
 		return err

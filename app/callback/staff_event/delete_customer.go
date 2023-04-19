@@ -102,7 +102,7 @@ func notifyAdmin(extStaffID, extCustomerID, extCorpID string) (content string, e
 		return
 	}
 
-	staff, err := models.Staff{}.Get(extStaffID, extCorpID, false)
+	staff, err := (&models.Staff{}).Get(extStaffID, extCorpID, false)
 	if err != nil {
 		log.Sugar.Errorw("get staff failed", "ext_corp_id", extCorpID, "err", err)
 		return
