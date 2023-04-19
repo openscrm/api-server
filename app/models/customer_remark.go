@@ -7,7 +7,7 @@ import (
 // CustomerRemark 自定义信息
 type CustomerRemark struct {
 	ExtCorpModel
-	Name         string         `gorm:"type:char(32);uniqueIndex:idx_corp_id_name;" json:"name"`
+	Name         string         `gorm:"type:char(64);uniqueIndex:idx_corp_id_name;" json:"name"`
 	FieldType    string         `json:"field_type"` // todo rename to remark_type
 	HasStaffUsed bool           `json:"has_staff_used"`
 	RankNum      int            `gorm:"type:int unsigned" json:"rank_num"`
@@ -27,7 +27,7 @@ func (r CustomerRemark) ExchangeOrder(id string, id2 string) error {
 type RemarkOption struct {
 	Model
 	RemarkID string `json:"remark_id" gorm:"type:bigint;uniqueIndex:idx_remark_id_name"`
-	Name     string `json:"name" gorm:"type:char(32);uniqueIndex:idx_remark_id_name"`
+	Name     string `json:"name" gorm:"type:char(64);uniqueIndex:idx_remark_id_name"`
 	Timestamp
 }
 

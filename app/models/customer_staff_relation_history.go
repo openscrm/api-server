@@ -19,9 +19,9 @@ import (
 type CustomerStaffRelationHistory struct {
 	ExtCorpModel
 	// 企微员工ID
-	ExtStaffID string `gorm:"type:char(32);index;comment:员工ID" json:"ext_staff_id"`
+	ExtStaffID string `gorm:"type:char(64);index;comment:员工ID" json:"ext_staff_id"`
 	// 企微客户ID
-	ExtCustomerID string `gorm:"type:char(32);index;comment:客户ID" json:"ext_customer_id"`
+	ExtCustomerID string `gorm:"type:char(64);index;comment:客户ID" json:"ext_customer_id"`
 	// 员工添加客户的时间,与wx返回的一致，以便使用copier
 	Createtime time.Time `gorm:"comment:员工添加客户的时间" json:"createtime"`
 	// 客户删除员工的时间

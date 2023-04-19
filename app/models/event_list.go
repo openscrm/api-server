@@ -15,10 +15,10 @@ type CustomerEvent struct {
 	ExtCorpModel
 	Content string `gorm:"type:text;comment:事件内容" json:"content"`
 	// 筛选
-	EventType         string `gorm:"type:char(32);index;comment:事件类型" json:"event_type"`
-	EventName         string `gorm:"type:char(32);comment:事件名称" json:"event_name"`
-	ExtCustomerID     string `gorm:"type:char(32);comment:企微定义的客户ID" json:"ext_customer_id"`
-	ExtStaffID        string `gorm:"type:varchar(32);index;comment:微信定义的员工ID" json:"ext_staff_id"`
+	EventType         string `gorm:"type:char(64);index;comment:事件类型" json:"event_type"`
+	EventName         string `gorm:"type:char(64);comment:事件名称" json:"event_name"`
+	ExtCustomerID     string `gorm:"type:char(64);comment:企微定义的客户ID" json:"ext_customer_id"`
+	ExtStaffID        string `gorm:"type:varchar(64);index;comment:微信定义的员工ID" json:"ext_staff_id"`
 	RelateStaffAvatar string `gorm:"type:varchar(128);comment:员工头像" json:"relate_staff_avatar"`
 	RelateStaffName   string `gorm:"type:varchar(255);comment:员工名字" json:"relate_staff_name"`
 	// 提醒类型事件的发送时间

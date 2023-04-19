@@ -13,7 +13,7 @@ import (
 
 type GroupChat struct {
 	ExtCorpModel
-	ExtChatID          string                     `gorm:"uniqueIndex;type:char(32);comment:群聊id" json:"ext_chat_id"`
+	ExtChatID          string                     `gorm:"uniqueIndex;type:char(64);comment:群聊id" json:"ext_chat_id"`
 	Name               string                     `gorm:"type:varchar(255);index;comment:群名字" json:"name"`
 	Owner              string                     `gorm:"type:char(64);index;comment:群主ExtID" json:"owner"`
 	OwnerName          string                     `gorm:"type:char(64);comment:群主名字" json:"owner_name"`
@@ -32,7 +32,7 @@ type GroupChat struct {
 }
 
 type GroupChatMainInfo struct {
-	ExtChatID string `gorm:"uniqueIndex;type:char(32);comment:群聊id" json:"ext_chat_id"`
+	ExtChatID string `gorm:"uniqueIndex;type:char(64);comment:群聊id" json:"ext_chat_id"`
 	Name      string `gorm:"type:text;comment:群名字" json:"name"`
 	OwnerName string `json:"owner_name"`
 }

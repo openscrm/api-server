@@ -9,8 +9,8 @@ import (
 
 type InternalTag struct {
 	ExtCorpModel
-	ExtStaffID string `gorm:"index;type:char(32)" json:"ext_staff_id"`
-	Name       string `gorm:"type:char(32)" json:"name"`
+	ExtStaffID string `gorm:"index;type:char(64)" json:"ext_staff_id"`
+	Name       string `gorm:"type:char(64)" json:"name"`
 	Timestamp
 }
 

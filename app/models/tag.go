@@ -7,8 +7,8 @@ import (
 
 type Tag struct {
 	ExtCorpModel
-	ExtID      string `gorm:"type:char(32);uniqueIndex;comment:外部标签ID" json:"ext_id"`
-	ExtGroupID string `gorm:"type:char(32);index;comment:外部标签组ID" json:"ext_group_id"`
+	ExtID      string `gorm:"type:char(64);uniqueIndex;comment:外部标签ID" json:"ext_id"`
+	ExtGroupID string `gorm:"type:char(64);index;comment:外部标签组ID" json:"ext_group_id"`
 	Name       string `gorm:"type:char(255);uniqueIndex:idx_group_name_tag_name;comment:标签名称" json:"name"`
 	GroupName  string `gorm:"type:char(255);uniqueIndex:idx_group_name_tag_name;comment:标签组名称" json:"group_name"`
 	CreateTime int    `gorm:"type:int;comment:创建时间" json:"create_time"`

@@ -9,7 +9,7 @@ import (
 )
 
 type CustomerExportItem struct {
-	ExtID            string          `gorm:"type:char(32);uniqueIndex:idx_ext_customer_id;comment:微信定义的userID" json:"ext_customer_id"`
+	ExtID            string          `gorm:"type:char(64);uniqueIndex:idx_ext_customer_id;comment:微信定义的userID" json:"ext_customer_id"`
 	CustomerName     string          `json:"customer_name"`
 	CustomerCorpName string          `json:"customer_corp_name"`
 	StaffName        string          `json:"staff_name"`
@@ -28,7 +28,7 @@ type CustomerExportItem struct {
 type Customer struct {
 	ExtCorpModel
 	// 微信定义的客户ID
-	ExtID string `gorm:"type:char(32);uniqueIndex:idx_ext_customer_id;comment:微信定义的userID" json:"ext_customer_id"`
+	ExtID string `gorm:"type:char(64);uniqueIndex:idx_ext_customer_id;comment:微信定义的userID" json:"ext_customer_id"`
 	// 微信用户对应微信昵称；企业微信用户，则为联系人或管理员设置的昵称、认证的实名和账号名称
 	Name string `gorm:"type:varchar(255);comment:名称，微信用户对应微信昵称；企业微信用户，则为联系人或管理员设置的昵称、认证的实名和账号名称" json:"name"`
 	// 职位,客户为企业微信时使用

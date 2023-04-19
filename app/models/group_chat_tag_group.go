@@ -9,7 +9,7 @@ import (
 
 type GroupChatTagGroup struct {
 	ExtCorpModel
-	Name string         `gorm:"type:char(32);uniqueIndex:name;" json:"name"`
+	Name string         `gorm:"type:char(64);uniqueIndex:name;" json:"name"`
 	Tags []GroupChatTag `gorm:"foreignKey:GroupChatTagGroupID;references:ID" json:"tags"`
 }
 

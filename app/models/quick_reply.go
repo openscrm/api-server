@@ -25,11 +25,11 @@ type QuickReply struct {
 	// 发送次数
 	SendCount int `gorm:"type:int unsigned;comment:已发送次数" json:"send_count"`
 	// 创建者ID
-	ExtStaffId string `gorm:"type:char(32);comment:创建人企微ID" json:"staff_ext_id"`
+	ExtStaffId string `gorm:"type:char(64);comment:创建人企微ID" json:"staff_ext_id"`
 	// 创建人名字
 	StaffName string `gorm:"type:varchar(128);comment:创建人名字" json:"staff_name"`
 	// 可用范围
-	Scope string `gorm:"type:varchar(32)" json:"scope"`
+	Scope string `gorm:"type:varchar(64)" json:"scope"`
 	// 话术条目详情
 	ReplyDetails []QuickReplyDetail `gorm:"foreignKey:QuickReplyID" json:"reply_details"`
 	// 分组ID
@@ -141,7 +141,7 @@ func (q QuickReply) QueryByKeyword(keyword string, extCorpID string) (replies []
 	return
 }
 
-//QuickReplyDetail 话术库每条记录内容
+// QuickReplyDetail 话术库每条记录内容
 type QuickReplyDetail struct {
 	ExtCorpModel
 	// 话术ID

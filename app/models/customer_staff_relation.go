@@ -29,9 +29,9 @@ type CustomerStaffRelation struct {
 type CustomerStaff struct {
 	ExtCorpModel
 	// 企微员工ID
-	ExtStaffID string `gorm:"type:char(32);index;uniqueIndex:idx_ext_staff_id_ext_customer_id;comment:员工ID" json:"ext_staff_id"`
+	ExtStaffID string `gorm:"type:char(64);index;uniqueIndex:idx_ext_staff_id_ext_customer_id;comment:员工ID" json:"ext_staff_id"`
 	// 企微客户ID
-	ExtCustomerID string `gorm:"type:char(32);index;uniqueIndex:idx_ext_staff_id_ext_customer_id;comment:客户ID" json:"ext_customer_id"`
+	ExtCustomerID string `gorm:"type:char(64);index;uniqueIndex:idx_ext_staff_id_ext_customer_id;comment:客户ID" json:"ext_customer_id"`
 	// 员工对客户的备注
 	Remark string `gorm:"type:varchar(255);comment:员工对客户的备注" json:"remark"`
 	// 员工对客户的描述

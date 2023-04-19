@@ -31,7 +31,7 @@ type ChatMsg struct {
 	//消息动作，目前有send(发送消息)/recall(撤回消息)/switch(切换企业日志)三种类型。String类型
 	Action string `gorm:"type:char(8);comment:消息动作，目前有send(发送消息)/recall(撤回消息)/switch(切换企业日志)三种类型" json:"action"`
 	//消息发送方id。同一企业内容为userid，非相同企业为external_userid。消息如果是机器人发出，也为external_userid。String类型
-	From string `gorm:"type:char(32);comment:消息发送方id。同一企业内容为userid，非相同企业为external_userid。消息如果是机器人发出，也为external_userid" json:"from"`
+	From string `gorm:"type:char(64);comment:消息发送方id。同一企业内容为userid，非相同企业为external_userid。消息如果是机器人发出，也为external_userid" json:"from"`
 	//消息接收方列表，可能是多个，同一个企业内容为userid，非相同企业为external_userid。数组，内容为string类型
 	ToList constants.StringArrayField `gorm:"type:json;comment:消息接收方列表" json:"tolist"`
 	//群聊消息的群id。如果是单聊则为空。String类型
@@ -39,7 +39,7 @@ type ChatMsg struct {
 	//消息发送时间戳，utc时间，ms单位。
 	MsgTime int64 `gorm:"type:bigint(64);comment:消息发送时间戳，utc时间，ms单位。" json:"msgtime"`
 	//文本消息为：text。String类型
-	MsgType string `gorm:"type:varchar(32);comment:文本消息为：text" json:"msgtype"`
+	MsgType string `gorm:"type:varchar(64);comment:文本消息为：text" json:"msgtype"`
 	// 聊天的文本内容
 	ContentText string `gorm:"class:FULLTEXT,option:WITH PARSER ngram;comment:聊天的文本内容" json:"content_text"`
 	//消息的seq值，标识消息的序号。再次拉取需要带上上次回包中最大的seq。Uint64类型，范围0-pow(2,64)-1
@@ -47,7 +47,7 @@ type ChatMsg struct {
 	// 发送-接收双方ID hash得到
 	SessionID string `gorm:"type:char(128);comment:消息的会话ID,相同收发方的会话ID相同" json:"session_id"`
 	// 会话类型
-	SessionType    string         `gorm:"type:char(32);comment:会话类型" json:"session_type"`
+	SessionType    string         `gorm:"type:char(64);comment:会话类型" json:"session_type"`
 	ChatMsgContent ChatMsgContent `gorm:"foreignKey:chat_msg_id;reference:ID" json:"chat_msg_content"`
 
 	// 不用返回没有存在的类型
@@ -113,7 +113,7 @@ type Location struct {
 	Zoom      int     `json:"zoom"`
 }
 
-//名片
+// 名片
 type Card struct {
 	CorpName string `json:"corpname"` //名片所有者所在的公司名称
 	UserID   string `json:"userid"`   //名片所有者的id，同一公司是userid，不同公司是external_userid。String类型
@@ -171,7 +171,7 @@ type ChatSessions struct {
 	//消息动作，目前有send(发送消息)/recall(撤回消息)/switch(切换企业日志)三种类型。String类型
 	Action string `gorm:"type:char(8)" json:"action"`
 	//消息发送方id。同一企业内容为userid，非相同企业为external_userid。消息如果是机器人发出，也为external_userid。String类型
-	From string `gorm:"type:char(32)" json:"from"`
+	From string `gorm:"type:char(64)" json:"from"`
 	//消息接收方列表，可能是多个，同一个企业内容为userid，非相同企业为external_userid。数组，内容为string类型
 	ToList constants.StringArrayField `gorm:"type:json" json:"tolist"`
 	//群聊消息的群id。如果是单聊则为空。String类型
@@ -179,7 +179,7 @@ type ChatSessions struct {
 	//消息发送时间戳，utc时间，ms单位。
 	MsgTime int64 `gorm:"type:bigint(64)" json:"msgtime"`
 	//文本消息为：text。String类型
-	MsgType string `gorm:"type:varchar(32)" json:"msgtype"`
+	MsgType string `gorm:"type:varchar(64)" json:"msgtype"`
 	// 聊天的文本内容
 	ContentText string `gorm:"class:FULLTEXT,option:WITH PARSER ngram" json:"content_text"`
 	//消息的seq值，标识消息的序号。再次拉取需要带上上次回包中最大的seq。Uint64类型，范围0-pow(2,64)-1

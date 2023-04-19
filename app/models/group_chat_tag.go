@@ -5,7 +5,7 @@ import "gorm.io/gorm/clause"
 type GroupChatTag struct {
 	ExtCorpModel
 	GroupChatTagGroupID string `json:"group_chat_tag_group_id" gorm:"uniqueIndex:idx_group_id_name"`
-	Name                string `json:"name" gorm:"type:char(32);uniqueIndex:idx_group_id_name"`
+	Name                string `json:"name" gorm:"type:char(64);uniqueIndex:idx_group_id_name"`
 	Timestamp
 }
 

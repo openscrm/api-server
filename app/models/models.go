@@ -31,7 +31,7 @@ type ExtCorpModel struct {
 	// ExtCorpID 外部企业ID
 	ExtCorpID string `json:"ext_corp_id" gorm:"index;type:char(18);comment:外部企业ID" validate:ext_corp_id"`
 	// ExtCreatorID 创建者外部员工ID
-	ExtCreatorID string `json:"ext_creator_id" gorm:"index;type:char(32);comment:创建者外部员工ID" validate:"word"`
+	ExtCreatorID string `json:"ext_creator_id" gorm:"index;type:char(64);comment:创建者外部员工ID" validate:"word"`
 }
 
 // RefModel 关联表基本模型，ID仅用做唯一键，使用组合字段作为主键，方便去重，可实现Association replace保留原纪录

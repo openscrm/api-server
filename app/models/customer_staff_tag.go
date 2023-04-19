@@ -9,7 +9,7 @@ type CustomerStaffTag struct {
 	ExtCorpModel
 	CustomerStaffID string `json:"customer_staff_id" gorm:"type:bigint;uniqueIndex:ext_tag_id_cs_id"`
 	// TagID 标签id
-	ExtTagID string `json:"ext_tag_id" gorm:"type:char(32);uniqueIndex:ext_tag_id_cs_id"`
+	ExtTagID string `json:"ext_tag_id" gorm:"type:char(64);uniqueIndex:ext_tag_id_cs_id"`
 	// GroupName 该成员添加此外部联系人所打标签的分组名称（标签功能需要企业微信升级到2.7.5及以上版本）
 	GroupName string `json:"group_name"`
 	// TagName 该成员添加此外部联系人所打标签名称
