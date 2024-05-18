@@ -3,8 +3,8 @@ package routers
 import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"openscrm/app/callback"
 	c "openscrm/app/constants"
 	"openscrm/app/controller"
