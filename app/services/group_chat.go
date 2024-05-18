@@ -197,7 +197,11 @@ func (o GroupChatService) Export(req requests.QueryGroupChatReq, extCorpID strin
 
 	file := excelize.NewFile()
 	titles := []string{"客户群名称", "群主", "群标签", "群人数", "当日群人数", "当日入群", "当日退群", "创群时间", "群ID"}
-	sheetIndex := file.NewSheet(constants.DataExportGroupChatListSheetName)
+	sheetIndex, err := file.NewSheet(constants.DataExportGroupChatListSheetName)
+	if err != nil {
+		log.Sugar.Error(err)
+		return nil, "", err
+	}
 	file.DeleteSheet("Sheet1")
 	file.SetActiveSheet(sheetIndex)
 

@@ -88,7 +88,12 @@ func (o DataExporter) ExportGroupChatList(jobID string, extCorpID string, req re
 
 	file := excelize.NewFile()
 	titles := []string{"客户群名称", "群主", "群标签", "群人数", "当日群人数", "当日入群", "当日退群", "创群时间", "群ID"}
-	sheetIndex := file.NewSheet(constants.DataExportGroupChatListSheetName)
+	sheetIndex, err := file.NewSheet(constants.DataExportGroupChatListSheetName)
+	if err != nil {
+		log.Sugar.Error(err)
+		return err
+	}
+
 	file.DeleteSheet("Sheet1")
 	file.SetActiveSheet(sheetIndex)
 
@@ -305,7 +310,15 @@ func (o DataExporter) PrettifySheet(sheetName string, file *excelize.File, expor
 		return err
 	}
 
-	styleCenter, err := file.NewStyle(`{"font":{"bold":true},"alignment":{"horizontal":"center","vertical":"center"}}`)
+	styleCenter, err := file.NewStyle(&excelize.Style{
+		Alignment: &excelize.Alignment{
+			Horizontal: "center",
+			Vertical:   "center",
+		},
+		Font: &excelize.Font{
+			Bold: true,
+		},
+	})
 	if err != nil {
 		log.Sugar.Errorw("create new style  failed", "err", err)
 		return err

@@ -2,9 +2,9 @@ package models
 
 import (
 	"fmt"
-	redis2 "github.com/go-redis/redis/v8"
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"
+	redis2 "github.com/redis/go-redis/v9"
 	"golang.org/x/net/context"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"

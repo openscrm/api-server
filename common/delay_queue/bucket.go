@@ -2,7 +2,7 @@ package delay_queue
 
 import (
 	"context"
-	"github.com/go-redis/redis/v8"
+	"github.com/redis/go-redis/v9"
 )
 
 // BucketItem bucket中的元素
@@ -17,7 +17,7 @@ func pushToBucket(key string, timestamp int64, jobId string) error {
 		Score:  float64(timestamp),
 		Member: jobId,
 	}
-	return Rdb.ZAdd(context.TODO(), key, &z).Err()
+	return Rdb.ZAdd(context.TODO(), key, z).Err()
 }
 
 // 从bucket中获取延迟时间最小的JobId

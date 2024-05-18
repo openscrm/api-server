@@ -29,7 +29,15 @@ func PrettifySheet(sheetName string, file *excelize.File, exportTime string, tit
 		return err
 	}
 
-	styleCenter, err := file.NewStyle(`{"font":{"bold":true},"alignment":{"horizontal":"center","vertical":"center"}}`)
+	styleCenter, err := file.NewStyle(&excelize.Style{
+		Alignment: &excelize.Alignment{
+			Horizontal: "center",
+			Vertical:   "center",
+		},
+		Font: &excelize.Font{
+			Bold: true,
+		},
+	})
 	if err != nil {
 		log.Sugar.Errorw("create new style  failed", "err", err)
 		return err

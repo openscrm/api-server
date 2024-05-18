@@ -1,8 +1,8 @@
 package consumers
 
 import (
-	"github.com/go-redis/redis/v8"
 	"github.com/pkg/errors"
+	"github.com/redis/go-redis/v9"
 	"math"
 	"openscrm/app/constants"
 	"openscrm/common/delay_queue"

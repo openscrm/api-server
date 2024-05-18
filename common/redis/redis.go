@@ -2,9 +2,9 @@ package redis
 
 import (
 	"context"
-	"github.com/go-redis/redis/v8"
 	"github.com/jinzhu/copier"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/redis/go-redis/v9"
 	"time"
 )
 
