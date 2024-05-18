@@ -11,3 +11,13 @@ type DeptInfo struct {
 	// Order 在父部门中的次序值。order值大的排序靠前。值范围是[0, 2^32)
 	Order uint32 `json:"order"`
 }
+
+// DeptSimpleInfo 部门Id信息
+type DeptSimpleInfo struct {
+	// ID 部门 ID
+	ID int64 `json:"id"`
+	// ParentID 父亲部门id。根部门为1
+	ParentID int64 `json:"parentid"`
+	// Order 在父部门中的次序值。order值大的排序靠前。值范围是[0, 2^32)
+	Order uint32 `json:"order"`
+}

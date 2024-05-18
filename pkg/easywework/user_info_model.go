@@ -40,6 +40,12 @@ type UserInfo struct {
 	Address        string
 }
 
+// UserIdInfo 用户ID信息
+type UserIdInfo struct {
+	UserId       string `json:"userid"`
+	DepartmentId int64  `json:"department"`
+}
+
 // UserGender 用户性别
 type UserGender int
 

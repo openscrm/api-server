@@ -64,8 +64,10 @@ func NewCustomer() *CustomerService {
 // Sync
 // Description: 同步企业所有员工的客户数据
 // Detail:
+//
 //	客户数据：客户信息，客户员工关系，员工给客户的标签
 //	客户表,员工-客户关系表,员工-客户标签表,员工-客户画像表
+//
 // Param: extCorpID 外部企业ID
 // return: err
 func (o CustomerService) Sync(extCorpID string) error {
@@ -75,13 +77,13 @@ func (o CustomerService) Sync(extCorpID string) error {
 		return err
 	}
 
-	staffs, err := client.Customer.ListUsersByDeptID(1, true)
+	staffIds, err := client.Contact.ListUserIds()
 	if err != nil {
 		err = errors.WithStack(err)
 		return err
 	}
 
-	totalExtCustomerIDs, err := o.BatchFetchCustomers(staffs)
+	totalExtCustomerIDs, err := o.BatchFetchCustomers(staffIds)
 	if err != nil {
 		err = errors.WithStack(err)
 		return err
@@ -664,9 +666,11 @@ func (o CustomerService) Export(req requests.QueryCustomerReq, extCorpID string,
 // Description: H5 客户详情页
 // Detail: 查询客户所有信息
 // Param:
+//
 //	extCustomerID 客户外部ID
 //	extStaffID 员工外部ID
 //	extCorpID 企业外部ID
+//
 // return: 客户基本信息，员工对客户的标记信息，客户与员工的时间流水
 func (o CustomerService) GetFullCustomerInfo(extCustomerID, extStaffID, extCorpID string) (responses.FullCustomerInfo, error) {
 	var res responses.FullCustomerInfo
@@ -717,17 +721,18 @@ func (o CustomerService) GetFullCustomerInfo(extCustomerID, extStaffID, extCorpI
 // CustomerStatistic
 // Description: 查询员工客户数每日流水
 // Detail:
-//	1. statistic_type 为total 时,统计所有员工
-//	2. 需要返回的数据样式如 -----xxxxx----xxxx---  每个字符表示一天，-表示DB没有该数据，x表示DB有数据
-//	此方法实现:
-//		当查询类型为全部客户数：
-//		a. 将左侧-置零。
-//		b. 将中间-部分与第一个x部分最后一天数据设为相同值。
-//		c. 将右侧-部分与第二个x部分最后一天数据设为相同值。
-//		当查询类型非全部客户数：
-//		a. 将左侧-置零。
-//		b. 将中间-置零。
-//		c. 将右侧-置零。
+//  1. statistic_type 为total 时,统计所有员工
+//  2. 需要返回的数据样式如 -----xxxxx----xxxx---  每个字符表示一天，-表示DB没有该数据，x表示DB有数据
+//     此方法实现:
+//     当查询类型为全部客户数：
+//     a. 将左侧-置零。
+//     b. 将中间-部分与第一个x部分最后一天数据设为相同值。
+//     c. 将右侧-部分与第二个x部分最后一天数据设为相同值。
+//     当查询类型非全部客户数：
+//     a. 将左侧-置零。
+//     b. 将中间-置零。
+//     c. 将右侧-置零。
+//
 // Param:
 // return: 返回起止时间范围中的员工数量number
 func (o CustomerService) CustomerStatistic(
@@ -896,7 +901,7 @@ func (o CustomerService) UpsertCustomerPortrait(extCustomerID string, extStaffID
 // BatchFetchCustomers
 // Description: 并发获取员工的外部客户ID
 // Detail: 不用将员工与客户id数组对应
-func (o CustomerService) BatchFetchCustomers(extStaff []*workwx.UserInfo) (totalExtCustomerIDs []string, err error) {
+func (o CustomerService) BatchFetchCustomers(staffIdInfos []*workwx.UserIdInfo) (totalExtCustomerIDs []string, err error) {
 	extCorpID := conf.Settings.WeWork.ExtCorpID
 	client, err := GetCorpWxClient(extCorpID)
 	if err != nil {
@@ -905,7 +910,7 @@ func (o CustomerService) BatchFetchCustomers(extStaff []*workwx.UserInfo) (total
 	}
 
 	wg := &sync.WaitGroup{}
-	wg.Add(len(extStaff))
+	wg.Add(len(staffIdInfos))
 
 	responseChannel := make(chan []string, 200)
 	doneChannel := make(chan struct{})
@@ -922,8 +927,8 @@ func (o CustomerService) BatchFetchCustomers(extStaff []*workwx.UserInfo) (total
 
 	// 使用goframe的grpool限定请求并发
 	pool := grpool.New(5)
-	for i := range extStaff {
-		extStaffID := extStaff[i].UserID
+	for i := range staffIdInfos {
+		extStaffID := staffIdInfos[i].UserId
 		pool.Add(func() {
 			defer wg.Done()
 			extCustomerIDs, err := client.Customer.ListExternalContact(extStaffID)

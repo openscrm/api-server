@@ -53,7 +53,7 @@ type StaffAdminForceLoginReq struct {
 	// ExtCorpID 外部企业ID
 	ExtCorpID string `form:"ext_corp_id" json:"ext_corp_id" validate:"omitempty,corp_id"`
 	// ExtStaffID 外部员工ID
-	ExtStaffID string `form:"ext_staff_id" json:"ext_staff_id" validate:"required"`
+	ExtStaffID string `form:"ext_staff_id" json:"ext_staff_id"`
 }
 
 // StaffForceLoginReq 调试接口-指定员工侧边栏强制登录

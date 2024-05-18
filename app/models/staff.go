@@ -490,14 +490,14 @@ func (s *Staff) GetCustomerSummary(extStaffID string, extCorpID string) (cs Cust
 	}
 
 	err = DB.Model(&GroupChat{}).Where("ext_corp_id = ?", extCorpID).
-		Pluck("sum(today_join_member_num) as today_groups_increase", &cs.TodayGroupsIncrease).Error
+		Pluck("COALESCE(sum(today_join_member_num), 0) as today_groups_increase", &cs.TodayGroupsIncrease).Error
 	if err != nil {
 		err = errors.WithStack(err)
 		return
 	}
 
 	err = DB.Model(&GroupChat{}).Where("ext_corp_id = ?", extCorpID).
-		Pluck("sum(today_quit_member_num) as today_groups_decrease", &cs.TodayGroupsDecrease).Error
+		Pluck("COALESCE(sum(today_quit_member_num),0) as today_groups_decrease", &cs.TodayGroupsDecrease).Error
 	if err != nil {
 		err = errors.WithStack(err)
 		return

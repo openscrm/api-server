@@ -139,7 +139,7 @@ func (o Department) Query(extPid int64, extCorpID string, IDs []int64, sorter *a
 
 	err = db.Count(&total).Error
 	if err != nil || total == 0 {
-		err = errors.Wrap(err, "Count Department failed")
+		err = errors.Wrap(err, "Count DepartmentId failed")
 		return nil, 0, err
 	}
 

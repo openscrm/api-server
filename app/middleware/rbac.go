@@ -30,11 +30,12 @@ func Guard(biz constants.BizIdentity, operation constants.Operation) gin.Handler
 			return
 		}
 
-		if staff.Status != constants.UserStatusActivated {
-			handler.ResponseError(ecode.ForbiddenError)
-			c.Abort()
-			return
-		}
+		// todo 企业微信底层接口不再提供状态信息，这里暂时省略
+		//if staff.Status != constants.UserStatusActivated {
+		//	handler.ResponseError(ecode.ForbiddenError)
+		//	c.Abort()
+		//	return
+		//}
 
 		role, err := (&models.Role{}).CachedGet(staff.RoleID)
 		if err != nil {

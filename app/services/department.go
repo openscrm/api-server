@@ -2,13 +2,11 @@ package services
 
 import (
 	"github.com/pkg/errors"
-	"openscrm/app/constants"
 	"openscrm/app/entities"
 	"openscrm/app/models"
 	"openscrm/common/id_generator"
 	"openscrm/common/log"
 	"openscrm/common/we_work"
-	"openscrm/conf"
 )
 
 type Department struct {
@@ -32,7 +30,7 @@ func (d Department) Sync(extCorpID string) error {
 	if err != nil {
 		return err
 	}
-	depts, err := wxClient.Customer.ListAllDepartments()
+	depts, err := wxClient.Contact.SimpleListAllDepartments()
 	if err != nil {
 		log.Sugar.Error("get all departments from wx failed", err)
 		return err
@@ -42,15 +40,10 @@ func (d Department) Sync(extCorpID string) error {
 	departments := make([]models.Department, 0)
 
 	for _, dept := range depts {
-		// 演示环境修改公司名称
-		if conf.Settings.App.Env == constants.DEMO && dept.ID == 1 {
-			dept.Name = "成都小橘科技有限公司(演示)"
-		}
 		var department models.Department
 		department.ID = id_generator.StringID()
 		department.ExtCorpID = extCorpID
 		department.ExtID = dept.ID
-		department.Name = dept.Name
 		department.ExtParentID = dept.ParentID
 		department.Order = dept.Order
 		departments = append(departments, department)

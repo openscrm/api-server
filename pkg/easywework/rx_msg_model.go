@@ -119,7 +119,7 @@ const ChangeTypeUpdateChat ChangeType = "update"
 // ChangeTypeDismissChat 客户群解散事件
 const ChangeTypeDismissChat ChangeType = "dismiss"
 
-//ChangeTypeMsgAuditApproved 添加外部联系人同意进行聊天内容存档时，回调该事件。
+// ChangeTypeMsgAuditApproved 添加外部联系人同意进行聊天内容存档时，回调该事件。
 const ChangeTypeMsgAuditApproved = "msg_audit_approved"
 
 // rxTextMessageSpecifics 接收的文本消息，特有字段
@@ -342,7 +342,7 @@ type rxEventCreateUser struct {
 	//ChangeType     string   `xml:"ChangeType"`
 	UserID string `xml:"UserID"`
 	//Name           string   `xml:"Name"`
-	//Department     string   `xml:"Department"`
+	//DepartmentId     string   `xml:"DepartmentId"`
 	//MainDepartment string   `xml:"MainDepartment"`
 	//IsLeaderInDept string   `xml:"IsLeaderInDept"`
 	//Position       string   `xml:"Position"`

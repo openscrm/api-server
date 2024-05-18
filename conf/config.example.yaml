@@ -2,9 +2,9 @@
 App:
   Name: openscrm
   # * 运行环境 DEV,TEST,PROD；开发和测试环境会开放调试API，生产环境请使用PROD；
-  Env: DEV
+  Env: DEMO
   # * 应用秘钥 64位，生成命令：openssl rand -base64 64
-  Key: todo
+  Key: AzbkdkkAV6ow17Jcwk7Z+r0q8MwOGm7lV5WXjalow++RLP/AL22+vEfJbEWnDu4Dvgu6Ee8nt4lqsQllhg13Bg==
   # 超级管理员userID
   SuperAdmin:
     - WangQiang

@@ -7,6 +7,7 @@ import (
 )
 
 // execExternalContactList 获取客户列表
+// 授权：https://work.weixin.qq.com/wework_admin/frame#/customer/analysis
 func (c *App) execExternalContactList(req externalContactListReq) (externalContactListResp, error) {
 	var resp externalContactListResp
 	err := c.executeWXApiGet("/cgi-bin/externalcontact/list", req, &resp, true)

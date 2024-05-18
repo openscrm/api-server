@@ -22,3 +22,4 @@ scripts/deploy-test.bat
 scripts/deploy-*.bat
 go.sum
 main
+bin

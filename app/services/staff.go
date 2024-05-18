@@ -21,7 +21,6 @@ import (
 	gowx "openscrm/pkg/easywework"
 	"path"
 	"path/filepath"
-	"strings"
 	"time"
 )
 
@@ -64,44 +63,7 @@ func (o StaffService) Sync(extCorpID string) (err error) {
 		err = errors.WithStack(err)
 		return err
 	}
-	err = o.SyncStaffByApplication(extCorpID)
-	if err != nil {
-		err = errors.WithStack(err)
-		return err
-	}
 
-	return nil
-}
-
-// SyncStaffByApplication 第三方应用同步员工数据
-func (o StaffService) SyncStaffByApplication(extCorpID string) (err error) {
-	client, err := GetCorpWxClient(extCorpID)
-	if err != nil {
-		err = errors.WithStack(err)
-		return
-	}
-	departments, err := client.MainApp.ListAllDepartments()
-	if err != nil {
-		log.Sugar.Error("ListAllDepartments failed", err)
-		return err
-	}
-	for _, department := range departments {
-		usersInfo, err := client.Customer.ListUsersByDeptID(department.ID, true /*是否递归查询下级部门*/)
-		if err != nil {
-			log.Sugar.Error("批量获取部门成员信息失败", err)
-			return err
-		}
-
-		AuthorizedExtStaffIDs := make([]string, 0)
-		for _, info := range usersInfo {
-			AuthorizedExtStaffIDs = append(AuthorizedExtStaffIDs, info.UserID)
-		}
-		err = o.staffRepo.UpdateAuthorizedStatus(AuthorizedExtStaffIDs)
-		if err != nil {
-			err = errors.WithStack(err)
-			return err
-		}
-	}
 	return nil
 }
 
@@ -111,96 +73,70 @@ func (o StaffService) SyncStaffByCorp(extCorpID string) (err error) {
 		err = errors.WithStack(err)
 		return
 	}
-	departments, err := client.Customer.ListAllDepartments()
+
+	userIdInfos, err := client.Contact.ListUserIds()
 	if err != nil {
-		log.Sugar.Error("ListAllDepartments failed", err)
+		log.Sugar.Error("获取企业所有员工ID和所属部门ID失败", err)
 		return err
 	}
-	for _, department := range departments {
-		usersInfo, err := client.Customer.ListUsersByDeptID(department.ID, true /*是否递归查询下级部门*/)
-		if err != nil {
-			log.Sugar.Error("批量获取部门成员信息失败", err)
-			return err
+
+	staffs := make([]models.Staff, 0)
+	extStaffIDs := make([]string, 0)
+	extDeptIDs := make([]int64, 0)
+	staffDepts := make([]models.StaffDepartment, 0)
+	for _, idInfo := range userIdInfos {
+		staff := models.Staff{
+			ExtCorpID:    conf.Settings.WeWork.ExtCorpID,
+			RoleID:       string(constants.DefaultCorpStaffRoleID),
+			RoleType:     string(constants.RoleTypeStaff),
+			ExtID:        idInfo.UserId,
+			DeptIds:      constants.Int64ArrayField{idInfo.DepartmentId},
+			IsAuthorized: constants.False,
 		}
-		staffs := make([]models.Staff, 0)
-		extStaffIDs := make([]string, 0)
-		extDeptIDs := make([]int64, 0)
-		extDepts := make([]gowx.UserDeptInfo, 0)
-		staffDepts := make([]models.StaffDepartment, 0)
-		for _, info := range usersInfo {
-			staff := models.Staff{
-				ExtCorpID:    conf.Settings.WeWork.ExtCorpID,
-				RoleID:       string(constants.DefaultCorpStaffRoleID),
-				RoleType:     string(constants.RoleTypeStaff),
-				ExtID:        info.UserID,
-				Name:         info.Name,
-				Address:      info.Address,
-				Alias:        info.Alias,
-				AvatarURL:    fmt.Sprint(strings.Trim(info.AvatarURL, "/0"), "/60"), // 有0,40,60数值可选，0代表640640正方形头像
-				Email:        info.Email,
-				Gender:       constants.UserGender(info.Gender),
-				Status:       constants.UserStatus(info.Status),
-				Mobile:       info.Mobile,
-				QRCodeURL:    info.QRCodeURL,
-				DeptIds:      info.DeptIDs,
-				IsAuthorized: constants.False,
-			}
-			staff.ID = id_generator.StringID()
-			staffs = append(staffs, staff)
-			extStaffIDs = append(extStaffIDs, staff.ExtID)
-
-			for _, deptInfo := range info.Departments {
-				extDeptIDs = append(extDeptIDs, deptInfo.DeptID)
-				extDepts = append(extDepts, deptInfo)
-
-				staffDepartment := models.StaffDepartment{
-					ExtCorpID:       extCorpID,
-					ExtStaffID:      info.UserID,
-					ExtDepartmentID: deptInfo.DeptID,
-					Order:           deptInfo.Order,
-					IsLeader:        constants.False,
-				}
-				if deptInfo.IsLeader {
-					staffDepartment.IsLeader = constants.True
-				}
-				staffDepts = append(staffDepts, staffDepartment)
-			}
-
+		staff.ID = id_generator.StringID()
+		staffs = append(staffs, staff)
+		extStaffIDs = append(extStaffIDs, staff.ExtID)
+		staffDepartment := models.StaffDepartment{
+			ExtCorpID:       extCorpID,
+			ExtStaffID:      idInfo.UserId,
+			ExtDepartmentID: idInfo.DepartmentId,
+			IsLeader:        constants.False,
 		}
+		staffDepts = append(staffDepts, staffDepartment)
+		extDeptIDs = append(extDeptIDs, idInfo.DepartmentId)
+	}
 
-		err = o.staffRepo.BatchUpsert(staffs)
-		if err != nil {
-			return err
+	err = o.staffRepo.BatchUpsert(staffs)
+	if err != nil {
+		return err
+	}
+
+	staffIDExtIds, err := o.staffRepo.GetIDsByExtIDs(extStaffIDs)
+	if err != nil {
+		err = errors.WithStack(err)
+		return err
+	}
+
+	deptIDExtIDs, err := o.deptRepo.GetIDsByExtIDs(extDeptIDs)
+	if err != nil {
+		err = errors.WithStack(err)
+		return err
+	}
+
+	for i, dept := range staffDepts {
+		if staffID, ok := staffIDExtIds[dept.ExtStaffID]; ok {
+			staffDepts[i].StaffID = staffID
 		}
-
-		staffIDExtIds, err := o.staffRepo.GetIDsByExtIDs(extStaffIDs)
-		if err != nil {
-			err = errors.WithStack(err)
-			return err
-		}
-		deptIDExtIDs, err := o.deptRepo.GetIDsByExtIDs(extDeptIDs)
-		if err != nil {
-			err = errors.WithStack(err)
-			return err
-		}
-
-		for i, dept := range staffDepts {
-			if staffID, ok := staffIDExtIds[dept.ExtStaffID]; ok {
-				staffDepts[i].StaffID = staffID
-			}
-			if deptID, ok := deptIDExtIDs[dept.ExtDepartmentID]; ok {
-				staffDepts[i].DepartmentID = deptID
-			}
-
-		}
-
-		err = o.staffDepartmentRepo.Upsert(staffDepts...)
-		if err != nil {
-			err = errors.WithStack(err)
-			return err
+		if deptID, ok := deptIDExtIDs[dept.ExtDepartmentID]; ok {
+			staffDepts[i].DepartmentID = deptID
 		}
 	}
 
+	err = o.staffDepartmentRepo.Upsert(staffDepts...)
+	if err != nil {
+		err = errors.WithStack(err)
+		return err
+	}
 	err = o.staffRepo.CleanCache(extCorpID)
 	if err != nil {
 		err = errors.WithStack(err)

@@ -1,5 +1,9 @@
 package workwx
 
+import (
+	"time"
+)
+
 //企业成员（员工） 相关接口
 
 // GetUser 读取成员
@@ -15,21 +19,35 @@ func (c *App) GetUser(userid string) (*UserInfo, error) {
 	return &obj, nil
 }
 
-// ListUsersByDeptID 获取部门成员详情
-func (c *App) ListUsersByDeptID(deptID int64, fetchChild bool) ([]*UserInfo, error) {
-	resp, err := c.execUserList(userListReq{
-		DeptID:     deptID,
-		FetchChild: fetchChild,
+// ListUserIds 获取企业所有员工ID和所属部门ID
+func (c *App) ListUserIds() ([]*UserIdInfo, error) {
+	limit := 1000
+	var nextCursor string
+	userIsInfos := make([]*UserIdInfo, 0)
+	resp, err := c.execUserIdList(userIdListReq{
+		Limit: limit,
 	})
 	if err != nil {
 		return nil, err
 	}
-	users := make([]*UserInfo, len(resp.Users))
-	for index, user := range resp.Users {
-		userInfo := user.intoUserInfo()
-		users[index] = &userInfo
+	userIsInfos = append(userIsInfos, resp.UserIdInfos...)
+	nextCursor = resp.NextCursor
+
+	for nextCursor != "" {
+		time.Sleep(500 * time.Millisecond)
+		resp, err = c.execUserIdList(userIdListReq{
+			Cursor: resp.NextCursor,
+			Limit:  limit,
+		})
+		if err != nil {
+			return nil, err
+		}
+
+		nextCursor = resp.NextCursor
+		userIsInfos = append(userIsInfos, resp.UserIdInfos...)
 	}
-	return users, nil
+
+	return resp.UserIdInfos, nil
 }
 
 // GetUserIDByMobile 通过手机号获取 userid

@@ -154,6 +154,10 @@ func (o *Login) StaffAdminForceLogin(c *gin.Context) {
 		req.ExtCorpID = conf.Settings.WeWork.ExtCorpID
 	}
 
+	if req.ExtStaffID == "" && len(conf.Settings.App.SuperAdmin) > 0 {
+		req.ExtStaffID = conf.Settings.App.SuperAdmin[0]
+	}
+
 	item, err := (&models.Staff{}).Get(req.ExtStaffID, "", false)
 	if err != nil {
 		err = errors.Wrap(err, "GetStaffByUserID failed")

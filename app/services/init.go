@@ -11,8 +11,8 @@ func Syncs() {
 	departmentService := NewDepartment()
 	groupChatService := NewGroupChatService()
 	staffService := NewStaffService()
-	customerService := NewCustomer()
-	tagService := NewTag()
+	//customerService := NewCustomer()
+	//tagService := NewTag()
 
 	err = departmentService.Sync(conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
@@ -29,15 +29,15 @@ func Syncs() {
 		panic(err)
 	}
 
-	err = customerService.Sync(conf.Settings.WeWork.ExtCorpID)
-	if err != nil {
-		panic(err)
-	}
+	//err = customerService.Sync(conf.Settings.WeWork.ExtCorpID)
+	//if err != nil {
+	//	panic(err)
+	//}
 
-	err = tagService.Sync(conf.Settings.WeWork.ExtCorpID)
-	if err != nil {
-		panic(err)
-	}
+	//err = tagService.Sync(conf.Settings.WeWork.ExtCorpID)
+	//if err != nil {
+	//	panic(err)
+	//}
 
 	models.SetupStaffRole() // 初始化超级管理员权限
 }

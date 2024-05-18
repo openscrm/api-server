@@ -24,24 +24,34 @@
 > OpenSCRM是一套基于**Go**和**React**的**高质量**企业微信私域流量管理系统
 
 ### 快速开始（docker-compose）
-我们已经在docker-compose.yaml文件中配置好所有依赖，修改应用配置信息即可启动。
-
-#### 修改配置文件
-* conf/config.example.yaml -> conf/config.yaml
-* 修改DB.Host节点。api-server在容器中跑时，DB.Host需要改成宿主机的IP（host.docker.internal/局域网IP）。api-server在本地跑时，DB.Host填localhost即可。
-* 修改配置文件的App.SuperAdmin节点，此项为企业微信中的管理员ID
-* 修改配置文件的WeWork节点
-* 如果你修改了docker-compose.yaml文件，不要忘记docker-compose down,docker-compose up重建容器让配置生效
-
-#### 启动docker-compose
-```
-cd /project-home-dir/
-openssl genpkey -algorithm RSA -out conf/private.key
-chmod +x bin/api-server bin/msg-arch-server
+我们依靠docker-compose启动mysql和redis。api-server本地编译启动，dashboard前端界面也本地编译启动
+#### 启动mysql和redis
 docker-compose up
-```
+
+#### 启动api-server
+* conf/config.example.yaml -> conf/config.yaml // 适当修改配置
+* 项目根目录下启动 go run main.go
+* api监听地址 http://localhost:9001/
+
+#### 启动前端dashboard
+* git clone https://github.com/openscrm/dashboard 
+* 安装 16.20.2 版本的nodejs，只能是这个版本，其他版本会有兼容问题，推荐用nvm管理node版本
+* 可选，安装国内npm包镜像源，参考https://npmmirror.com/
+* npm install --legacy-peer-deps
+* npm run start
+
 #### 访问站点
-http://dashboard.dev.openscrm.cn:9000/
+http://localhost:9000/
+
+#### 常见问题
+##### 前端无法连接后端api-server.
+检查nginx配置 docker/nginx/conf/conf.d/dashboard.conf
+
+##### 容器中运行的程序如何链接宿主机
+docker中宿主机ip地址为172.17.0.1，所有docker服务默认监听端口到宿主机上，配置文件中需要填host的地方填172.17.0.1
+
+##### 登录界面出现提示：redirect_uri 与配置的授权完成回调域名不一致
+企业微信扫描登录需要配置回调地址和授权登录地址
 
 ### 搭建开发环境(可选)
 #### 安装go语言环境

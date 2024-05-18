@@ -19,3 +19,24 @@ func (c *App) execDeptList(req deptListReq) (deptListResp, error) {
 
 	return resp, nil
 }
+
+// deptSimpleListResp 部门ID列表响应
+type deptSimpleListResp struct {
+	CommonResp
+	DepartmentId []*DeptSimpleInfo `json:"department_id"`
+}
+
+// execDeptSimpleList 获取子部门ID列表
+// https://developer.work.weixin.qq.com/document/path/95350
+func (c *App) execDeptSimpleList(req deptSimpleListReq) (deptSimpleListResp, error) {
+	var resp deptSimpleListResp
+	err := c.executeWXApiGet("/cgi-bin/department/simplelist", req, &resp, true)
+	if err != nil {
+		return deptSimpleListResp{}, err
+	}
+	if bizErr := resp.TryIntoErr(); bizErr != nil {
+		return deptSimpleListResp{}, bizErr
+	}
+
+	return resp, nil
+}

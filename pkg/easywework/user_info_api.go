@@ -154,6 +154,35 @@ type userListResp struct {
 	Users []*userDetailResp `json:"userlist"`
 }
 
+// userIdListReq 列出员工ID
+type userIdListReq struct {
+	Cursor string
+	Limit  int
+}
+
+var _ urlValuer = userIdListReq{}
+
+func (x userIdListReq) intoURLValues() url.Values {
+	if x.Cursor != "" {
+		return url.Values{
+			"cursor": {x.Cursor},
+			"limit":  {strconv.Itoa(x.Limit)},
+		}
+	}
+
+	return url.Values{
+		"limit": {strconv.Itoa(x.Limit)},
+	}
+}
+
+// userIdListResp 部门成员ID响应
+type userIdListResp struct {
+	CommonResp
+
+	NextCursor  string        `json:"next_cursor"`
+	UserIdInfos []*UserIdInfo `json:"dept_user"`
+}
+
 // userIDByMobileReq 手机号获取 userid 请求
 type userIDByMobileReq struct {
 	Mobile string `json:"mobile"`
@@ -249,6 +278,22 @@ func (x deptListReq) intoURLValues() url.Values {
 	}
 }
 
+type deptSimpleListReq struct {
+	ID int64
+}
+
+var _ urlValuer = deptSimpleListReq{}
+
+func (x deptSimpleListReq) intoURLValues() url.Values {
+	if x.ID == 0 {
+		return url.Values{}
+	}
+
+	return url.Values{
+		"id": {strconv.FormatInt(x.ID, 10)},
+	}
+}
+
 type userGetReq struct {
 	UserID string
 }
@@ -285,6 +330,21 @@ func (c *App) execUserList(req userListReq) (userListResp, error) {
 	}
 	if bizErr := resp.TryIntoErr(); bizErr != nil {
 		return userListResp{}, bizErr
+	}
+
+	return resp, nil
+}
+
+// execUserIdList 获取员工ID列表和所属部门ID
+// 文档：https://developer.work.weixin.qq.com/document/path/96021
+func (c *App) execUserIdList(req userIdListReq) (userIdListResp, error) {
+	var resp userIdListResp
+	err := c.executeWXApiGet("/cgi-bin/user/list_id", req, &resp, true)
+	if err != nil {
+		return userIdListResp{}, err
+	}
+	if bizErr := resp.TryIntoErr(); bizErr != nil {
+		return userIdListResp{}, bizErr
 	}
 
 	return resp, nil
