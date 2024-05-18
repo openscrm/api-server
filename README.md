@@ -24,7 +24,10 @@
 > OpenSCRM是一套基于**Go**和**React**的**高质量**企业微信私域流量管理系统
 
 ### 快速开始（docker-compose）
-我们依靠docker-compose启动mysql和redis。api-server本地编译启动，dashboard前端界面也本地编译启动
+我们依靠docker-compose启动mysql和redis。
+api-server后端API本地编译启动，
+dashboard前端界面同样本地编译启动
+
 #### 启动mysql和redis
 docker-compose up
 
