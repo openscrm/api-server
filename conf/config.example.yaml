@@ -30,14 +30,14 @@ Server:
 
 # Mysql数据库配置
 DB:
-  Host: host.docker.internal:3306
+  Host: 172.17.0.1:3306
   User: open_scrm_demo
   Name: open_scrm_demo
   Password: A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc
 
 # redis服务器配置
 Redis:
-  Host: redis:6379
+  Host: 172.17.0.1:6379
   Password: A6UBxB4igUNxPRfx3CpYutH353VYo8Atpc
   DBNumber: 0
   IdleTimeout: 5

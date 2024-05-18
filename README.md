@@ -29,7 +29,7 @@
 docker-compose up
 
 #### 启动api-server
-* conf/config.example.yaml -> conf/config.yaml // 适当修改配置
+* conf/config.example.yaml -> conf/config.yaml // 修改SuperAdmin字段就行了，其他的跑起来再改
 * 项目根目录下启动 go run main.go
 * api监听地址 http://localhost:9001/
 
