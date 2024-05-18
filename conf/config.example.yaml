@@ -10,6 +10,8 @@ App:
     - WangQiang
   # 是否开启Models自动迁移，修改Model定义自动同步Mysql表结构
   AutoMigration: true
+  # 启动时同步微信数据
+  AutoSyncWeWorkData: true
 
 # API服务配置
 Server:

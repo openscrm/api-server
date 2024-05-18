@@ -71,24 +71,24 @@ services:
       redis:
         condition: service_healthy
 
-  # 会话存档服务
-  msg-archive-server:
-    image: centos
-    volumes:
-      - ./bin/msg-arch-server:/srv/msg-arch-server
-      - ./docker/lib:/srv/lib
-      - ./conf/:/conf/
-    ports:
-      - 9002:9002
-    environment:
-      - LD_LIBRARY_PATH=/srv/lib
-    command:
-      - sh
-      - -c
-      - |
-        /srv/msg-arch-server
-    depends_on:
-      mysql:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+#  # 会话存档服务
+#  msg-archive-server:
+#    image: centos
+#    volumes:
+#      - ./bin/msg-arch-server:/srv/msg-arch-server
+#      - ./docker/lib:/srv/lib
+#      - ./conf/:/conf/
+#    ports:
+#      - 9002:9002
+#    environment:
+#      - LD_LIBRARY_PATH=/srv/lib
+#    command:
+#      - sh
+#      - -c
+#      - |
+#        /srv/msg-arch-server
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#      redis:
+#        condition: service_healthy
