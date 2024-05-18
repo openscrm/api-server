@@ -1,3 +1,8 @@
+<h4 align="center">
+重要：本项目缺乏维护，目前没有力量继续维护，如果有兴趣维护的朋友，可以联系我，我会尽力提供帮助。
+</h4>
+
+
 <p align="center">
   <img alt="logo" height="48" src="https://openscrm.oss-cn-hangzhou.aliyuncs.com/public/openscrm_logo.svg">
 </p>
@@ -20,7 +25,6 @@
 </p>
 
 ### 项目简介
-
 > OpenSCRM是一套基于**Go**和**React**的**高质量**企业微信私域流量管理系统
 
 ### 快速开始（docker-compose）
