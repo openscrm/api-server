@@ -215,5 +215,3 @@ get all departments from wx failedClientError { Code: 60020, Msg: "not allow to 
 docker中宿主机ip地址为172.17.0.1，所有docker服务默认监听端口到宿主机上，配置文件中需要填host的地方填172.17.0.1
 
 ---
-#### 5.登录界面出现提示：redirect_uri 与配置的授权完成回调域名不一致
-企业微信扫描登录需要配置回调地址和授权登录地址
