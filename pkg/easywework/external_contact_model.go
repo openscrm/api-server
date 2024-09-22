@@ -197,7 +197,7 @@ type ExternalContactRemark struct {
 // ExternalContactCorpTag 企业客户标签
 type ExternalContactCorpTag struct {
 	// ID 标签id
-	ID string `json:"id"`
+	ID string `json:"id,omitempty"`
 	// Name 标签名称
 	Name string `json:"name"`
 	// CreateTime 标签创建时间
@@ -211,7 +211,7 @@ type ExternalContactCorpTag struct {
 // ExternalContactCorpTagGroup 企业客户标签
 type ExternalContactCorpTagGroup struct {
 	// GroupID 标签组id
-	GroupID string `json:"group_id"`
+	GroupID string `json:"group_id,omitempty"`
 	// GroupName 标签组名称
 	GroupName string `json:"group_name"`
 	// CreateTime 标签组创建时间
