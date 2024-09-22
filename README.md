@@ -27,7 +27,7 @@
 ### 项目简介
 > OpenSCRM是一套基于**Go**和**React**的**高质量**企业微信私域流量管理系统
 
-### 快速开始（docker-compose）
+### 快速开始，启动演示项目（docker-compose）
 我们依靠docker-compose启动mysql和redis。
 api-server后端API本地编译启动，
 dashboard前端界面同样本地编译启动
@@ -50,24 +50,14 @@ docker-compose up
 #### 访问站点
 http://localhost:9000/
 
-#### 常见问题
-##### 前端无法连接后端api-server.
-检查nginx配置 docker/nginx/conf/conf.d/dashboard.conf
+--- 
 
-##### 容器中运行的程序如何链接宿主机
-docker中宿主机ip地址为172.17.0.1，所有docker服务默认监听端口到宿主机上，配置文件中需要填host的地方填172.17.0.1
-
-##### 登录界面出现提示：redirect_uri 与配置的授权完成回调域名不一致
-企业微信扫描登录需要配置回调地址和授权登录地址
-
-### 搭建开发环境(可选)
+### 搭建后端开发环境(可选)
 #### 安装go语言环境
 https://go.dev/doc/install
 
-#### 安装swag
-```
-go install github.com/swaggo/swag/cmd/swag@latest
-```
+#### 修改配置文件
+conf/config.example.yaml -> conf/config.yaml
 
 #### 启动程序
 ```
@@ -76,6 +66,9 @@ go run main.go
 
 #### 访问站点
 http://dashboard.dev.openscrm.cn:9000/
+
+### 搭建前端开发环境
+具体看：https://github.com/openscrm/dashboard
 
 ### 子项目
 
@@ -196,3 +189,31 @@ https://github.com/openscrm/api-server/wiki/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B
 ### 版权声明
 
 OpenSCRM遵循Apache2.0协议，可免费商用
+
+### FAQ
+#### 1.初始化失败，出现 not allow to access from your ip 错误
+##### 错误示例：
+```text
+get all departments from wx failedClientError { Code: 60020, Msg: "not allow to access from your ip, 错误
+```
+##### 解决办法
+登录企业微信管理员后台->安全与管理->管理工具->通讯录同步->企业可信IP 添加允许访问企业微信接口的公网IP
+
+---
+#### 2.登录界面提示：redirect_uri 与配置的授权完成回调域名不一致
+##### 错误原因
+企业微信扫描登录需要配置授权登录地址域名，如果域名不一致会提示此错误，演示站点用的我的配置，你需要自建应用完成相关配置
+##### 解决办法
+登录企业微信管理员后台->应用管理->应用->自建应用（你的应用）->企业微信授权登录->授权回调域
+
+---
+#### 3.前端无法连接后端api-server.
+检查nginx配置 docker/nginx/conf/conf.d/dashboard.conf
+
+---
+#### 4.容器中运行的程序如何链接宿主机
+docker中宿主机ip地址为172.17.0.1，所有docker服务默认监听端口到宿主机上，配置文件中需要填host的地方填172.17.0.1
+
+---
+#### 5.登录界面出现提示：redirect_uri 与配置的授权完成回调域名不一致
+企业微信扫描登录需要配置回调地址和授权登录地址
