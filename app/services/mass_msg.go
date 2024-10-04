@@ -367,7 +367,7 @@ func (o MassMsgService) Notify(ids []string, extCorpID string) error {
 		err = errors.WithStack(err)
 		return err
 	}
-	extStaffIDs := make([]string, len(staffCustomerIDs))
+	extStaffIDs := make([]string, 0, len(staffCustomerIDs))
 	for _, staffCustomer := range staffCustomerIDs {
 		extStaffIDs = append(extStaffIDs, staffCustomer.ExtStaffID)
 
