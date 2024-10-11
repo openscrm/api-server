@@ -203,9 +203,12 @@ get all departments from wx failedClientError { Code: 60020, Msg: "not allow to 
 #### 2.登录界面提示：redirect_uri 与配置的授权完成回调域名不一致
 ##### 错误原因
 企业微信扫描登录需要配置授权登录地址域名，如果域名不一致会提示此错误，演示站点用的我的配置，你需要自建应用完成相关配置
-##### 解决办法
+##### 解决方法1（用于生产环境）
 登录企业微信管理员后台->应用管理->应用->自建应用（你的应用）->企业微信授权登录->授权回调域
-
+##### 解决方法2（用于开发环境）
+本地开发的时候，不方便配置登录回调。可以使用强制登录。
+登录界面url加上参数?debug=1。
+同时确保conf/config.yaml中的Env配置为DEV或TEST
 ---
 #### 3.前端无法连接后端api-server.
 检查nginx配置 docker/nginx/conf/conf.d/dashboard.conf
