@@ -2,6 +2,7 @@ package services
 
 import (
 	"openscrm/app/models"
+	"openscrm/common/log"
 	"openscrm/conf"
 )
 
@@ -16,17 +17,20 @@ func Syncs() {
 
 	err = departmentService.Sync(conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
-		panic(err)
+		log.Errorf("[ Wechat][ Error]: sync departments failed: %v", err)
+		return
 	}
 
 	err = staffService.Sync(conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
-		panic(err)
+		log.Errorf("[ Wechat][ Error]: sync staff failed: %v", err)
+		return
 	}
 
 	err = groupChatService.SyncAll(conf.Settings.WeWork.ExtCorpID)
 	if err != nil {
-		panic(err)
+		log.Errorf("[ Wechat][ Error]: sync group chats failed: %v", err)
+		return
 	}
 
 	//err = customerService.Sync(conf.Settings.WeWork.ExtCorpID)
